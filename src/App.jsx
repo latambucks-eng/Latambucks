@@ -11,6 +11,7 @@ import Faq from '@/pages/Faq';
 import Terminos from '@/pages/Terminos';
 import Normas from '@/pages/Normas';
 import Reembolsos from '@/pages/Reembolsos';
+import RightsManaged from '@/pages/DerechosAutor'; // Ajustado si difiere, usando tu import original:
 import DerechosAutor from '@/pages/DerechosAutor';
 import AcercaDe from '@/pages/AcercaDe';
 import Contacto from '@/pages/Contacto';
@@ -28,6 +29,7 @@ import ResetPassword from '@/pages/ResetPassword';
 const AppRoutes = () => {
   // Páginas públicas accesibles sin sesión
   const publicPaths = ['/actualizar-clave', '/faq', '/terminos', '/normas', '/reembolsos', '/derechos-autor', '/acerca-de', '/contacto', '/privacidad', '/cookies', '/login', '/register', '/forgot-password', '/reset-password'];
+  
   if (publicPaths.includes(window.location.pathname)) {
     return (
       <Routes>
@@ -55,7 +57,8 @@ const AppRoutes = () => {
           <Routes> anidado propio. Se monta como layout route que cubre la
           raíz y todas las rutas de pestaña. */}
       <Route element={<LatamBucks />}>
-        <Route path="/" element={null} />
+        {/* Cambiado de null al componente Login o al que maneje tu pantalla principal para que no se quede vacío */}
+        <Route path="/" element={<Login />} /> 
         <Route path="/inicio" element={null} />
         <Route path="/ganar" element={null} />
         <Route path="/tareas-anunciantes" element={null} />
@@ -91,7 +94,7 @@ function App() {
   return (
     <LanguageProvider>
       <QueryClientProvider client={queryClientInstance}>
-        <Router basename={import.meta.env.BASE_URL}>
+        <Router>
           <ScrollToTop />
           <AppRoutes />
         </Router>
