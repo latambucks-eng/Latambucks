@@ -32,7 +32,7 @@ export default defineConfig({
   plugins: [react(), githubPagesSpaFallback()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '@': fileURLToPath(new URL('./', import.meta.url)), // <-- CORREGIDO: Apunta a la raíz en vez de a /src
     },
   },
 })
