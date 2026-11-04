@@ -1,5 +1,5 @@
 /* Fuentes locales (woff2) — el sitio ya no carga Google Fonts. */
-@import '@/assets/Fonts/fonts.css';
+@import "@/assets/fonts/fonts.css"; 
 
 @tailwind base;
 @tailwind components;
