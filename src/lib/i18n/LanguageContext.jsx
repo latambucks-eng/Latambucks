@@ -10,7 +10,22 @@ const STORAGE_KEY = "lb_lang";
 
 const isSupported = (id) => LOCALES.some((l) => l.id === id);
 
+// Idioma pedido por la URL (?lang=en). Sirve para que Google y otros
+// buscadores puedan indexar cada idioma con su propia dirección.
+function readUrlLang() {
+  try {
+    const code = String(new URLSearchParams(window.location.search).get("lang") || "")
+      .slice(0, 2)
+      .toLowerCase();
+    return isSupported(code) ? code : null;
+  } catch {
+    return null;
+  }
+}
+
 function readInitial() {
+  const fromUrl = readUrlLang();
+  if (fromUrl) return fromUrl;
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (isSupported(saved)) return saved;
@@ -37,7 +52,18 @@ export function LanguageProvider({ children }) {
   }, [lang]);
 
   const setLang = useCallback((id) => {
-    if (isSupported(id)) setLangState(id);
+    if (!isSupported(id)) return;
+    setLangState(id);
+    // Si la dirección trae ?lang=, se mantiene coherente con el idioma elegido.
+    try {
+      const url = new URL(window.location.href);
+      if (url.searchParams.has("lang")) {
+        url.searchParams.set("lang", id);
+        window.history.replaceState({}, "", url);
+      }
+    } catch {
+      /* ubicación no disponible */
+    }
   }, []);
 
   // t("nav.ganar") → texto del idioma activo; si falta, cae al español.
