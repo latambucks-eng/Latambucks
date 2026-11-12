@@ -60,13 +60,14 @@ export const GUIA = {
         cta: "Ver tareas disponibles",
       },
       {
-        title: "Multiplicá tus puntos",
-        subtitle: "Solo con puntos de encuestas, con topes claros y sin sorpresas.",
+        title: "Multiplicá tus encuestas y cobrá antes el viernes",
+        subtitle: "Transformá los puntos de tus encuestas en premios instantáneos con nuestra ruleta.",
         bullets: [
-          "Hasta 4 giros cada 24 h: 45% x1.1 · 30% x1.0 · 20% x0.5 · 5% x1.5.",
-          "Cada encuesta aprobada de 50 pts o más te da 1 giro (150 en España, 500 en EE.UU.).",
-          "Apuesta máxima: 200 pts por giro (400 en España, 1,000 en EE.UU.). El bono de bienvenida no se apuesta.",
+          "80% de chances de ganar extra o mantener tu saldo: Girá hasta 4 veces cada 24 h y multiplicá tus puntos hasta x1.5 al instante.",
+          "Ganá giros con cada encuesta: Completá encuestas aprobadas y desbloqueá hasta 4 giros diarios gratis.",
+          "Jugá sin arriesgar tu bono: Apostá solo tus ganancias de encuestas. Tus 500 pts de bienvenida quedan 100% protegidos para tu retiro.",
         ],
+        limitsLink: "Ver límites y probabilidades por país",
         cta: "Ir a Multiplicar",
       },
       {
@@ -162,13 +163,14 @@ export const GUIA = {
         cta: "See available tasks",
       },
       {
-        title: "Multiply your points",
-        subtitle: "Survey points only, with clear caps and no surprises.",
+        title: "Multiply your surveys and get paid before Friday",
+        subtitle: "Turn your survey points into instant prizes with our wheel.",
         bullets: [
-          "Up to 4 spins every 24 h: 45% x1.1 · 30% x1.0 · 20% x0.5 · 5% x1.5.",
-          "Every approved survey of 50 pts or more gives you 1 spin (150 in Spain, 500 in the US).",
-          "Max bet: 200 pts per spin (400 in Spain, 1,000 in the US). The welcome bonus can't be bet.",
+          "80% chance to win extra or keep your balance: Spin up to 4 times every 24 h and multiply your points up to x1.5 instantly.",
+          "Earn spins with every survey: Complete approved surveys and unlock up to 4 free daily spins.",
+          "Play without risking your bonus: Bet only your survey earnings. Your 500 welcome pts stay 100% protected for your withdrawal.",
         ],
+        limitsLink: "See limits and odds by country",
         cta: "Go to Multiply",
       },
       {
@@ -264,13 +266,14 @@ export const GUIA = {
         cta: "Ver tarefas disponíveis",
       },
       {
-        title: "Multiplique seus pontos",
-        subtitle: "Somente com pontos de pesquisas, com limites claros e sem surpresas.",
+        title: "Multiplique suas enquetes e receba antes da sexta",
+        subtitle: "Transforme os pontos das suas enquetes em prêmios instantâneos com a nossa roleta.",
         bullets: [
-          "Até 4 giros a cada 24 h: 45% x1.1 · 30% x1.0 · 20% x0.5 · 5% x1.5.",
-          "Cada enquete aprovada de 50 pts ou mais dá 1 giro (150 na Espanha, 500 nos EUA).",
-          "Aposta máxima: 200 pts por giro (400 na Espanha, 1,000 nos EUA). O bônus de boas-vindas não pode ser apostado.",
+          "80% de chance de ganhar extra ou manter seu saldo: Gire até 4 vezes a cada 24 h e multiplique seus pontos até x1.5 na hora.",
+          "Ganhe giros com cada enquete: Complete enquetes aprovadas e desbloqueie até 4 giros diários grátis.",
+          "Jogue sem arriscar seu bônus: Aposte apenas os ganhos das suas enquetes. Seus 500 pts de boas-vindas ficam 100% protegidos para o saque.",
         ],
+        limitsLink: "Ver limites e probabilidades por país",
         cta: "Ir para Multiplicar",
       },
       {
