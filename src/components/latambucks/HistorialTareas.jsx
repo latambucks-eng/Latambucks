@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { useLatamBucks } from "@/lib/latambucksStore";
 import { fetchHistorialPruebas, iniciarDisputa, getServerTimeOffset } from "@/lib/supabaseClient";
 import {
-  History,
   Loader2,
   Inbox,
   Send,
@@ -14,6 +13,8 @@ import {
   AlertCircle,
 } from "lucide-react";
 import { useI18n } from "@/lib/i18n/LanguageContext";
+import ReversosHistorial from "@/components/latambucks/ReversosHistorial";
+import Icon3D from "@/components/latambucks/Icon3D";
 
 const STATUS_CONFIG = {
   pendiente: { label: "historial.status.pendiente", cls: "bg-amber-500/10 text-amber-400", icon: Clock },
@@ -63,7 +64,7 @@ export default function HistorialTareas() {
   // Carga automática al montar — sin desplegable.
   useEffect(() => {
     if (token && user?.id) cargar();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
   }, [token, user?.id]);
 
   const sendAppeal = async (pruebaId) => {
@@ -100,14 +101,14 @@ export default function HistorialTareas() {
   return (
     <div className="space-y-3">
       <div className="flex items-center gap-2">
-        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500/25 to-violet-600/5 text-violet-400 ring-1 ring-violet-500/25">
-          <History className="h-5 w-5" />
-        </div>
+        <Icon3D name="history" className="h-9 w-9 rounded-xl" />
         <div>
           <h3 className="font-display text-lg font-bold text-foreground">{t("historial.title")}</h3>
           <p className="text-xs text-muted-foreground">{t("historial.sub")}</p>
         </div>
       </div>
+
+      <ReversosHistorial />
 
       {loading && (
         <div className="flex flex-col items-center justify-center rounded-2xl border border-border bg-card py-10">

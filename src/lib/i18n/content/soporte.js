@@ -57,7 +57,7 @@ export const SOPORTE = {
         titulo: "No me acreditaron puntos de encuestas o tareas",
         items: [
           {
-            q: "Hice una encuesta y no recibí mis puntos",
+            q: "Hice una encuesta en CPX Research y no recibí mis puntos",
             a: [
               "Las encuestas las gestiona **CPX Research**, un proveedor externo. LatamBucks **no controla la aprobación** de encuestas; es CPX quien audita y valida. Si completaste una encuesta y no te acreditó:",
               "1. Abrí el menú de tres líneas (☰) dentro de la sección de ofertas de CPX.",
@@ -66,13 +66,76 @@ export const SOPORTE = {
             ],
           },
           {
-            q: "Instalé una app / completé una oferta y no recibí puntos",
+            q: "Hice una oferta de TimeWall y no recibí mis puntos",
             a: [
-              "Las ofertas de apps y juegos las gestiona **Monetag**. Si cumpliste todos los requisitos y no te acreditó:",
-              "1. Abrí el menú de la oferta dentro de la sección de Monetag.",
-              "2. Tocá **\"Status / Report an Issue\"**.",
-              "O escribí directamente a soporte técnico: support@monetag.com · contact.us@monetag.com",
+              "Las ofertas y microtareas de **TimeWall** las gestiona ese proveedor externo; LatamBucks **no controla su aprobación**. Si completaste una oferta y no se acreditó:",
+              "1. Abrí el muro de TimeWall y usá el chat de soporte que aparece dentro del propio muro.",
+              "2. Indicá la oferta realizada, la fecha y tu correo de usuario.",
+              "También podés contactarlos directamente desde su página oficial: [timewall.io/contactus](https://timewall.io/contactus).",
+            ],
+          },
+          {
+            q: "Hice una encuesta de TheoremReach y no recibí mis puntos",
+            a: [
+              "Las encuestas de **TheoremReach** las audita ese proveedor externo. Si completaste una encuesta y no se acreditó:",
+              "1. Abrí el muro de TheoremReach y buscá la opción **\"Support\"** dentro del propio muro.",
+              "2. Esperá 24 horas antes de reclamar e incluí el identificador de la encuesta.",
+              "Contacto oficial: [info.theoremreach.com/contact](https://info.theoremreach.com/contact/) · support@theoremreach.com",
+            ],
+          },
+          {
+            q: "Hice una encuesta de RapidoReach y no recibí mis puntos",
+            a: [
+              "Las encuestas y ofertas de **RapidoReach** las valida ese proveedor externo. Si completaste una y no se acreditó:",
+              "1. Esperá el tiempo de acreditación que indica el proveedor.",
+              "2. Si el problema continúa, abrí un ticket desde el muro de RapidoReach.",
+              "Contacto oficial: [rapidoreach.com/contactus](https://www.rapidoreach.com/contactus) · support@rapidoreach.com",
+            ],
+          },
+          {
+            q: "Instalé una app o completé una oferta y no recibí puntos",
+            a: [
+              "Las apps, juegos y ofertas de este tipo las gestiona cada proveedor externo: **TimeWall**, **TheoremReach**, **RapidoReach** y **CPAGrip**. LatamBucks **no controla su aprobación**. Si cumpliste todos los requisitos y no te acreditó:",
+              "1. Volvé al muro del proveedor donde hiciste la oferta y abrí su opción de soporte o ticket.",
+              "2. Indicá la app u oferta realizada, la fecha y tu correo de usuario.",
+              "Contacto oficial de cada proveedor: [timewall.io/contactus](https://timewall.io/contactus) · [TheoremReach](https://info.theoremreach.com/contact/) (support@theoremreach.com) · [RapidoReach](https://www.rapidoreach.com/contactus) (support@rapidoreach.com) · [CPAGrip](https://www.cpagrip.com/contact.php)",
               "LatamBucks no es responsable por puntos no otorgados por proveedores externos.",
+            ],
+          },
+        ],
+      },
+      {
+        id: "reversos",
+        titulo: "Reversos de proveedores",
+        items: [
+          {
+            q: "¿Qué es un reverso y por qué me descontaron puntos?",
+            a: [
+              "El proveedor externo que gestiona la encuesta u oferta (**CPX Research**, **TimeWall**, **TheoremReach** o **RapidoReach**) audita la tarea **después** de acreditarla. Si la considera inválida, la anula y pide que se descuenten los puntos: eso es un **reverso**.",
+              "LatamBucks **no decide** el reverso: lo aplica el proveedor y nosotros solo lo reflejamos en tu saldo, en tu historial de tareas y en tus avisos.",
+            ],
+          },
+          {
+            q: "¿Por qué motivos aplican un reverso?",
+            a: [
+              "• Datos demográficos inventados o que no coinciden con tu perfil.",
+              "• Respuestas al azar, contestadas “a la rápida”, o encuesta cerrada antes de terminar.",
+              "• Uso de VPN, proxy o ubicación alterada, o más de una cuenta / dispositivo.",
+              "• La misma oferta completada dos veces, o una app desinstalada antes del plazo que pedía el anunciante.",
+              "• El anunciante canceló o rechazó la oferta durante su auditoría.",
+            ],
+          },
+          {
+            q: "¿Cómo evito que me reviertan puntos?",
+            a: [
+              "Respondé con sinceridad y con tus datos reales, leé cada pregunta, esperá la pantalla final de confirmación y no cierres la encuesta antes, usá una sola cuenta y sin VPN, y no repitas la misma oferta. Si una oferta pide instalar una app, mantenela el tiempo indicado.",
+            ],
+          },
+          {
+            q: "¿Dónde veo si me revirtieron puntos?",
+            a: [
+              "Todos los reversos aparecen en **tu historial de tareas** y en **Avisos** (dentro de tu perfil), con el proveedor, el monto descontado y la fecha. No se ocultan ni se aplican en silencio.",
+              "Si creés que el reverso fue un error, reclamá directamente al proveedor: sus contactos oficiales están en las preguntas anteriores.",
             ],
           },
         ],
@@ -191,7 +254,7 @@ export const SOPORTE = {
         titulo: "Points from surveys or tasks weren't credited",
         items: [
           {
-            q: "I completed a survey and didn't receive my points",
+            q: "I completed a CPX Research survey and didn't receive my points",
             a: [
               "Surveys are managed by **CPX Research**, an external provider. LatamBucks **does not control survey approval**; CPX audits and validates them. If you completed a survey and it wasn't credited:",
               "1. Open the three-line menu (☰) inside the CPX offers section.",
@@ -200,13 +263,76 @@ export const SOPORTE = {
             ],
           },
           {
-            q: "I installed an app / completed an offer and didn't get points",
+            q: "I completed a TimeWall offer and didn't receive my points",
             a: [
-              "App and game offers are managed by **Monetag**. If you met all the requirements and it wasn't credited:",
-              "1. Open the offer menu inside the Monetag section.",
-              "2. Tap **\"Status / Report an Issue\"**.",
-              "Or write directly to technical support: support@monetag.com · contact.us@monetag.com",
+              "Offers and microtasks on **TimeWall** are managed by that external provider; LatamBucks **does not control their approval**. If you completed an offer and it wasn't credited:",
+              "1. Open the TimeWall wall and use the support chat inside the wall itself.",
+              "2. Include the offer you completed, the date and your user email.",
+              "You can also contact them directly through their official page: [timewall.io/contactus](https://timewall.io/contactus).",
+            ],
+          },
+          {
+            q: "I completed a TheoremReach survey and didn't receive my points",
+            a: [
+              "Surveys on **TheoremReach** are audited by that external provider. If you completed a survey and it wasn't credited:",
+              "1. Open the TheoremReach wall and look for the **\"Support\"** link inside the wall itself.",
+              "2. Wait 24 hours before claiming and include the survey ID.",
+              "Official contact: [info.theoremreach.com/contact](https://info.theoremreach.com/contact/) · support@theoremreach.com",
+            ],
+          },
+          {
+            q: "I completed a RapidoReach survey and didn't receive my points",
+            a: [
+              "Surveys and offers on **RapidoReach** are validated by that external provider. If you completed one and it wasn't credited:",
+              "1. Wait for the crediting time indicated by the provider.",
+              "2. If the problem continues, open a ticket from the RapidoReach wall.",
+              "Official contact: [rapidoreach.com/contactus](https://www.rapidoreach.com/contactus) · support@rapidoreach.com",
+            ],
+          },
+          {
+            q: "I installed an app or completed an offer and didn't get points",
+            a: [
+              "Apps, games and this type of offers are managed by each external provider: **TimeWall**, **TheoremReach**, **RapidoReach** and **CPAGrip**. LatamBucks **doesn't control their approval**. If you met every requirement and weren't credited:",
+              "1. Go back to the provider's wall where you did the offer and open its support or ticket option.",
+              "2. Include the app or offer you completed, the date and your user email.",
+              "Official contact for each provider: [timewall.io/contactus](https://timewall.io/contactus) · [TheoremReach](https://info.theoremreach.com/contact/) (support@theoremreach.com) · [RapidoReach](https://www.rapidoreach.com/contactus) (support@rapidoreach.com) · [CPAGrip](https://www.cpagrip.com/contact.php)",
               "LatamBucks is not responsible for points not granted by external providers.",
+            ],
+          },
+        ],
+      },
+      {
+        id: "reversos",
+        titulo: "Provider reversals",
+        items: [
+          {
+            q: "What is a reversal and why were my points deducted?",
+            a: [
+              "The external provider that manages the survey or offer (**CPX Research**, **TimeWall**, **TheoremReach** or **RapidoReach**) audits the task **after** crediting it. If it considers it invalid, it voids it and asks for the points to be deducted: that is a **reversal**.",
+              "LatamBucks **doesn't decide** the reversal: the provider applies it and we only reflect it in your balance, your task history and your notices.",
+            ],
+          },
+          {
+            q: "What reasons do they use to apply a reversal?",
+            a: [
+              "• Invented demographic data that doesn't match your profile.",
+              "• Random answers, rushing through, or closing the survey before finishing.",
+              "• VPN, proxy or altered location, or more than one account / device.",
+              "• The same offer completed twice, or an app uninstalled before the period the advertiser required.",
+              "• The advertiser cancelled or rejected the offer during its audit.",
+            ],
+          },
+          {
+            q: "How do I avoid reversals?",
+            a: [
+              "Answer honestly with your real data, read every question, wait for the final confirmation screen and don't close the survey early, use a single account without VPN, and never repeat the same offer. If an offer asks you to install an app, keep it for the required time.",
+            ],
+          },
+          {
+            q: "Where can I see if points were reversed?",
+            a: [
+              "Every reversal shows up in **your task history** and in **Notices** (inside your profile), with the provider, the deducted amount and the date. They are never hidden or applied silently.",
+              "If you believe the reversal was a mistake, claim it directly with the provider: their official contacts are in the questions above.",
             ],
           },
         ],
@@ -325,7 +451,7 @@ export const SOPORTE = {
         titulo: "Não creditaram meus pontos de pesquisas ou tarefas",
         items: [
           {
-            q: "Fiz uma pesquisa e não recebi meus pontos",
+            q: "Fiz uma pesquisa na CPX Research e não recebi meus pontos",
             a: [
               "As pesquisas são gerenciadas pela **CPX Research**, um provedor externo. O LatamBucks **não controla a aprovação** das pesquisas; é a CPX quem audita e valida. Se você completou uma pesquisa e não foi creditado:",
               "1. Abra o menu de três linhas (☰) dentro da seção de ofertas da CPX.",
@@ -334,13 +460,76 @@ export const SOPORTE = {
             ],
           },
           {
-            q: "Instalei um app / completei uma oferta e não recebi pontos",
+            q: "Fiz uma oferta do TimeWall e não recebi meus pontos",
             a: [
-              "As ofertas de apps e jogos são gerenciadas pela **Monetag**. Se você cumpriu todos os requisitos e não foi creditado:",
-              "1. Abra o menu da oferta dentro da seção da Monetag.",
-              "2. Toque em **\"Status / Report an Issue\"**.",
-              "Ou escreva diretamente para o suporte técnico: support@monetag.com · contact.us@monetag.com",
+              "As ofertas e microtarefas do **TimeWall** são gerenciadas por esse provedor externo; o LatamBucks **não controla a aprovação**. Se você completou uma oferta e ela não foi creditada:",
+              "1. Abra o mural do TimeWall e use o chat de suporte dentro do próprio mural.",
+              "2. Informe a oferta realizada, a data e seu e-mail de usuário.",
+              "Você também pode contatá-los pela página oficial: [timewall.io/contactus](https://timewall.io/contactus).",
+            ],
+          },
+          {
+            q: "Fiz uma pesquisa do TheoremReach e não recebi meus pontos",
+            a: [
+              "As pesquisas do **TheoremReach** são auditadas por esse provedor externo. Se você completou uma pesquisa e ela não foi creditada:",
+              "1. Abra o mural do TheoremReach e procure a opção **\"Support\"** dentro do próprio mural.",
+              "2. Aguarde 24 horas antes de reclamar e inclua o identificador da pesquisa.",
+              "Contato oficial: [info.theoremreach.com/contact](https://info.theoremreach.com/contact/) · support@theoremreach.com",
+            ],
+          },
+          {
+            q: "Fiz uma pesquisa do RapidoReach e não recebi meus pontos",
+            a: [
+              "As pesquisas e ofertas do **RapidoReach** são validadas por esse provedor externo. Se você completou uma e ela não foi creditada:",
+              "1. Aguarde o prazo de crédito indicado pelo provedor.",
+              "2. Se o problema continuar, abra um ticket no mural do RapidoReach.",
+              "Contato oficial: [rapidoreach.com/contactus](https://www.rapidoreach.com/contactus) · support@rapidoreach.com",
+            ],
+          },
+          {
+            q: "Instalei um app ou completei uma oferta e não recebi pontos",
+            a: [
+              "Apps, jogos e ofertas desse tipo são gerenciados por cada provedor externo: **TimeWall**, **TheoremReach**, **RapidoReach** e **CPAGrip**. O LatamBucks **não controla a aprovação**. Se você cumpriu todos os requisitos e não foi creditado:",
+              "1. Volte ao mural do provedor onde fez a oferta e abra a opção de suporte ou ticket.",
+              "2. Informe o app ou oferta realizada, a data e seu e-mail de usuário.",
+              "Contato oficial de cada provedor: [timewall.io/contactus](https://timewall.io/contactus) · [TheoremReach](https://info.theoremreach.com/contact/) (support@theoremreach.com) · [RapidoReach](https://www.rapidoreach.com/contactus) (support@rapidoreach.com) · [CPAGrip](https://www.cpagrip.com/contact.php)",
               "O LatamBucks não é responsável por pontos não concedidos por provedores externos.",
+            ],
+          },
+        ],
+      },
+      {
+        id: "reversos",
+        titulo: "Reversões de provedores",
+        items: [
+          {
+            q: "O que é uma reversão e por que descontaram meus pontos?",
+            a: [
+              "O provedor externo que gerencia a pesquisa ou oferta (**CPX Research**, **TimeWall**, **TheoremReach** ou **RapidoReach**) audita a tarefa **depois** de creditá-la. Se a considera inválida, anula e pede o desconto dos pontos: isso é uma **reversão**.",
+              "O LatamBucks **não decide** a reversão: o provedor aplica e nós apenas refletimos no seu saldo, no seu histórico de tarefas e nos seus avisos.",
+            ],
+          },
+          {
+            q: "Por quais motivos aplicam uma reversão?",
+            a: [
+              "• Dados demográficos inventados ou que não coincidem com o seu perfil.",
+              "• Respostas aleatórias, feitas com pressa, ou pesquisa fechada antes de terminar.",
+              "• Uso de VPN, proxy ou localização alterada, ou mais de uma conta / dispositivo.",
+              "• A mesma oferta feita duas vezes, ou um app desinstalado antes do prazo exigido pelo anunciante.",
+              "• O anunciante cancelou ou recusou a oferta durante a auditoria.",
+            ],
+          },
+          {
+            q: "Como evito que revertam meus pontos?",
+            a: [
+              "Responda com sinceridade e com seus dados reais, leia cada pergunta, espere a tela final de confirmação e não feche a pesquisa antes, use uma única conta e sem VPN, e não repita a mesma oferta. Se a oferta pede para instalar um app, mantenha-o pelo tempo indicado.",
+            ],
+          },
+          {
+            q: "Onde vejo se reverteram meus pontos?",
+            a: [
+              "Todas as reversões aparecem no **seu histórico de tarefas** e em **Avisos** (dentro do seu perfil), com o provedor, o valor descontado e a data. Não são escondidas nem aplicadas em silêncio.",
+              "Se acredita que a reversão foi um erro, reclame diretamente com o provedor: os contatos oficiais estão nas perguntas acima.",
             ],
           },
         ],

@@ -3,7 +3,7 @@ import { Navigate, useLocation } from "react-router-dom";
 import { LatamBucksProvider, useLatamBucks } from "@/lib/latambucksStore";
 import AuthScreen from "@/components/latambucks/AuthScreen";
 import SideNav from "@/components/latambucks/SideNav";
-import GanarTab from "@/components/latambucks/GanarTab";
+import MultiplicarTab from "@/components/latambucks/MultiplicarTab";
 import TareasAnunciantesTab from "@/components/latambucks/TareasAnunciantesTab";
 import EncuestasTab from "@/components/latambucks/EncuestasTab";
 import TimeWallTab from "@/components/latambucks/TimeWallTab";
@@ -14,7 +14,6 @@ import AdminTab from "@/components/latambucks/AdminTab";
 import AnunciantePanel from "@/components/latambucks/AnunciantePanel";
 import PaymentStatusToast from "@/components/latambucks/PaymentStatusToast";
 import AvisoBanner from "@/components/latambucks/AvisoBanner";
-import { brandLogo } from "@/lib/localAssets";
 import SiteFooter from "@/components/latambucks/SiteFooter";
 import GanadoresSlider from "@/components/latambucks/GanadoresSlider";
 import CookieConsentBanner from "@/components/latambucks/CookieConsentBanner";
@@ -22,6 +21,7 @@ import GuiaInteractiva from "@/components/latambucks/GuiaInteractiva";
 import LanguagePicker from "@/components/latambucks/LanguagePicker";
 import { Loader2, Menu, BookOpen } from "lucide-react";
 import { Image } from "@/components/ui/image";
+import { brandLogo } from "@/lib/localAssets";
 import { useI18n } from "@/lib/i18n/LanguageContext";
 
 const LOGO_URL = brandLogo;
@@ -176,8 +176,8 @@ function renderTab(path, isAdmin, isAnunciante) {
   // La raíz "/" es la landing: muestra Encuestas como primera pestaña.
   if (path === "/") return <EncuestasTab />;
   // El flujo de Inicio se mudó al menú Ganar; /inicio redirige ahí.
-  if (path === "/inicio") return <Navigate to="/ganar" replace />;
-  if (path === "/ganar") return <GanarTab />;
+  if (path === "/inicio") return <Navigate to="/multiplicar" replace />;
+  if (path === "/ganar" || path === "/multiplicar") return <MultiplicarTab />;
   if (path === "/tareas-anunciantes") return <TareasAnunciantesTab />;
   if (path === "/encuestas") return <EncuestasTab />;
   if (path === "/timewall") return <TimeWallTab />;
@@ -186,10 +186,10 @@ function renderTab(path, isAdmin, isAnunciante) {
   if (path === "/perfil") return <ProfileTab />;
   // Rutas de rol: si el usuario no tiene el permiso, se redirige a /ganar
   // (panel principal) en vez de dejar la URL rota.
-  if (path === "/admin") return isAdmin ? <AdminTab /> : <Navigate to="/ganar" replace />;
+  if (path === "/admin") return isAdmin ? <AdminTab /> : <Navigate to="/multiplicar" replace />;
   if (path === "/anunciante") return <AnunciantePanel />;
-  // Cualquier otra ruta desconocida cae al panel Ganar.
-  return <GanarTab />;
+  // Cualquier otra ruta desconocida cae a la portada de encuestas.
+  return <EncuestasTab />;
 }
 
 export default function LatamBucks() {

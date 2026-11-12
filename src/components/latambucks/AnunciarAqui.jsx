@@ -3,6 +3,7 @@ import { useLatamBucks } from "@/lib/latambucksStore";
 import { insertCampanaLocal, activarCampanaConSaldo, fetchAppConfig, uploadComprobanteToStorage } from "@/lib/supabaseClient";
 import { compressImage } from "@/lib/imageCompress";
 import { Megaphone, Loader2, Upload, ShieldCheck, Wallet, CreditCard, Info } from "lucide-react";
+import Icon3D from "@/components/latambucks/Icon3D";
 import {
   PaymentMethodSelector,
   getPaymentMethodLabel,
@@ -190,10 +191,7 @@ export default function AnunciarAqui() {
   return (
     <div className="space-y-4 rounded-2xl border border-violet-500/30 bg-card p-4">
       <div className="flex items-center gap-2.5">
-        <div className="relative flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500/25 to-violet-600/5 text-violet-400 ring-1 ring-violet-500/25 shadow-lg shadow-black/30">
-          <div className="pointer-events-none absolute inset-0 rounded-xl bg-violet-500/20 opacity-40 blur-md" />
-          <Megaphone className="relative h-5 w-5 drop-shadow-[0_2px_3px_rgba(0,0,0,0.4)]" />
-        </div>
+        <Icon3D name="megaphone" className="h-11 w-11 rounded-xl shadow-lg shadow-black/30" />
         <div>
           <p className="text-sm font-semibold text-foreground">{t("pub.title")}</p>
           <p className="text-[11px] text-muted-foreground">{t("pub.sub")}</p>

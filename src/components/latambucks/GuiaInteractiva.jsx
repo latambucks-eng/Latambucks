@@ -45,7 +45,7 @@ const STEP_META = [
   { id: "encuestas", icon: ClipboardList, accent: "sky", route: "/encuestas" },
   { id: "ofertas", icon: Gamepad2, accent: "violet", route: "/timewall" },
   { id: "tareas", icon: ClipboardCheck, accent: "emerald", route: "/tareas-anunciantes" },
-  { id: "ganar", icon: Coins, accent: "orange", route: "/ganar" },
+  { id: "ganar", icon: Coins, accent: "orange", route: "/multiplicar" },
   { id: "retiros", icon: Wallet, accent: "amber", route: "/retiros" },
   { id: "referidos", icon: Users, accent: "violet", route: "/referidos" },
   { id: "cuenta", icon: ShieldCheck, accent: "emerald" },

@@ -1,27 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useLatamBucks } from "@/lib/latambucksStore";
 import { fetchAvisosReversos, fetchAvisosUsuario } from "@/lib/supabaseClient";
-import { Bell, Loader2, Inbox, RotateCcw, Megaphone } from "lucide-react";
+import { Loader2, Inbox } from "lucide-react";
+import Icon3D from "@/components/latambucks/Icon3D";
 import { useI18n } from "@/lib/i18n/LanguageContext";
-
-// Nombres legibles por proveedor.
-const PROVIDER_LABELS = {
-  cpx_research: "CPX Research",
-  theoremreach: "TheoremReach",
-  timewall: "TimeWall",
-  cpagrip: "CPAGrip",
-  cpalead: "CPALead",
-  monetag_video: "Monetag (Videos)",
-  monetag_smartlink: "Monetag (SmartLink)",
-};
-
-// Explicación genérica del reverso según el proveedor.
-const PROVIDER_REASONS = {
-  cpx_research: "avisos.motivo.cpx",
-  theoremreach: "avisos.motivo.theoremreach",
-  timewall: "avisos.motivo.timewall",
-  default: "avisos.motivo.default",
-};
+import {
+  REVERSO_PROVIDER_LABELS as PROVIDER_LABELS,
+  REVERSO_PROVIDER_REASONS as PROVIDER_REASONS,
+} from "@/lib/reversosInfo";
 
 function formatDate(iso) {
   if (!iso) return "";
@@ -65,15 +51,13 @@ export default function AvisosReversos() {
 
   useEffect(() => {
     if (token && user?.id) cargar();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
   }, [token, user?.id]);
 
   return (
     <div className="space-y-3">
       <div className="flex items-center gap-2">
-        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-amber-500/25 to-amber-600/5 text-amber-400 ring-1 ring-amber-500/25">
-          <Bell className="h-5 w-5" />
-        </div>
+        <Icon3D name="bell" className="h-9 w-9 rounded-xl" />
         <div>
           <h3 className="font-display text-lg font-bold text-foreground">
             {t("avisos.title")}
@@ -131,9 +115,7 @@ export default function AvisosReversos() {
                 className="relative overflow-hidden rounded-2xl border border-sky-500/20 bg-card p-4"
               >
                 <div className="flex items-start gap-3">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-sky-500/10 text-sky-400">
-                    <Megaphone className="h-4 w-4" />
-                  </div>
+                  <Icon3D name="megaphone" className="h-9 w-9" />
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2">
                       <span className={`text-[10px] font-bold uppercase ${tipoColor}`}>
@@ -174,9 +156,7 @@ export default function AvisosReversos() {
                 className="relative overflow-hidden rounded-2xl border border-amber-500/20 bg-card p-4"
               >
                 <div className="flex items-start gap-3">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-amber-500/10 text-amber-400">
-                    <RotateCcw className="h-4 w-4" />
-                  </div>
+                  <Icon3D name="history" className="h-9 w-9" />
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center justify-between gap-2">
                       <p className="truncate text-sm font-semibold text-foreground">

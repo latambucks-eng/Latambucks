@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { AVATAR_CATEGORIES } from "@/lib/avatars";
 import FunAvatar from "@/components/latambucks/FunAvatar";
+import { useI18n } from "@/lib/i18n/LanguageContext";
 import {
   Dialog,
   DialogContent,
@@ -13,6 +14,7 @@ import { Check, RotateCcw } from "lucide-react";
 // puede cambiar o quitar las veces que haga falta: no hay pasos que puedan
 // quedar a medias ni cargas de archivos que puedan fallar.
 export default function AvatarPicker({ open, onClose, value, onSelect, email }) {
+  const { t } = useI18n();
   const [categoryId, setCategoryId] = useState(AVATAR_CATEGORIES[0].id);
   const category =
     AVATAR_CATEGORIES.find((c) => c.id === categoryId) || AVATAR_CATEGORIES[0];
@@ -22,10 +24,10 @@ export default function AvatarPicker({ open, onClose, value, onSelect, email }) 
       <DialogContent className="max-w-md gap-0 overflow-hidden p-0">
         <div className="border-b border-border px-4 pb-3 pt-4">
           <DialogTitle className="font-display text-lg font-bold text-foreground">
-            Elegí tu avatar
+            {t("avatar.title")}
           </DialogTitle>
           <DialogDescription className="mt-0.5 text-xs text-muted-foreground">
-            Cambialo cuando quieras. Podés volver al panda original en cualquier momento.
+            {t("avatar.sub")}
           </DialogDescription>
         </div>
 

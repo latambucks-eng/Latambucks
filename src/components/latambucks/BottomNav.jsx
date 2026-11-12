@@ -1,17 +1,17 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { Home, Coins, ClipboardList, Gift, Wallet, User, Shield, Megaphone } from "lucide-react";
 import { useI18n } from "@/lib/i18n/LanguageContext";
+import Icon3D from "@/components/latambucks/Icon3D";
 
 const TABS = [
-  { id: "inicio", path: "/", labelKey: "nav.inicio", icon: Home },
-  { id: "ganar", path: "/ganar", labelKey: "nav.ganar", icon: Coins },
-  { id: "encuestas", path: "/encuestas", labelKey: "nav.encuestas", icon: ClipboardList },
-  { id: "timewall", path: "/timewall", labelKey: "nav.ofertasCorto", icon: Gift },
-  { id: "retiros", path: "/retiros", labelKey: "nav.retirosCorto", icon: Wallet },
-  { id: "perfil", path: "/perfil", labelKey: "nav.perfil", icon: User },
-  { id: "anunciante", path: "/anunciante", labelKey: "nav.anunciante", icon: Megaphone },
-  { id: "admin", path: "/admin", labelKey: "nav.admin", icon: Shield },
+  { id: "inicio", path: "/", labelKey: "nav.inicio", icon: "home" },
+  { id: "encuestas", path: "/encuestas", labelKey: "nav.encuestas", icon: "surveys" },
+  { id: "multiplicar", path: "/multiplicar", labelKey: "nav.ganar", icon: "wheel" },
+  { id: "referidos", path: "/referidos", labelKey: "nav.referidos", icon: "referrals" },
+  { id: "retiros", path: "/retiros", labelKey: "nav.retirosCorto", icon: "wallet" },
+  { id: "perfil", path: "/perfil", labelKey: "nav.perfil", icon: "user" },
+  { id: "anunciante", path: "/anunciante", labelKey: "nav.anunciante", icon: "megaphone" },
+  { id: "admin", path: "/admin", labelKey: "nav.admin", icon: "shield" },
 ];
 
 export default function BottomNav({ isAdmin, isAnunciante }) {
@@ -28,7 +28,7 @@ export default function BottomNav({ isAdmin, isAnunciante }) {
       style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 0.75rem)" }}
     >
       <div className="flex items-stretch justify-between gap-1 rounded-2xl border border-border bg-card/80 px-2 py-2 backdrop-blur-xl shadow-[0_-4px_30px_-10px] shadow-black/60">
-        {tabs.map(({ id, path, labelKey, icon: Icon }) => {
+        {tabs.map(({ id, path, labelKey, icon }) => {
           return (
             <NavLink
               key={id}
@@ -44,7 +44,7 @@ export default function BottomNav({ isAdmin, isAnunciante }) {
                         : "text-muted-foreground"
                     }`}
                   >
-                    <Icon className="h-[18px] w-[18px]" />
+                    <Icon3D name={icon} className="h-7 w-7 rounded-md" />
                   </span>
                   <span
                     className={`text-[10px] font-medium leading-none ${

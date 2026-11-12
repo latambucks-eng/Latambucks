@@ -16,16 +16,14 @@ import {
 import {
   Loader2,
   Clock,
-  TrendingUp,
   CheckCircle2,
   XCircle,
   ShieldCheck,
-  Lock,
   Save,
   Hourglass,
-  PauseCircle,
   Info,
 } from "lucide-react";
+import Icon3D from "@/components/latambucks/Icon3D";
 
 export default function WithdrawalsTab() {
   const { t } = useI18n();
@@ -157,9 +155,7 @@ export default function WithdrawalsTab() {
         </div>
 
         <div className="mt-4 flex items-center gap-2 rounded-xl border border-border bg-background/50 px-3 py-2.5">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-violet-500/15 text-violet-400">
-            <TrendingUp className="h-4 w-4" />
-          </div>
+          <Icon3D name="trending" className="h-9 w-9" />
           <div>
             <p className="text-[11px] text-muted-foreground">{t("retiros.pendiente")}</p>
             <p className="font-display text-lg font-semibold text-foreground">
@@ -242,9 +238,7 @@ export default function WithdrawalsTab() {
       {/* Toggle Retener Pagos */}
       <div className="flex items-center justify-between gap-3 rounded-2xl border border-border bg-card p-4">
         <div className="flex items-start gap-3">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-500/15 text-violet-400">
-            {retener ? <PauseCircle className="h-5 w-5" /> : <Lock className="h-5 w-5" />}
-          </div>
+          <Icon3D name={retener ? "lock" : "wallet"} className="h-10 w-10 rounded-xl" />
           <div>
             <p className="text-sm font-medium text-foreground">
               {t("retiros.hold.title")}

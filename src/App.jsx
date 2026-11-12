@@ -11,12 +11,13 @@ import Faq from '@/pages/Faq';
 import Terminos from '@/pages/Terminos';
 import Normas from '@/pages/Normas';
 import Reembolsos from '@/pages/Reembolsos';
-import RightsManaged from '@/pages/DerechosAutor'; // Ajustado si difiere, usando tu import original:
 import DerechosAutor from '@/pages/DerechosAutor';
 import AcercaDe from '@/pages/AcercaDe';
 import Contacto from '@/pages/Contacto';
 import Privacidad from '@/pages/Privacidad';
 import Cookies from '@/pages/Cookies';
+import Blog from '@/pages/Blog';
+import BlogPost from '@/pages/BlogPost';
 import Login from '@/pages/Login';
 import Register from '@/pages/Register';
 import ForgotPassword from '@/pages/ForgotPassword';
@@ -29,8 +30,9 @@ import ResetPassword from '@/pages/ResetPassword';
 const AppRoutes = () => {
   // Páginas públicas accesibles sin sesión
   const publicPaths = ['/actualizar-clave', '/faq', '/terminos', '/normas', '/reembolsos', '/derechos-autor', '/acerca-de', '/contacto', '/privacidad', '/cookies', '/login', '/register', '/forgot-password', '/reset-password'];
-  
-  if (publicPaths.includes(window.location.pathname)) {
+  // El blog también es público: /blog y /blog/<slug> se sirven sin sesión para
+  // que Google y los visitantes nuevos puedan leer los artículos.
+  if (publicPaths.includes(window.location.pathname) || window.location.pathname.startsWith('/blog')) {
     return (
       <Routes>
         <Route path="/actualizar-clave" element={<ActualizarClave />} />
@@ -47,6 +49,8 @@ const AppRoutes = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
       </Routes>
     );
   }
@@ -57,10 +61,10 @@ const AppRoutes = () => {
           <Routes> anidado propio. Se monta como layout route que cubre la
           raíz y todas las rutas de pestaña. */}
       <Route element={<LatamBucks />}>
-        {/* Cambiado de null al componente Login o al que maneje tu pantalla principal para que no se quede vacío */}
-        <Route path="/" element={<Login />} /> 
+        <Route path="/" element={null} />
         <Route path="/inicio" element={null} />
         <Route path="/ganar" element={null} />
+        <Route path="/multiplicar" element={null} />
         <Route path="/tareas-anunciantes" element={null} />
         <Route path="/encuestas" element={null} />
         <Route path="/timewall" element={null} />
@@ -84,6 +88,8 @@ const AppRoutes = () => {
       <Route path="/register" element={<Register />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
+      <Route path="/blog" element={<Blog />} />
+      <Route path="/blog/:slug" element={<BlogPost />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
@@ -94,7 +100,7 @@ function App() {
   return (
     <LanguageProvider>
       <QueryClientProvider client={queryClientInstance}>
-        <Router>
+        <Router basename={import.meta.env.BASE_URL}>
           <ScrollToTop />
           <AppRoutes />
         </Router>

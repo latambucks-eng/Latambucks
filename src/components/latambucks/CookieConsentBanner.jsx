@@ -29,6 +29,8 @@ export default function CookieConsentBanner() {
     } catch (_e) {
       // Si falla, simplemente ocultamos el banner por esta sesión.
     }
+    // Aviso a los tags de terceros (p. ej. Monetag) de que ya hay consentimiento.
+    window.dispatchEvent(new Event("lb-cookie-consent"));
     setVisible(false);
   };
 

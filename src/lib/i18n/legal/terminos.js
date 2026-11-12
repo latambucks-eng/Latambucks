@@ -169,12 +169,30 @@ export default {
           "**a) Bono de bienvenida:** todo usuario nuevo recibe automáticamente **500 puntos ($0.50 USD)** al registrarse. Este bono se acredita una sola vez por cuenta y se suma al saldo disponible. Podés usarlo para solicitar retiros o para crear campañas como anunciante. El bono de bienvenida es revocable si se detecta fraude, cuenta múltiple o violación de estos Términos. En caso de eliminación de la cuenta, el bono no canjeado se pierde sin derecho a compensación.",
           "**b) Saldo bono (exención de comisión):** el bono de bienvenida no consumido se rastrea por separado como **saldo bono**. Al crear una campaña, el saldo bono se consume primero y está **exento de la comisión del 30%** de la Plataforma. Una vez consumido, el consumo continúa por el saldo promocional y el saldo disponible, que sí están sujetos a la comisión del 30%. Esta exención aplica exclusivamente al bono de bienvenida y no a otros saldos.",
           "**c) Saldo promocional:** la Plataforma puede acreditar saldo promocional de regalo a usuarios o anunciantes por motivos especiales (promociones, compensaciones, campañas de marketing). El saldo promocional **no es retirable** y solo puede utilizarse para crear campañas dentro de la Plataforma. Al usarse para fondear una campaña, se aplica la comisión del 30% como cualquier otro saldo. El saldo promocional puede tener fecha de vencimiento, la cual se comunicará al usuario mediante un aviso del sistema.",
-          "**d) Cajas Sorpresa:** la Plataforma ofrece Cajas Sorpresa que el usuario puede abrir al mirar un anuncio corto. Cada caja otorga un premio aleatorio de entre **1 y 500 puntos**. Las probabilidades de obtener cada premio son determinadas por la Plataforma y pueden modificarse sin previo aviso. La Plataforma no garantiza la obtención de un premio específico. Los puntos obtenidos de Cajas Sorpresa se suman al saldo disponible y están sujetos a las mismas reglas de retiro y reversión que los puntos obtenidos por otras microtareas. El uso de bots, scripts o herramientas automatizadas para manipular las Cajas Sorpresa constituye fraude y es causal de suspensión.",
-          "**e) Check-in diario:** la Plataforma puede otorgar puntos por iniciar sesión de forma diaria. El check-in diario está limitado a **una vez por día** por cuenta. El intento de reclamar el check-in más de una vez por día mediante manipulación técnica constituye fraude. La Plataforma puede modificar el monto del check-in o deshabilitarlo en cualquier momento con previo aviso.",
+          "**d) Sistemas de gamificación:** la Plataforma puede crear, modificar, suspender, limitar o eliminar en el futuro sistemas de gamificación, incentivos, dinámicas de puntos o módulos de entretenimiento (incluido el Multiplicador de puntos descripto en la sección 18), con el objetivo de mejorar el sitio, su funcionamiento o la experiencia del usuario. Estos cambios, incorporaciones o bajas se comunican con previo aviso en la Plataforma y no generan derecho a compensación ni a conservar las condiciones anteriores.",
         ],
       },
       {
-        title: "18. Sistema de referidos",
+        title: "18. Multiplicador de puntos (incentivo de gamificación)",
+        paragraphs: [
+          "La Plataforma pone a disposición del usuario, de forma **gratuita y opcional**, el **Multiplicador de puntos** (también llamado \"ruleta\"): un incentivo de gamificación por el cual los puntos que el usuario ya obtuvo respondiendo encuestas pueden convertirse en una cantidad mayor de puntos, conforme a las reglas, límites y probabilidades informados en la propia sección del multiplicador.",
+          "**Naturaleza del módulo:** el Multiplicador es un mecanismo promocional de fidelización y entretenimiento. **No es un juego de azar con apuestas, no es un casino, no es una lotería, no es un sorteo ni un instrumento financiero o de inversión**, y no constituye una apuesta en los términos de la legislación aplicable. En particular:",
+        ],
+        bullets: [
+          "a) La participación es **gratuita**: no se exige pago, compra, depósito ni desembolso de dinero real. Los giros diarios se otorgan por el uso de la Plataforma.",
+          "b) Solo pueden utilizarse **puntos que el propio usuario obtuvo al completar encuestas válidas** en la Plataforma. No se admiten fondos ingresados por el usuario, dinero real, saldos de bonos ni puntos de terceros.",
+          "c) Los puntos **no son dinero ni moneda de curso legal**: son una unidad de recompensa virtual sin valor económico propio hasta su conversión en un retiro aprobado, conforme a la sección 5.",
+          "d) El resultado de cada giro se determina de forma automática según las probabilidades informadas. No existe riesgo de pérdida de dinero real: el usuario solo puede destinar al giro puntos que ya posee y nunca queda en deuda ni obligado a pagar suma alguna.",
+          "e) No hay premios en efectivo: el resultado de los giros se acredita **exclusivamente como puntos**, sujetos a las mismas reglas de verificación, retiro y reversión que el resto de los puntos de la Plataforma.",
+          "f) El Multiplicador no genera derecho adquirido ni expectativa de ganancia: la Plataforma puede modificar, limitar, suspender o deshabilitar el módulo, sus reglas, probabilidades, límites por giro o topes diarios en cualquier momento y con previo aviso, sin derecho a compensación.",
+        ],
+        closing: [
+          "Los giros diarios disponibles, el máximo por giro, el tope de ganancia diaria y los requisitos mínimos de puntos de encuestas dependen del país y se informan en la sección del multiplicador. El uso de bots, scripts, automatizaciones, cuentas múltiples, VPN o cualquier maniobra destinada a alterar resultados o límites constituye fraude: habilita la anulación de los puntos así obtenidos y es causal de suspensión, conforme a las secciones 4 y 10.",
+          "La Plataforma no garantiza multiplicador ni ganancia alguna. El Multiplicador no constituye un esquema de inversión, no requiere ni permite aportar capital y no genera rendimiento sobre dinero.",
+        ],
+      },
+      {
+        title: "19. Sistema de referidos",
         paragraphs: [
           "Cada usuario recibe un código de referido único al registrarse. Podés compartir tu código con otras personas: cuando alguien se registra usando tu código, pasás a ser su **patrocinador**.",
           "**Comisión:** el patrocinador recibe una comisión del **10%** sobre los puntos que ganan sus referidos al completar microtareas válidas. La comisión se acredita automáticamente cuando el referido completa una tarea y se suma al saldo del patrocinador. La comisión de referidos es **revocable** si la tarea del referido es rechazada, revertida por un proveedor externo o detectada como fraude.",
@@ -183,7 +201,7 @@ export default {
         bullets: [
           "El referido debe ser una persona real y distinta del patrocinador.",
           "Está prohibido autorreferirse o crear cuentas falsas para generar comisiones.",
-          "La comisión no se acredita sobre bonos de bienvenida, saldo promocional ni Cajas Sorpresa; solo sobre microtareas completadas válidamente.",
+          "La comisión no se acredita sobre bonos de bienvenida ni saldo promocional; solo sobre microtareas completadas válidamente.",
           "La Plataforma se reserva el derecho de modificar el porcentaje de comisión o deshabilitar el sistema de referidos con previo aviso.",
         ],
         closing: [
@@ -191,7 +209,7 @@ export default {
         ],
       },
       {
-        title: "19. Canal oficial de la comunidad en WhatsApp",
+        title: "20. Canal oficial de la comunidad en WhatsApp",
         paragraphs: [
           "La Plataforma mantiene un **canal oficial de WhatsApp** de acceso libre y gratuito, destinado a compartir novedades, avisos del sistema, feedback y comprobantes de pago de la comunidad.",
           "El canal es un espacio de difusión y consulta comunitaria: no es un canal de soporte individual ni reemplaza los canales oficiales detallados en la sección de Contacto. Los reclamos sobre tu cuenta, retiros, disputas o puntos no acreditados deben realizarse por el soporte dentro de la plataforma o por correo electrónico.",
@@ -369,12 +387,30 @@ export default {
           "**a) Welcome bonus:** every new user automatically receives **500 points ($0.50 USD)** upon signing up. This bonus is credited once per account and is added to the available balance. You can use it to request withdrawals or to create campaigns as an advertiser. The welcome bonus is revocable if fraud, multiple accounts or a breach of these Terms is detected. If the account is deleted, the unclaimed bonus is lost with no right to compensation.",
           "**b) Bonus balance (fee exemption):** the unspent welcome bonus is tracked separately as **bonus balance**. When creating a campaign, the bonus balance is consumed first and is **exempt from the Platform's 30% commission**. Once consumed, spending continues with the promotional balance and the available balance, which are subject to the 30% commission. This exemption applies only to the welcome bonus and not to other balances.",
           "**c) Promotional balance:** the Platform may credit gift promotional balance to users or advertisers for special reasons (promotions, compensations, marketing campaigns). Promotional balance **cannot be withdrawn** and can only be used to create campaigns inside the Platform. When used to fund a campaign, the 30% commission applies as with any other balance. Promotional balance may have an expiry date, which will be communicated to the user through a system notice.",
-          "**d) Surprise Boxes:** the Platform offers Surprise Boxes the user can open while watching a short ad. Each box grants a random prize between **1 and 500 points**. The odds of each prize are set by the Platform and may change without prior notice. The Platform does not guarantee any specific prize. Points from Surprise Boxes are added to the available balance and are subject to the same withdrawal and reversal rules as points from other microtasks. Using bots, scripts or automated tools to manipulate Surprise Boxes is fraud and grounds for suspension.",
-          "**e) Daily check-in:** the Platform may grant points for signing in daily. The daily check-in is limited to **once per day** per account. Attempting to claim the check-in more than once a day through technical manipulation is fraud. The Platform may change the check-in amount or disable it at any time with prior notice.",
+          "**d) Gamification systems:** the Platform may create, change, suspend, limit or remove gamification systems, incentives, points mechanics or entertainment modules in the future (including the Points Multiplier described in section 18), in order to improve the site, its operation or the user experience. Such changes, additions or removals are announced with prior notice on the Platform and create no right to compensation or to keep the previous conditions.",
         ],
       },
       {
-        title: "18. Referral system",
+        title: "18. Points Multiplier (gamification incentive)",
+        paragraphs: [
+          "The Platform makes available to the user, **free of charge and optionally**, the **Points Multiplier** (also called the \"wheel\"): a gamification incentive through which the points the user already earned by answering surveys can turn into a larger number of points, under the rules, limits and odds shown in the multiplier section itself.",
+          "**Nature of the feature:** the Multiplier is a promotional loyalty and entertainment mechanism. **It is not a game of chance played for stakes, not a casino, not a lottery, not a raffle and not a financial or investment instrument**, and it does not constitute betting under applicable law. In particular:",
+        ],
+        bullets: [
+          "a) Taking part is **free**: no payment, purchase, deposit or outlay of real money is required. Daily spins are granted by using the Platform.",
+          "b) **Only points the user earned by completing valid surveys** on the Platform may be used. Funds paid in by the user, real money, bonus balances and third-party points are not accepted.",
+          "c) Points **are not money nor legal tender**: they are a virtual reward unit with no economic value of its own until converted into an approved withdrawal, as set out in section 5.",
+          "d) The result of each spin is determined automatically under the published odds. There is no risk of losing real money: the user may only commit points they already hold and never ends up in debt or owing any amount.",
+          "e) There are no cash prizes: the result of each spin is credited **exclusively as points**, subject to the same verification, withdrawal and reversal rules as all other points on the Platform.",
+          "f) The Multiplier creates no acquired right or expectation of profit: the Platform may change, limit, suspend or disable the feature, its rules, odds, per-spin limits or daily caps at any time and with prior notice, with no right to compensation.",
+        ],
+        closing: [
+          "Available daily spins, the maximum per spin, the daily profit cap and the minimum survey-point requirements depend on the country and are shown in the multiplier section. Using bots, scripts, automation, multiple accounts, VPNs or any manoeuvre intended to alter results or limits is fraud: it allows the points so obtained to be voided and is grounds for suspension, under sections 4 and 10.",
+          "The Platform does not guarantee any multiplier or profit. The Multiplier is not an investment scheme, does not require or allow capital to be contributed and generates no return on money.",
+        ],
+      },
+      {
+        title: "19. Referral system",
         paragraphs: [
           "Every user receives a unique referral code when signing up. You can share your code with others: when someone signs up with your code, you become their **sponsor**.",
           "**Commission:** the sponsor receives a **10%** commission on the points their referrals earn by completing valid microtasks. The commission is credited automatically when the referral completes a task and is added to the sponsor's balance. The referral commission is **revocable** if the referral's task is rejected, reversed by an external provider or detected as fraud.",
@@ -383,7 +419,7 @@ export default {
         bullets: [
           "The referral must be a real person other than the sponsor.",
           "Self-referral or creating fake accounts to generate commissions is forbidden.",
-          "The commission is not credited on welcome bonuses, promotional balance or Surprise Boxes; only on validly completed microtasks.",
+          "The commission is not credited on welcome bonuses or promotional balance; only on validly completed microtasks.",
           "The Platform reserves the right to change the commission percentage or disable the referral system with prior notice.",
         ],
         closing: [
@@ -391,7 +427,7 @@ export default {
         ],
       },
       {
-        title: "19. Official WhatsApp community channel",
+        title: "20. Official WhatsApp community channel",
         paragraphs: [
           "The Platform keeps a free, open-access **official WhatsApp channel**, meant for sharing news, system notices, feedback and the community's payment receipts.",
           "The channel is a space for announcements and community questions: it is not an individual support channel and does not replace the official channels listed in the Contact section. Claims about your account, withdrawals, disputes or missing points must be made through support inside the platform or by email.",
@@ -569,12 +605,30 @@ export default {
           "**a) Bônus de boas-vindas:** todo usuário novo recebe automaticamente **500 pontos ($0,50 USD)** ao se cadastrar. Esse bônus é creditado uma única vez por conta e se soma ao saldo disponível. Você pode usá-lo para solicitar saques ou para criar campanhas como anunciante. O bônus de boas-vindas é revogável se for detectada fraude, conta múltipla ou violação destes Termos. Em caso de exclusão da conta, o bônus não utilizado é perdido sem direito a compensação.",
           "**b) Saldo bônus (isenção de comissão):** o bônus de boas-vindas não consumido é controlado separadamente como **saldo bônus**. Ao criar uma campanha, o saldo bônus é consumido primeiro e é **isento da comissão de 30%** da Plataforma. Depois de consumido, o gasto continua pelo saldo promocional e pelo saldo disponível, que estão sujeitos à comissão de 30%. Essa isenção se aplica exclusivamente ao bônus de boas-vindas e não a outros saldos.",
           "**c) Saldo promocional:** a Plataforma pode creditar saldo promocional de presente a usuários ou anunciantes por motivos especiais (promoções, compensações, campanhas de marketing). O saldo promocional **não é sacável** e só pode ser usado para criar campanhas dentro da Plataforma. Ao ser usado para financiar uma campanha, aplica-se a comissão de 30% como em qualquer outro saldo. O saldo promocional pode ter data de validade, que será comunicada ao usuário por meio de um aviso do sistema.",
-          "**d) Caixas Surpresa:** a Plataforma oferece Caixas Surpresa que o usuário pode abrir assistindo a um anúncio curto. Cada caixa concede um prêmio aleatório entre **1 e 500 pontos**. As probabilidades de cada prêmio são determinadas pela Plataforma e podem ser alteradas sem aviso prévio. A Plataforma não garante a obtenção de um prêmio específico. Os pontos das Caixas Surpresa são somados ao saldo disponível e estão sujeitos às mesmas regras de saque e reversão dos pontos obtidos em outras microtarefas. O uso de bots, scripts ou ferramentas automatizadas para manipular as Caixas Surpresa constitui fraude e é motivo de suspensão.",
-          "**e) Check-in diário:** a Plataforma pode conceder pontos por entrar diariamente. O check-in diário é limitado a **uma vez por dia** por conta. A tentativa de resgatar o check-in mais de uma vez por dia por meio de manipulação técnica constitui fraude. A Plataforma pode alterar o valor do check-in ou desabilitá-lo a qualquer momento com aviso prévio.",
+          "**d) Sistemas de gamificação:** a Plataforma pode criar, alterar, suspender, limitar ou eliminar no futuro sistemas de gamificação, incentivos, dinâmicas de pontos ou módulos de entretenimento (incluindo o Multiplicador de pontos descrito na seção 18), com o objetivo de melhorar o site, seu funcionamento ou a experiência do usuário. Essas alterações, inclusões ou remoções são comunicadas com aviso prévio na Plataforma e não geram direito a compensação nem a manter as condições anteriores.",
         ],
       },
       {
-        title: "18. Sistema de indicações",
+        title: "18. Multiplicador de pontos (incentivo de gamificação)",
+        paragraphs: [
+          "A Plataforma disponibiliza ao usuário, de forma **gratuita e opcional**, o **Multiplicador de pontos** (também chamado de \"roleta\"): um incentivo de gamificação pelo qual os pontos que o usuário já obteve respondendo pesquisas podem se transformar em uma quantidade maior de pontos, conforme as regras, limites e probabilidades informados na própria seção do multiplicador.",
+          "**Natureza do módulo:** o Multiplicador é um mecanismo promocional de fidelização e entretenimento. **Não é um jogo de azar com apostas, não é um cassino, não é uma loteria, não é um sorteio nem um instrumento financeiro ou de investimento**, e não constitui aposta nos termos da legislação aplicável. Em particular:",
+        ],
+        bullets: [
+          "a) A participação é **gratuita**: não se exige pagamento, compra, depósito nem desembolso de dinheiro real. Os giros diários são concedidos pelo uso da Plataforma.",
+          "b) Só podem ser utilizados **pontos que o próprio usuário obteve ao completar pesquisas válidas** na Plataforma. Não são aceitos fundos depositados pelo usuário, dinheiro real, saldos de bônus nem pontos de terceiros.",
+          "c) Os pontos **não são dinheiro nem moeda de curso legal**: são uma unidade de recompensa virtual sem valor econômico próprio até sua conversão em um saque aprovado, conforme a seção 5.",
+          "d) O resultado de cada giro é determinado de forma automática conforme as probabilidades informadas. Não existe risco de perda de dinheiro real: o usuário só pode destinar ao giro pontos que já possui e nunca fica em dívida nem obrigado a pagar qualquer valor.",
+          "e) Não há prêmios em dinheiro: o resultado dos giros é creditado **exclusivamente como pontos**, sujeitos às mesmas regras de verificação, saque e reversão dos demais pontos da Plataforma.",
+          "f) O Multiplicador não gera direito adquirido nem expectativa de ganho: a Plataforma pode alterar, limitar, suspender ou desabilitar o módulo, suas regras, probabilidades, limites por giro ou tetos diários a qualquer momento e com aviso prévio, sem direito a compensação.",
+        ],
+        closing: [
+          "Os giros diários disponíveis, o máximo por giro, o teto de lucro diário e os requisitos mínimos de pontos de pesquisas dependem do país e são informados na seção do multiplicador. O uso de bots, scripts, automações, contas múltiplas, VPN ou qualquer manobra destinada a alterar resultados ou limites constitui fraude: permite anular os pontos assim obtidos e é motivo de suspensão, conforme as seções 4 e 10.",
+          "A Plataforma não garante multiplicador nem ganho algum. O Multiplicador não constitui esquema de investimento, não exige nem permite aportar capital e não gera rendimento sobre dinheiro.",
+        ],
+      },
+      {
+        title: "19. Sistema de indicações",
         paragraphs: [
           "Cada usuário recebe um código de indicação único ao se cadastrar. Você pode compartilhar seu código com outras pessoas: quando alguém se cadastra usando seu código, você passa a ser o **patrocinador**.",
           "**Comissão:** o patrocinador recebe uma comissão de **10%** sobre os pontos que seus indicados ganham ao completar microtarefas válidas. A comissão é creditada automaticamente quando o indicado completa uma tarefa e é somada ao saldo do patrocinador. A comissão de indicações é **revogável** se a tarefa do indicado for rejeitada, revertida por um provedor externo ou detectada como fraude.",
@@ -583,7 +637,7 @@ export default {
         bullets: [
           "O indicado deve ser uma pessoa real e diferente do patrocinador.",
           "É proibido autoindicar-se ou criar contas falsas para gerar comissões.",
-          "A comissão não é creditada sobre bônus de boas-vindas, saldo promocional nem Caixas Surpresa; apenas sobre microtarefas completadas validamente.",
+          "A comissão não é creditada sobre bônus de boas-vindas nem saldo promocional; apenas sobre microtarefas completadas validamente.",
           "A Plataforma se reserva o direito de alterar o percentual da comissão ou desabilitar o sistema de indicações com aviso prévio.",
         ],
         closing: [
@@ -591,7 +645,7 @@ export default {
         ],
       },
       {
-        title: "19. Canal oficial da comunidade no WhatsApp",
+        title: "20. Canal oficial da comunidade no WhatsApp",
         paragraphs: [
           "A Plataforma mantém um **canal oficial de WhatsApp** de acesso livre e gratuito, destinado a compartilhar novidades, avisos do sistema, feedback e comprovantes de pagamento da comunidade.",
           "O canal é um espaço de divulgação e consulta comunitária: não é um canal de suporte individual nem substitui os canais oficiais detalhados na seção de Contato. As reclamações sobre sua conta, saques, disputas ou pontos não creditados devem ser feitas pelo suporte dentro da plataforma ou por e-mail.",

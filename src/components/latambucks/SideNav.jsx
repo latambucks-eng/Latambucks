@@ -1,7 +1,8 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { Coins, ClipboardList, Gift, Wallet, User, Shield, Megaphone, Users, X, LogOut, ClipboardCheck, BookOpen } from "lucide-react";
+import { X, LogOut, BookOpen } from "lucide-react";
 import { Image } from "@/components/ui/image";
+import Icon3D from "@/components/latambucks/Icon3D";
 import { useLatamBucks } from "@/lib/latambucksStore";
 import { useI18n } from "@/lib/i18n/LanguageContext";
 import LanguagePicker from "@/components/latambucks/LanguagePicker";
@@ -10,15 +11,15 @@ import { brandLogo } from "@/lib/localAssets";
 const LOGO_URL = brandLogo;
 
 const TABS = [
-  { id: "ganar", path: "/ganar", labelKey: "nav.ganar", icon: Coins },
-  { id: "tareas-anunciantes", path: "/tareas-anunciantes", labelKey: "nav.tareas", icon: ClipboardCheck },
-  { id: "encuestas", path: "/encuestas", labelKey: "nav.encuestas", icon: ClipboardList },
-  { id: "timewall", path: "/timewall", labelKey: "nav.ofertas", icon: Gift },
-  { id: "retiros", path: "/retiros", labelKey: "nav.retiros", icon: Wallet },
-  { id: "referidos", path: "/referidos", labelKey: "nav.referidos", icon: Users },
-  { id: "perfil", path: "/perfil", labelKey: "nav.perfil", icon: User },
-  { id: "anunciante", path: "/anunciante", labelKey: "nav.anunciante", icon: Megaphone },
-  { id: "admin", path: "/admin", labelKey: "nav.admin", icon: Shield },
+  { id: "encuestas", path: "/encuestas", labelKey: "nav.encuestas", icon: "surveys" },
+  { id: "multiplicar", path: "/multiplicar", labelKey: "nav.ganar", icon: "wheel" },
+  { id: "referidos", path: "/referidos", labelKey: "nav.referidos", icon: "referrals" },
+  { id: "retiros", path: "/retiros", labelKey: "nav.retiros", icon: "wallet" },
+  { id: "timewall", path: "/timewall", labelKey: "nav.ofertas", icon: "flame" },
+  { id: "tareas-anunciantes", path: "/tareas-anunciantes", labelKey: "nav.tareas", icon: "history" },
+  { id: "perfil", path: "/perfil", labelKey: "nav.perfil", icon: "user" },
+  { id: "anunciante", path: "/anunciante", labelKey: "nav.anunciante", icon: "megaphone" },
+  { id: "admin", path: "/admin", labelKey: "nav.admin", icon: "shield" },
 ];
 
 function LogoutButton({ onDone }) {
@@ -60,7 +61,7 @@ function NavItems({ tabs, onEncuestas, onNavigate }) {
   const { t } = useI18n();
   return (
     <nav className="flex flex-col gap-1.5">
-      {tabs.map(({ id, path, labelKey, icon: Icon }) => (
+      {tabs.map(({ id, path, labelKey, icon }) => (
         <NavLink
           key={id}
           to={path}
@@ -89,7 +90,7 @@ function NavItems({ tabs, onEncuestas, onNavigate }) {
                       : "bg-card/40 text-muted-foreground group-hover:text-foreground group-hover:bg-card/80"
                   }`}
                 >
-                  <Icon className="h-[18px] w-[18px]" strokeWidth={active ? 2.4 : 1.8} />
+                  <Icon3D name={icon} className="h-7 w-7 rounded-md" />
                 </span>
                 <span
                   className={`text-sm font-medium transition-colors ${

@@ -1,5 +1,5 @@
 import React from "react";
-import { Bell } from "lucide-react";
+import Icon3D from "@/components/latambucks/Icon3D";
 import { useI18n } from "@/lib/i18n/LanguageContext";
 
 // Banner de bienvenida que corona la sección Ganar.
@@ -11,9 +11,7 @@ export default function WelcomeBanner() {
     <div className="relative overflow-hidden rounded-2xl border border-violet-700/50 bg-gradient-to-r from-violet-900/40 via-violet-800/10 to-violet-900/25 p-4">
       <div className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-violet-500/15 blur-2xl" />
       <div className="relative flex items-start gap-3">
-        <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-violet-500/15 text-violet-300 ring-1 ring-violet-400/30">
-          <Bell className="h-4 w-4" />
-        </span>
+        <Icon3D name="bell" className="mt-0.5 h-8 w-8" />
         <p className="text-sm leading-relaxed text-foreground/90">
           {t("home.bienvenida.antes")}{" "}
           <span className="font-semibold text-foreground">LatamBucks</span>

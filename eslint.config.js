@@ -6,6 +6,14 @@ import pluginUnusedImports from "eslint-plugin-unused-imports";
 
 export default [
   {
+    // El verificador de Monetag se ejecuta como Service Worker; su API es
+    // global del navegador y el contenido del archivo debe quedar literal.
+    files: ["public/sw.js"],
+    languageOptions: {
+      globals: { importScripts: "readonly" },
+    },
+  },
+  {
     files: [
       "src/components/**/*.{js,mjs,cjs,jsx}",
       "src/pages/**/*.{js,mjs,cjs,jsx}",

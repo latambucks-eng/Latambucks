@@ -1,45 +1,22 @@
 import React, { useState } from "react";
 import { Copy, Check, ChevronDown, ExternalLink } from "lucide-react";
 import { getPaymentMethodLabel } from "@/components/latambucks/PaymentLogos";
+import { useI18n } from "@/lib/i18n/LanguageContext";
+import { PAGOS } from "@/lib/i18n/content/pagos";
 
 const PAYMENT_DESTINATIONS = {
-  payoneer: { type: "email", value: "latambucks@gmail.com" },
+  payoneer: { type: "email", value: "******" },
   paypal: { type: "link", value: "https://paypal.me/Denise279726?locale.x=es_XC&country.x=AR" },
   airtm: { type: "username", value: "serviciosdig_lat" },
 };
 
-const PAYMENT_STEPS = {
-  payoneer: [
-    "Iniciá sesión en tu cuenta de Payoneer (si no tenés una, creala gratis en payoneer.com).",
-    "Seleccioná «Pay» → «Pagar a la cuenta Payoneer de un destinatario».",
-    "Ingresá el correo del destinatario: latambucks@gmail.com (copialo con el botón de abajo).",
-    "En «Pagar desde» seleccioná tu saldo en USD; en «Pagar a» dejá la moneda del destinatario.",
-    "Escribí el importe exacto a enviar y hacé clic en «Siguiente».",
-    "Revisá los datos y hacé clic en «Pagar». El pago se realiza al instante y el destinatario lo recibe dentro de las 2 horas.",
-    "Tomá una captura del comprobante de pago y subila en el formulario.",
-  ],
-  paypal: [
-    "Copiá el siguiente enlace y pegalo en la barra de direcciones de tu navegador (o tocá «Abrir»).",
-    "Iniciá sesión con tu cuenta de PayPal si te lo pide.",
-    "Ingresá el importe exacto a enviar y, si querés, agregá una nota.",
-    "Confirmá el pago. El dinero se transfiere al instante.",
-    "Tomá una captura del comprobante de pago y subila en el formulario.",
-  ],
-  airtm: [
-    "Iniciá sesión en tu cuenta de Airtm (si no tenés una, creala gratis en airtm.com).",
-    "Andá al menú y seleccioná «Enviar/Solicitar», luego elegí «Enviar».",
-    "Ingresá el nombre de usuario exacto: serviciosdig_lat (copialo con el botón de abajo). No uses correo electrónico.",
-    "Escribí la cantidad de USDC (dólares digitales) a transferir.",
-    "Revisá los datos y confirmá la operación. El destinatario recibe una notificación al instante.",
-    "Tomá una captura del comprobante de pago y subila en el formulario.",
-  ],
-};
-
 export default function PaymentInstructions({ metodo }) {
+  const { lang } = useI18n();
+  const c = PAGOS[lang] || PAGOS.es;
   const [copied, setCopied] = useState(false);
   const [open, setOpen] = useState(true);
   const dest = PAYMENT_DESTINATIONS[metodo];
-  const steps = PAYMENT_STEPS[metodo];
+  const steps = c.steps[metodo];
   if (!dest || !steps) return null;
 
   const copyValue = () => {
@@ -50,7 +27,7 @@ export default function PaymentInstructions({ metodo }) {
 
   const label = getPaymentMethodLabel(metodo);
   const valueLabel =
-    dest.type === "email" ? "Correo de destino" : dest.type === "link" ? "Enlace de pago" : "Nombre de usuario";
+    dest.type === "email" ? c.destEmail : dest.type === "link" ? c.destLink : c.destUser;
 
   return (
     <div className="rounded-xl border border-sky-500/40 bg-sky-500/10 p-3">
@@ -60,7 +37,7 @@ export default function PaymentInstructions({ metodo }) {
         className="flex w-full items-center justify-between gap-2"
       >
         <span className="text-sm font-bold text-sky-300">
-          💸 Cómo pagar por {label}
+          💸 {c.title.replace("{metodo}", label)}
         </span>
         <ChevronDown
           className={`h-4 w-4 shrink-0 text-sky-300 transition ${open ? "rotate-180" : ""}`}
@@ -83,7 +60,7 @@ export default function PaymentInstructions({ metodo }) {
                     className="inline-flex items-center gap-1 rounded-full border border-sky-400/50 bg-sky-500/15 px-3 py-1.5 text-[11px] font-semibold text-sky-200 transition hover:bg-sky-500/25"
                   >
                     <ExternalLink className="h-3 w-3" />
-                    Abrir
+                    {c.open}
                   </a>
                 )}
                 <button
@@ -91,7 +68,7 @@ export default function PaymentInstructions({ metodo }) {
                   className="inline-flex items-center gap-1 rounded-full border border-sky-400/50 bg-sky-500/15 px-3 py-1.5 text-[11px] font-semibold text-sky-200 transition hover:bg-sky-500/25"
                 >
                   {copied ? <Check className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
-                  {copied ? "Copiado" : "Copiar"}
+                  {copied ? c.copied : c.copy}
                 </button>
               </div>
             </div>

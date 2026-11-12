@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useLatamBucks } from "@/lib/latambucksStore";
-import { Coins, Info, RefreshCw, AlertCircle, Gift, Flame } from "lucide-react";
+import { Info, RefreshCw, AlertCircle, Gift } from "lucide-react";
+import Icon3D from "@/components/latambucks/Icon3D";
 import { fetchCpagripOffers } from "@/lib/cpagripOfferFeed";
 import CpagripOfferCard from "@/components/latambucks/CpagripOfferCard";
 import { useI18n } from "@/lib/i18n/LanguageContext";
@@ -59,11 +60,11 @@ export default function TimeWallTab() {
       const data = await fetchCpagripOffers(user?.id);
       setOffers(Array.isArray(data?.offers) ? data.offers : []);
     } catch (e) {
-      setError(e?.message || "No se pudieron cargar las ofertas");
+      setError(e?.message || t("ofertas.loadError"));
     } finally {
       setLoading(false);
     }
-  }, [user?.id]);
+  }, [user?.id, t]);
 
   useEffect(() => {
     loadOffers();
@@ -89,7 +90,7 @@ export default function TimeWallTab() {
           <button
             onClick={loadOffers}
             disabled={loading}
-            aria-label="Actualizar ofertas"
+            aria-label={t("ofertas.refreshAria")}
             className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-border bg-card text-muted-foreground transition hover:text-foreground disabled:opacity-50"
           >
             <RefreshCw className={`h-4 w-4 ${loading ? "animate-spin" : ""}`} />
@@ -100,27 +101,22 @@ export default function TimeWallTab() {
       {/* Balance en vivo — se actualiza solo con los postbacks de CPAGrip */}
       <div className="flex items-center justify-between rounded-2xl border border-orange-500/30 bg-gradient-to-br from-orange-500/10 to-card p-4">
         <div className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-orange-500/15 text-orange-400">
-            <Coins className="h-5 w-5" />
-          </div>
+          <Icon3D name="coins" className="h-11 w-11 rounded-xl" />
           <div>
-            <p className="text-xs text-muted-foreground">Saldo disponible</p>
+            <p className="text-xs text-muted-foreground">{t("ofertas.balance")}</p>
             <p className="font-display text-lg font-bold text-foreground">{saldo.toFixed(2)} pts</p>
           </div>
         </div>
         <div className="flex items-center gap-1.5 text-[11px] font-medium text-orange-400">
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-orange-400" />
-          En vivo
+          {t("ofertas.live")}
         </div>
       </div>
 
       {/* Aviso informativo */}
       <div className="flex items-start gap-2 rounded-xl border border-border bg-card/60 px-3 py-2.5 text-xs text-muted-foreground">
         <Info className="mt-0.5 h-4 w-4 shrink-0 text-violet-400" />
-        <p>
-          Tu saldo se actualiza cada 5 segundos. Si completaste una oferta, volvé
-          a esta pestaña para ver tu nuevo saldo reflejado.
-        </p>
+        <p>{t("ofertas.note")}</p>
       </div>
 
       {/* Juegos de TimeWall — grilla visual con puntos reales por juego */}
@@ -129,21 +125,19 @@ export default function TimeWallTab() {
       {/* Encabezado de las ofertas de CPAGrip */}
       <div className="flex items-end justify-between gap-3 pt-2">
         <div className="flex items-center gap-2.5">
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-orange-500/10 text-orange-400 ring-1 ring-orange-500/25">
-            <Flame className="h-[18px] w-[18px]" />
-          </span>
+          <Icon3D name="flame" className="h-9 w-9 rounded-xl" />
           <div>
             <h3 className="font-display text-base font-bold leading-tight text-foreground">
-              Más ofertas
+              {t("ofertas.more")}
             </h3>
             <p className="text-[11px] text-muted-foreground">
-              Tareas rápidas de nuestros socios
+              {t("ofertas.moreSub")}
             </p>
           </div>
         </div>
         {!loading && !error && offers.length > 0 && (
           <span className="shrink-0 rounded-full border border-border bg-card px-2.5 py-1 text-[10px] font-semibold text-muted-foreground">
-            {offers.length} disponibles
+            {t("ofertas.count", { n: offers.length })}
           </span>
         )}
       </div>
@@ -171,7 +165,7 @@ export default function TimeWallTab() {
         <div className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-card/60 px-4 py-10 text-center">
           <AlertCircle className="h-8 w-8 text-red-400" />
           <div>
-            <p className="font-medium text-foreground">No se pudieron cargar las ofertas</p>
+            <p className="font-medium text-foreground">{t("ofertas.loadError")}</p>
             <p className="mt-0.5 text-xs text-muted-foreground">{error}</p>
           </div>
           <button
@@ -179,16 +173,16 @@ export default function TimeWallTab() {
             className="inline-flex items-center gap-2 rounded-full bg-orange-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-orange-400"
           >
             <RefreshCw className="h-4 w-4" />
-            Reintentar
+            {t("comun.retry")}
           </button>
         </div>
       ) : offers.length === 0 ? (
         <div className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-card/60 px-4 py-10 text-center">
           <Gift className="h-8 w-8 text-muted-foreground" />
           <div>
-            <p className="font-medium text-foreground">No hay ofertas disponibles ahora</p>
+            <p className="font-medium text-foreground">{t("ofertas.empty")}</p>
             <p className="mt-0.5 text-xs text-muted-foreground">
-              Volvé a intentarlo más tarde con el botón de actualizar.
+              {t("ofertas.emptySub")}
             </p>
           </div>
         </div>

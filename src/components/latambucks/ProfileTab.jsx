@@ -5,6 +5,7 @@ import { useI18n } from "@/lib/i18n/LanguageContext";
 import { updatePerfil } from "@/lib/supabaseClient";
 import { readAvatarId, saveAvatarId } from "@/lib/avatars";
 import { Mail, MapPin, Shield, Coins, Clock, Hash, Trash2, AlertTriangle, Loader2, Pencil } from "lucide-react";
+import Icon3D from "@/components/latambucks/Icon3D";
 import SoportePanel from "@/components/latambucks/SoportePanel";
 import AvisosReversos from "@/components/latambucks/AvisosReversos";
 import WhatsappChannelCard from "@/components/latambucks/WhatsappChannelCard";
@@ -78,7 +79,8 @@ export default function ProfileTab() {
 
   return (
     <div className="space-y-5 px-4 pb-4">
-      <header className="pt-1">
+      <header className="flex items-center gap-2.5 pt-1">
+        <Icon3D name="referrals" className="h-9 w-9" />
         <h2 className="font-display text-xl font-bold text-foreground">{t("tabs.perfil.title")}</h2>
       </header>
 

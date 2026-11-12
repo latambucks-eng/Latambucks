@@ -49,6 +49,12 @@ export default function SiteFooter() {
           </React.Fragment>
         ))}
       </nav>
+      <Link
+        to="/blog"
+        className="mt-3 inline-flex items-center gap-1 rounded-full border border-orange-500/40 bg-orange-500/10 px-3 py-1.5 text-[11px] font-semibold text-orange-400 transition hover:bg-orange-500/20"
+      >
+        Blog LatamBucks
+      </Link>
       <p className="mt-3 text-[10px] leading-relaxed text-muted-foreground/60">
         © {new Date().getFullYear()} LatamBucks. {t("footer.tagline")}
         <br />{t("footer.operado")}

@@ -1,25 +1,22 @@
 import React, { useState } from "react";
 import {
-  LifeBuoy,
   ChevronDown,
   Mail,
   Clock,
   AlertTriangle,
-  HelpCircle,
-  UserX,
-  RotateCcw,
-  Coins,
 } from "lucide-react";
+import Icon3D from "@/components/latambucks/Icon3D";
 import { useI18n } from "@/lib/i18n/LanguageContext";
 import { SOPORTE } from "@/lib/i18n/content/soporte";
 
 // Icono y color de cada sección de FAQ. El texto vive en
 // src/lib/i18n/content/soporte.js (ES/EN/PT) y se empareja por id.
 const SECCION_META = {
-  "como-funciona": { icon: HelpCircle, color: "orange" },
-  "puntos-proveedores": { icon: Coins, color: "violet" },
-  cuenta: { icon: UserX, color: "rose" },
-  "retiros-reembolsos": { icon: RotateCcw, color: "emerald" },
+  "como-funciona": { icon: "support", color: "orange" },
+  "puntos-proveedores": { icon: "gift", color: "violet" },
+  reversos: { icon: "shield", color: "amber" },
+  cuenta: { icon: "referrals", color: "rose" },
+  "retiros-reembolsos": { icon: "wallet", color: "emerald" },
 };
 
 const TOKEN_RE = /(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g;
@@ -78,6 +75,7 @@ export default function SoportePanel() {
 
   const colorMap = {
     orange: { bg: "bg-orange-500/15", text: "text-orange-400", border: "border-orange-500/30", ring: "ring-orange-500/20" },
+    amber: { bg: "bg-amber-500/15", text: "text-amber-400", border: "border-amber-500/30", ring: "ring-amber-500/20" },
     violet: { bg: "bg-violet-500/15", text: "text-violet-400", border: "border-violet-500/30", ring: "ring-violet-500/20" },
     rose: { bg: "bg-rose-500/15", text: "text-rose-400", border: "border-rose-500/30", ring: "ring-rose-500/20" },
     emerald: { bg: "bg-emerald-500/15", text: "text-emerald-400", border: "border-emerald-500/30", ring: "ring-emerald-500/20" },
@@ -89,10 +87,7 @@ export default function SoportePanel() {
         onClick={() => setMainOpen((v) => !v)}
         className="flex w-full items-center gap-3"
       >
-        <div className="relative flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500/25 to-orange-600/5 text-orange-400 ring-1 ring-orange-500/25 shadow-lg shadow-black/30">
-          <div className="pointer-events-none absolute inset-0 rounded-xl bg-orange-500/20 opacity-40 blur-md" />
-          <LifeBuoy className="relative h-6 w-6 drop-shadow-[0_2px_3px_rgba(0,0,0,0.4)]" />
-        </div>
+        <Icon3D name="support" className="h-12 w-12 rounded-xl shadow-lg shadow-black/30" />
         <div className="flex-1 text-left">
           <p className="text-sm font-semibold text-foreground">{ui.title}</p>
           <p className="text-[11px] text-muted-foreground">{ui.sub}</p>
@@ -114,16 +109,13 @@ export default function SoportePanel() {
             const meta = SECCION_META[seccion.id] || SECCION_META["como-funciona"];
             const c = colorMap[meta.color];
             const isSeccionOpen = openSeccion === seccion.id;
-            const Icon = meta.icon;
             return (
               <div key={seccion.id} className={`rounded-xl border ${c.border} overflow-hidden`}>
                 <button
                   onClick={() => toggleSeccion(seccion.id)}
                   className="flex w-full items-center gap-2.5 bg-background/40 px-3.5 py-3 text-left"
                 >
-                  <div className={`flex h-8 w-8 items-center justify-center rounded-lg ${c.bg} ${c.text}`}>
-                    <Icon className="h-4 w-4" />
-                  </div>
+                  <Icon3D name={meta.icon} className="h-8 w-8" />
                   <span className="flex-1 text-sm font-medium text-foreground">{seccion.titulo}</span>
                   <ChevronDown
                     className={`h-4 w-4 text-muted-foreground transition-transform ${isSeccionOpen ? "rotate-180" : ""}`}

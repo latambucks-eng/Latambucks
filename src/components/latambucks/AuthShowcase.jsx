@@ -4,7 +4,6 @@ import {
   Trophy,
   Users,
   TrendingUp,
-  Wallet,
 } from "lucide-react";
 import { Image } from "@/components/ui/image";
 import { getCountryFlag } from "@/components/latambucks/countryFlags";
@@ -14,6 +13,8 @@ import { useI18n } from "@/lib/i18n/LanguageContext";
 
 import { localFlag } from "@/lib/localFlags";
 import THEOREMREACH_LOGO_URL from "@/assets/theoremreach-logo.png";
+import ICON_MULT_URL from "@/assets/external/icon-multiplier.png";
+import ICON_WITHDRAWALS_URL from "@/assets/external/icon-withdrawals.png";
 import TIMEWALL_LOGO_URL from "@/assets/external/timewall-icon.png";
 
 // Imagen 3D de Caja Sorpresa — misma que usa CajaSlider dentro del sitio.
@@ -24,6 +25,10 @@ const BONO_3D_URL = authHero2;
 const APPS_3D_URL = authHero3;
 // Ícono 3D de anuncio recompensado para Monetag.
 const MONETAG_3D_URL = authHero4;
+// Ícono 3D de la ruleta del Multiplicador de puntos.
+const MULT_3D_URL = ICON_MULT_URL;
+// Ícono 3D de retiros (billetera con billetes y monedas).
+const RETIROS_3D_URL = ICON_WITHDRAWALS_URL;
 
 // Tarjetas explicativas del slider — cada feature del sitio con su ícono/logo,
 // título, descripción corta y tag de recompensa. El slider auto-rota cada 3.5s.
@@ -92,13 +97,13 @@ const FEATURES = [
     glow: "bg-orange-500/20",
   },
   {
-    id: "cajas",
+    id: "multiplicador",
     type: "image",
-    image: CAJA_3D_URL,
-    title: "auths.feat.cajas.title",
-    desc: "auths.feat.cajas.desc",
-    tag: "auths.feat.cajas.tag",
-    reward: "1–500 pts",
+    image: MULT_3D_URL,
+    title: "auths.feat.mult.title",
+    desc: "auths.feat.mult.desc",
+    tag: "auths.feat.mult.tag",
+    reward: "auths.feat.mult.reward",
     accent: "from-amber-500/25 to-amber-600/5",
     ring: "ring-amber-500/30",
     glow: "bg-amber-500/20",
@@ -117,8 +122,8 @@ const FEATURES = [
   },
   {
     id: "retiros",
-    type: "icon",
-    icon: Wallet,
+    type: "image",
+    image: RETIROS_3D_URL,
     title: "auths.feat.retiros.title",
     desc: "auths.feat.retiros.desc",
     tag: "auths.feat.retiros.tag",
@@ -136,12 +141,12 @@ const LIVE_USERS = [
   { user: "María G.", country: "Argentina", pts: 850, task: "auths.live.cpx" },
   { user: "Carlos R.", country: "México", pts: 1200, task: "auths.live.app" },
   { user: "Lucía P.", country: "Colombia", pts: 500, task: "auths.live.theorem" },
-  { user: "Diego M.", country: "Chile", pts: 100, task: "auths.live.box" },
+  { user: "Diego M.", country: "Chile", pts: 100, task: "auths.live.mult" },
   { user: "Ana T.", country: "Perú", pts: 1000, task: "auths.live.timewall" },
   { user: "Jorge L.", country: "Uruguay", pts: 320, task: "auths.live.cpx" },
   { user: "Valeria S.", country: "Paraguay", pts: 750, task: "auths.live.monetag" },
   { user: "Roberto F.", country: "Ecuador", pts: 1500, task: "auths.live.app" },
-  { user: "Camila N.", country: "Bolivia", pts: 80, task: "auths.live.box" },
+  { user: "Camila N.", country: "Bolivia", pts: 80, task: "auths.live.mult" },
   { user: "Fernando A.", country: "Venezuela", pts: 600, task: "auths.live.timewallSurvey" },
 ];
 

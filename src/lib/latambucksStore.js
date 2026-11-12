@@ -6,6 +6,8 @@ import {
   supabaseLogout,
   supabaseDeleteAccount,
   fetchPerfil,
+  updatePerfil,
+  detectarPaisUsuario,
   checkIsAnunciante,
   initSupabaseConfig,
   rpcIsAdmin,
@@ -18,6 +20,7 @@ import {
   setTokenRefreshedHandler,
   REFRESH_TOKEN_KEY,
 } from "@/lib/supabaseClient";
+import { paisDesdeIso } from "@/lib/paisDetectado";
 
 const LatamBucksContext = createContext(null);
 const TOKEN_KEY = "lb_token";
@@ -53,6 +56,22 @@ export function LatamBucksProvider({ children }) {
       /* se mantiene el último saldo conocido */
     }
   }, []);
+
+  // País real del usuario: se detecta UNA sola vez por IP (al registrarse y
+  // en el primer inicio de sesión de las cuentas viejas) y queda fijo en el
+  // perfil, sin que el usuario tenga que elegirlo. El código ISO lo guarda la
+  // Edge Function con service_role —el navegador no puede escribirlo— y acá
+  // solo se traduce al nombre en español para mostrarlo en el perfil.
+  const fijarPaisDetectado = useCallback(async (tkn, uid, actual) => {
+    if (!tkn || !uid || actual?.pais_detectado) return actual;
+    const det = await detectarPaisUsuario(tkn).catch(() => null);
+    if (!det?.pais_detectado) return actual;
+    const nombre = paisDesdeIso(det.pais_detectado);
+    if (nombre && nombre !== actual?.pais) {
+      await updatePerfil(tkn, uid, { pais: nombre }).catch(() => {});
+    }
+    return await refreshPerfil(tkn, uid);
+  }, [refreshPerfil]);
 
   const checkAdmin = useCallback(async (tkn) => {
     try {
@@ -106,7 +125,8 @@ export function LatamBucksProvider({ children }) {
       //    se intentan por separado: si una falla (red, RLS, dato puntual),
       //    NO se tira la sesión ni se vacía el dashboard. Cada una reporta
       //    su propio estado en silencio.
-      await refreshPerfil(tkn, u.id).catch(() => {});
+      const p = await refreshPerfil(tkn, u.id).catch(() => null);
+      await fijarPaisDetectado(tkn, u.id, p).catch(() => {});
       await checkAdmin(tkn).catch(() => {});
       await checkAnunciante(tkn, u.email).catch(() => {});
       await fetchExchangeRate(tkn).catch(() => {});
@@ -123,7 +143,7 @@ export function LatamBucksProvider({ children }) {
     } finally {
       setLoading(false);
     }
-  }, [refreshPerfil, checkAdmin, checkAnunciante, fetchExchangeRate]);
+  }, [refreshPerfil, fijarPaisDetectado, checkAdmin, checkAnunciante, fetchExchangeRate]);
 
   useEffect(() => {
     bootstrap();
@@ -195,7 +215,8 @@ export function LatamBucksProvider({ children }) {
         // si falla, no bloquea el alta de la cuenta
       }
     }
-    await refreshPerfil(tkn, u.id);
+    const p = await refreshPerfil(tkn, u.id);
+    await fijarPaisDetectado(tkn, u.id, p).catch(() => {});
     await checkAdmin(tkn);
     await checkAnunciante(tkn, u.email);
     await fetchExchangeRate(tkn);

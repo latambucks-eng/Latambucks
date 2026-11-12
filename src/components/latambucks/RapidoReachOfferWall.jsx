@@ -53,12 +53,12 @@ export default function RapidoReachOfferWall() {
       <div className="flex items-center justify-between">
         <div>
           <h3 className="font-display text-lg font-bold text-foreground">RapidoReach</h3>
-          <p className="text-xs text-muted-foreground">Muro de ofertas y encuestas</p>
+          <p className="text-xs text-muted-foreground">{t("rr.sub")}</p>
         </div>
         <button
           onClick={loadUrl}
           disabled={loading}
-          aria-label="Recargar muro de ofertas"
+          aria-label={t("rr.reloadAria")}
           className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-border bg-card text-muted-foreground transition hover:text-foreground disabled:opacity-50"
         >
           <RefreshCw className={`h-4 w-4 ${loading ? "animate-spin" : ""}`} />
@@ -70,7 +70,7 @@ export default function RapidoReachOfferWall() {
         {loading && (
           <div className="flex flex-col items-center justify-center py-24">
             <Loader2 className="h-8 w-8 animate-spin text-orange-400" />
-            <p className="mt-3 text-sm text-muted-foreground">Cargando muro de ofertas…</p>
+            <p className="mt-3 text-sm text-muted-foreground">{t("rr.loading")}</p>
           </div>
         )}
 
@@ -79,7 +79,7 @@ export default function RapidoReachOfferWall() {
           <div className="flex flex-col items-center gap-3 px-4 py-16 text-center">
             <AlertCircle className="h-8 w-8 text-rose-400" />
             <div>
-              <p className="font-medium text-foreground">No se pudo cargar el muro</p>
+              <p className="font-medium text-foreground">{t("rr.error")}</p>
               <p className="mt-0.5 text-xs text-muted-foreground">{error}</p>
             </div>
             <button
@@ -87,7 +87,7 @@ export default function RapidoReachOfferWall() {
               className="inline-flex items-center gap-2 rounded-full bg-orange-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-orange-400"
             >
               <RefreshCw className="h-4 w-4" />
-              Reintentar
+              {t("comun.retry")}
             </button>
           </div>
         )}
@@ -99,7 +99,7 @@ export default function RapidoReachOfferWall() {
               onClick={openWall}
               className="flex w-full items-center justify-center gap-2 rounded-xl bg-orange-500 py-3 text-sm font-semibold text-orange-950 transition hover:bg-orange-400"
             >
-              Abrir muro de ofertas <ExternalLink className="h-4 w-4" />
+              {t("rr.open")} <ExternalLink className="h-4 w-4" />
             </button>
           </div>
         )}

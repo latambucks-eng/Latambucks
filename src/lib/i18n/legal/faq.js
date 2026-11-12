@@ -10,7 +10,7 @@ export default {
       {
         q: "¿Qué es LatamBucks?",
         paragraphs: [
-          "LatamBucks es una plataforma de microtareas que te permite ganar recompensas (puntos) completando actividades como ver videos, responder encuestas y realizar tareas locales de anunciantes. Los puntos acumulados pueden canjearse por dinero real a través de Payoneer, Airtm o PayPal (USD para todos los países).",
+          "LatamBucks es una plataforma de microtareas que te permite ganar recompensas (puntos) completando actividades como responder encuestas y realizar tareas locales de anunciantes. Los puntos acumulados pueden canjearse por dinero real a través de Payoneer, Airtm o PayPal (USD para todos los países).",
         ],
       },
       {
@@ -23,14 +23,22 @@ export default {
         q: "¿Cómo gano puntos?",
         paragraphs: ["Existen varias formas de ganar puntos:"],
         bullets: [
-          "**1. Anuncios recompensados:** mirá anuncios cortos. Tenés un límite diario de visualizaciones que se reinicia cada 24 horas.",
-          "**2. Encuestas:** completá encuestas de nuestros proveedores asociados (CPX Research, TheoremReach, TimeWall y RapidoReach). Los puntos se acreditan automáticamente al finalizar.",
-          "**3. Tareas de anunciantes:** visitá el enlace de una campaña, cumplí la consigna (por ejemplo, visitar una web o red social) y subí la captura de pantalla como prueba. El anunciante aprueba o rechaza tu envío.",
-          "**4. Apps y juegos (CPAGrip):** descargá apps o jugá y sumá puntos al instante con acreditación automática.",
-          "**5. Cajas Sorpresa:** mirá un anuncio corto y abrí una caja para ganar un premio aleatorio de 1 a 500 puntos.",
-          "**6. Check-in diario:** iniciá sesión cada día y reclamá tus puntos de asistencia diaria.",
-          "**7. Bono de bienvenida:** al registrarte recibís 500 puntos ($0.50 USD) de regalo para empezar.",
-          "**8. Referidos:** invitá a tus amigos con tu código de referido y ganá un 10% de comisión sobre sus ganancias.",
+          "**1. Encuestas:** completá encuestas de nuestros proveedores asociados (CPX Research, TheoremReach, TimeWall y RapidoReach). Los puntos se acreditan automáticamente al finalizar.",
+          "**2. Tareas de anunciantes:** visitá el enlace de una campaña, cumplí la consigna (por ejemplo, visitar una web o red social) y subí la captura de pantalla como prueba. El anunciante aprueba o rechaza tu envío.",
+          "**3. Apps y juegos (CPAGrip):** descargá apps o jugá y sumá puntos al instante con acreditación automática.",
+          "**4. Bono de bienvenida:** al registrarte recibís 500 puntos ($0.50 USD) de regalo para empezar.",
+          "**5. Referidos:** invitá a tus amigos con tu código de referido y ganá un 10% de comisión sobre sus ganancias.",
+          "**6. Multiplicador de puntos:** convertí en más puntos los puntos que ya ganaste en encuestas usando tus giros diarios gratuitos (ver la pregunta sobre el multiplicador).",
+        ],
+      },
+      {
+        q: "¿El multiplicador de puntos es una apuesta o un juego de azar?",
+        paragraphs: [
+          "**No.** El Multiplicador (la \"ruleta\" de puntos) es un **incentivo de gamificación**: un módulo gratuito y opcional que te permite convertir en más puntos los puntos que ya ganaste respondiendo encuestas. No es un casino, una casa de apuestas, una lotería ni un juego de azar con dinero real.",
+          "No pagás nada para participar y no podés depositar dinero: los giros son gratuitos (4 por día, con requisitos y límites según tu país) y **solo se usan puntos que obtuviste vos en encuestas válidas**. Los bonos y el saldo promocional no se pueden usar en el multiplicador.",
+          "Los puntos no son dinero: son una unidad de recompensa virtual que recién se convierte en USD cuando se aprueba un retiro. El resultado de cada giro se acredita **siempre como puntos**, nunca como efectivo, y en un giro solo destinás puntos que ya tenés: nunca quedás en deuda ni obligado a pagar nada.",
+          "La plataforma puede cambiar, limitar o deshabilitar el multiplicador (reglas, probabilidades, topes diarios) con previo aviso. Usar bots, scripts, cuentas múltiples o VPN para alterar resultados o límites es fraude y esos puntos se anulan. El detalle legal completo está en los Términos y Condiciones (sección 18).",
+          "Además, **todos los sistemas de gamificación están sujetos a cambios**: podemos modificar sus reglas, quitarlos o crear nuevos incentivos en el futuro para mejorar el sitio, siempre con aviso previo en la plataforma.",
         ],
       },
       {
@@ -77,11 +85,11 @@ export default {
         paragraphs: [
           "La plataforma **no es responsable por puntos, créditos o recompensas que no hayan sido otorgados** tras completar encuestas, descargas de aplicaciones, registros o tareas. Estos módulos corresponden a proveedores externos y son ellos quienes auditan, validan y aprueban de forma exclusiva el cumplimiento correcto de cada acción. Ante cualquier inconveniente, deberás realizar el reclamo directamente a los proveedores mediante los siguientes canales oficiales incluidos en la app:",
           "**CPX Research (Encuestas y Tareas):** si una encuesta completada con éxito no acreditó tus puntos, ingresá al menú de tres líneas de su sección de ofertas, andá a la opción \"Help\" (Ayuda) y abrí un ticket de soporte. También podés contactarlos a través de su sitio oficial [cpx-research.com](https://www.cpx-research.com/) o al correo [hello@cpx-research.com](mailto:hello@cpx-research.com).",
-          "**TimeWall (Muro de Ofertas y Microtareas):** si completaste una oferta del muro de TimeWall y no recibiste tus puntos, abrí un ticket de soporte desde el menú dentro del muro de ofertas, o contactá a TimeWall a través de su sitio oficial [timewall.io](https://timewall.io).",
+          "**TimeWall (Muro de Ofertas y Microtareas):** si completaste una oferta del muro de TimeWall y no recibiste tus puntos, abrí un ticket de soporte desde el menú dentro del muro de ofertas, o contactá a TimeWall en su página oficial de soporte [timewall.io/contactus](https://timewall.io/contactus).",
           "**Monetag (Instalaciones de Apps, Juegos y Ofertas):** si cumpliste con todos los requisitos de una tarea y no recibiste tus puntos, abrí el menú de la oferta dentro de nuestro sitio, hacé clic en la opción \"Status / Report an Issue\" de Monetag, o contactá directamente a su mesa de ayuda. También podés escribir a sus correos oficiales de atención técnica: [support@monetag.com](mailto:support@monetag.com) o [contact.us@monetag.com](mailto:contact.us@monetag.com).",
-          "**TheoremReach (Encuestas premium):** si completaste una encuesta del muro de TheoremReach y no recibiste tus puntos, abrí un ticket de soporte desde el menú dentro del muro, o contactá a TheoremReach a través de su sitio oficial [theoremreach.com](https://theoremreach.com).",
+          "**TheoremReach (Encuestas premium):** si completaste una encuesta del muro de TheoremReach y no recibiste tus puntos, abrí un ticket de soporte desde el menú dentro del muro, o escribiles a su correo oficial de usuarios [support@theoremreach.com](mailto:support@theoremreach.com). También podés usar su formulario: [info.theoremreach.com/contact](https://info.theoremreach.com/contact/).",
           "**CPAGrip (Apps, Juegos y Ofertas):** si descargaste una app o completaste una oferta de CPAGrip y no recibiste tus puntos, abrí el menú de la oferta dentro del muro y buscá la opción de soporte, o contactá a CPAGrip a través de su sitio oficial [cpagrip.com](https://www.cpagrip.com).",
-          "**RapidoReach (Encuestas y Ofertas):** si completaste una encuesta u oferta del muro de RapidoReach y no recibiste tus puntos, esperá el tiempo de acreditación indicado por el proveedor y, si el problema continúa, abrí un ticket desde el menú de soporte del propio muro o contactá a RapidoReach a través de su sitio oficial [rapidoreach.com](https://www.rapidoreach.com).",
+          "**RapidoReach (Encuestas y Ofertas):** si completaste una encuesta u oferta del muro de RapidoReach y no recibiste tus puntos, esperá el tiempo de acreditación indicado por el proveedor y, si el problema continúa, abrí un ticket desde el menú de soporte del propio muro o escribiles a [support@rapidoreach.com](mailto:support@rapidoreach.com). Formulario oficial: [rapidoreach.com/contactus](https://www.rapidoreach.com/contactus).",
         ],
       },
       {
@@ -101,25 +109,13 @@ export default {
       {
         q: "¿Cómo funciona el sistema de referidos?",
         paragraphs: [
-          "Cada usuario tiene un código de referido único. Compartilo con tus contactos: cuando alguien se registra usando tu código, pasás a ser su patrocinador y recibís una **comisión del 10%** sobre los puntos que gane al completar microtareas válidas. La comisión se acredita automáticamente y se suma a tu saldo. La comisión no aplica sobre bonos de bienvenida, saldo promocional ni Cajas Sorpresa; solo sobre microtareas completadas. Si la tarea del referido es rechazada o revertida, la comisión también se revierte.",
+          "Cada usuario tiene un código de referido único. Compartilo con tus contactos: cuando alguien se registra usando tu código, pasás a ser su patrocinador y recibís una **comisión del 10%** sobre los puntos que gane al completar microtareas válidas. La comisión se acredita automáticamente y se suma a tu saldo. La comisión no aplica sobre bonos de bienvenida ni saldo promocional; solo sobre microtareas completadas. Si la tarea del referido es rechazada o revertida, la comisión también se revierte.",
         ],
       },
       {
         q: "¿Qué es el bono de bienvenida?",
         paragraphs: [
-          "Al registrarte recibís automáticamente **500 puntos ($0.50 USD)** de bono de bienvenida. Este bono se acredita una sola vez y podés usarlo para retirar o para crear campañas como anunciante. Si creás una campaña, el saldo bono se consume primero y está **exento de la comisión del 30%** de la plataforma. El bono es revocable si se detecta fraude o cuenta múltiple.",
-        ],
-      },
-      {
-        q: "¿Qué son las Cajas Sorpresa?",
-        paragraphs: [
-          "Las Cajas Sorpresa son premios que podés desbloquear mirando un anuncio corto. Cada caja otorga un premio aleatorio de entre **1 y 500 puntos**. Las probabilidades de cada premio las define la plataforma y pueden variar. Los puntos ganados se suman a tu saldo disponible y los podés retirar como cualquier otro punto. No está permitido usar bots o herramientas automatizadas para manipular las Cajas Sorpresa.",
-        ],
-      },
-      {
-        q: "¿Qué es el check-in diario?",
-        paragraphs: [
-          "El check-in diario te permite sumar puntos adicionales simplemente por iniciar sesión cada día. Podés reclamarlo **una vez por día**. El monto puede variar y la plataforma puede modificarlo o deshabilitarlo con previo aviso.",
+          "Al registrarte recibís automáticamente **500 puntos ($0.50 USD)** de bono de bienvenida. Este bono se acredita una sola vez y podés usarlo para retirar o para crear campañas como anunciante. Si creás una campaña, el saldo bono se consume primero y está **exento de la comisión del 30%** de la plataforma. El bono es revocable si se detecta fraude o cuenta múltiple. **No se puede apostar en la ruleta Multiplicador:** ahí solo se juegan puntos ganados en encuestas.",
         ],
       },
       {
@@ -159,15 +155,9 @@ export default {
         ],
       },
       {
-        q: "¿Hay un límite de videos por día?",
-        paragraphs: [
-          "Sí. El sistema de videos recompensados tiene un límite diario que se reinicia cada 24 horas. El contador se muestra en la pestaña \"Ganar\" para que sepas cuántas visualizaciones te quedan.",
-        ],
-      },
-      {
         q: "¿Desde qué países puedo usar LatamBucks?",
         paragraphs: [
-          "LatamBucks está diseñado para usuarios de Latinoamérica. Al registrarte, seleccionás tu país de residencia. La disponibilidad de encuestas y tareas puede variar según el país.",
+          "LatamBucks está disponible para usuarios de Latinoamérica y del resto del mundo. Al registrarte, seleccionás tu país de residencia. La disponibilidad de encuestas y tareas puede variar según el país.",
         ],
       },
       {
@@ -187,7 +177,7 @@ export default {
       {
         q: "What is LatamBucks?",
         paragraphs: [
-          "LatamBucks is a microtask platform that lets you earn rewards (points) by completing activities such as watching videos, answering surveys and doing local advertiser tasks. Accumulated points can be redeemed for real money through Payoneer, Airtm or PayPal (USD for every country).",
+          "LatamBucks is a microtask platform that lets you earn rewards (points) by completing activities such as answering surveys and doing local advertiser tasks. Accumulated points can be redeemed for real money through Payoneer, Airtm or PayPal (USD for every country).",
         ],
       },
       {
@@ -200,14 +190,22 @@ export default {
         q: "How do I earn points?",
         paragraphs: ["There are several ways to earn points:"],
         bullets: [
-          "**1. Rewarded ads:** watch short ads. You have a daily view limit that resets every 24 hours.",
-          "**2. Surveys:** complete surveys from our partner providers (CPX Research, TheoremReach, TimeWall and RapidoReach). Points are credited automatically when you finish.",
-          "**3. Advertiser tasks:** visit a campaign link, follow the instruction (for example, visiting a website or social profile) and upload a screenshot as proof. The advertiser approves or rejects your submission.",
-          "**4. Apps and games (CPAGrip):** download apps or play games and earn points instantly with automatic crediting.",
-          "**5. Surprise Boxes:** watch a short ad and open a box to win a random prize of 1 to 500 points.",
-          "**6. Daily check-in:** sign in every day and claim your daily attendance points.",
-          "**7. Welcome bonus:** when you sign up you receive 500 points ($0.50 USD) as a gift to get started.",
-          "**8. Referrals:** invite friends with your referral code and earn a 10% commission on their earnings.",
+          "**1. Surveys:** complete surveys from our partner providers (CPX Research, TheoremReach, TimeWall and RapidoReach). Points are credited automatically when you finish.",
+          "**2. Advertiser tasks:** visit a campaign link, follow the instruction (for example, visiting a website or social profile) and upload a screenshot as proof. The advertiser approves or rejects your submission.",
+          "**3. Apps and games (CPAGrip):** download apps or play games and earn points instantly with automatic crediting.",
+          "**4. Welcome bonus:** when you sign up you receive 500 points ($0.50 USD) as a gift to get started.",
+          "**5. Referrals:** invite friends with your referral code and earn a 10% commission on their earnings.",
+          "**6. Points Multiplier:** turn points you already earned on surveys into more points with your free daily spins (see the multiplier question below).",
+        ],
+      },
+      {
+        q: "Is the points multiplier betting or a game of chance?",
+        paragraphs: [
+          "**No.** The Multiplier (the points \"wheel\") is a **gamification incentive**: a free, optional feature that lets you turn points you already earned by answering surveys into more points. It is not a casino, a betting house, a lottery or a game of chance played with real money.",
+          "You pay nothing to take part and you cannot deposit money: spins are free (4 per day, with requirements and limits that depend on your country) and **only points you earned on valid surveys are used**. Bonuses and promotional balance cannot be used in the multiplier.",
+          "Points are not money: they are a virtual reward unit that only turns into USD once a withdrawal is approved. Every spin's result is credited **always as points**, never as cash, and in a spin you only commit points you already hold: you never end up in debt or owing anything.",
+          "The platform may change, limit or disable the multiplier (rules, odds, daily caps) with prior notice. Using bots, scripts, multiple accounts or a VPN to alter results or limits is fraud and those points are void. The full legal detail is in the Terms & Conditions (section 18).",
+          "Also, **every gamification system is subject to change**: we may modify its rules, remove it or add new incentives in the future to improve the site, always with prior notice on the platform.",
         ],
       },
       {
@@ -254,11 +252,11 @@ export default {
         paragraphs: [
           "The platform **is not responsible for points, credits or rewards not granted** after completing surveys, app downloads, sign-ups or tasks. Those modules belong to external providers, and they exclusively audit, validate and approve the correct completion of each action. If you have an issue, you must claim directly with the providers through these official channels included in the app:",
           "**CPX Research (Surveys and Tasks):** if a successfully completed survey did not credit your points, open the three-line menu in its offers section, go to \"Help\" and open a support ticket. You can also contact them through their official site [cpx-research.com](https://www.cpx-research.com/) or at [hello@cpx-research.com](mailto:hello@cpx-research.com).",
-          "**TimeWall (Offer Wall and Microtasks):** if you completed an offer on the TimeWall wall and did not receive your points, open a support ticket from the menu inside the offer wall, or contact TimeWall through its official site [timewall.io](https://timewall.io).",
+          "**TimeWall (Offer Wall and Microtasks):** if you completed an offer on the TimeWall wall and did not receive your points, open a support ticket from the menu inside the offer wall, or contact TimeWall on its official support page [timewall.io/contactus](https://timewall.io/contactus).",
           "**Monetag (App Installs, Games and Offers):** if you met all the requirements of a task and did not receive your points, open the offer menu on our site, click Monetag's \"Status / Report an Issue\" option, or contact their help desk directly. You can also write to their official support emails: [support@monetag.com](mailto:support@monetag.com) or [contact.us@monetag.com](mailto:contact.us@monetag.com).",
-          "**TheoremReach (Premium surveys):** if you completed a survey on the TheoremReach wall and did not receive your points, open a support ticket from the menu inside the wall, or contact TheoremReach through its official site [theoremreach.com](https://theoremreach.com).",
+          "**TheoremReach (Premium surveys):** if you completed a survey on the TheoremReach wall and did not receive your points, open a support ticket from the menu inside the wall, or write to their official user support email [support@theoremreach.com](mailto:support@theoremreach.com). You can also use their contact form: [info.theoremreach.com/contact](https://info.theoremreach.com/contact/).",
           "**CPAGrip (Apps, Games and Offers):** if you downloaded an app or completed a CPAGrip offer and did not receive your points, open the offer menu inside the wall and look for the support option, or contact CPAGrip through its official site [cpagrip.com](https://www.cpagrip.com).",
-          "**RapidoReach (Surveys and Offers):** if you completed a survey or offer on the RapidoReach wall and did not receive your points, wait for the crediting time indicated by the provider and, if the problem continues, open a ticket from the wall's own support menu or contact RapidoReach through its official site [rapidoreach.com](https://www.rapidoreach.com).",
+          "**RapidoReach (Surveys and Offers):** if you completed a survey or offer on the RapidoReach wall and did not receive your points, wait for the crediting time indicated by the provider and, if the problem continues, open a ticket from the wall's own support menu or write to [support@rapidoreach.com](mailto:support@rapidoreach.com). Official form: [rapidoreach.com/contactus](https://www.rapidoreach.com/contactus).",
         ],
       },
       {
@@ -278,25 +276,13 @@ export default {
       {
         q: "How does the referral system work?",
         paragraphs: [
-          "Every user has a unique referral code. Share it with your contacts: when someone signs up with your code, you become their sponsor and receive a **10% commission** on the points they earn by completing valid microtasks. The commission is credited automatically and added to your balance. It does not apply to welcome bonuses, promotional balance or Surprise Boxes; only to completed microtasks. If the referral's task is rejected or reversed, the commission is reversed too.",
+          "Every user has a unique referral code. Share it with your contacts: when someone signs up with your code, you become their sponsor and receive a **10% commission** on the points they earn by completing valid microtasks. The commission is credited automatically and added to your balance. It does not apply to welcome bonuses or promotional balance; only to completed microtasks. If the referral's task is rejected or reversed, the commission is reversed too.",
         ],
       },
       {
         q: "What is the welcome bonus?",
         paragraphs: [
-          "When you sign up you automatically receive **500 points ($0.50 USD)** as a welcome bonus. It is credited once and you can use it to withdraw or to create campaigns as an advertiser. If you create a campaign, the bonus balance is consumed first and is **exempt from the platform's 30% commission**. The bonus is revocable if fraud or multiple accounts are detected.",
-        ],
-      },
-      {
-        q: "What are Surprise Boxes?",
-        paragraphs: [
-          "Surprise Boxes are prizes you can unlock by watching a short ad. Each box grants a random prize between **1 and 500 points**. The platform sets the odds for each prize and they may vary. Points won are added to your available balance and can be withdrawn like any other points. Using bots or automated tools to manipulate Surprise Boxes is not allowed.",
-        ],
-      },
-      {
-        q: "What is the daily check-in?",
-        paragraphs: [
-          "The daily check-in lets you add extra points just by signing in every day. You can claim it **once a day**. The amount may vary and the platform may change or disable it with prior notice.",
+          "When you sign up you automatically receive **500 points ($0.50 USD)** as a welcome bonus. It is credited once and you can use it to withdraw or to create campaigns as an advertiser. If you create a campaign, the bonus balance is consumed first and is **exempt from the platform's 30% commission**. The bonus is revocable if fraud or multiple accounts are detected. **It cannot be bet on the Multiplier wheel:** only points earned from surveys can be played there.",
         ],
       },
       {
@@ -336,15 +322,9 @@ export default {
         ],
       },
       {
-        q: "Is there a daily video limit?",
-        paragraphs: [
-          "Yes. The rewarded video system has a daily limit that resets every 24 hours. The counter is shown in the \"Earn\" tab so you know how many views you have left.",
-        ],
-      },
-      {
         q: "From which countries can I use LatamBucks?",
         paragraphs: [
-          "LatamBucks is designed for users in Latin America. When signing up you select your country of residence. The availability of surveys and tasks may vary by country.",
+          "LatamBucks is available to users in Latin America and the rest of the world. When signing up you select your country of residence. The availability of surveys and tasks may vary by country.",
         ],
       },
       {
@@ -364,7 +344,7 @@ export default {
       {
         q: "O que é o LatamBucks?",
         paragraphs: [
-          "O LatamBucks é uma plataforma de microtarefas que permite ganhar recompensas (pontos) completando atividades como assistir a vídeos, responder pesquisas e realizar tarefas locais de anunciantes. Os pontos acumulados podem ser trocados por dinheiro real via Payoneer, Airtm ou PayPal (USD para todos os países).",
+          "O LatamBucks é uma plataforma de microtarefas que permite ganhar recompensas (pontos) completando atividades como responder pesquisas e realizar tarefas locais de anunciantes. Os pontos acumulados podem ser trocados por dinheiro real via Payoneer, Airtm ou PayPal (USD para todos os países).",
         ],
       },
       {
@@ -377,14 +357,22 @@ export default {
         q: "Como ganho pontos?",
         paragraphs: ["Existem várias formas de ganhar pontos:"],
         bullets: [
-          "**1. Anúncios recompensados:** assista a anúncios curtos. Você tem um limite diário de visualizações que reinicia a cada 24 horas.",
-          "**2. Pesquisas:** complete pesquisas dos nossos provedores parceiros (CPX Research, TheoremReach, TimeWall e RapidoReach). Os pontos são creditados automaticamente ao final.",
-          "**3. Tarefas de anunciantes:** visite o link de uma campanha, cumpra a orientação (por exemplo, visitar um site ou rede social) e envie a captura de tela como prova. O anunciante aprova ou rejeita o envio.",
-          "**4. Apps e jogos (CPAGrip):** baixe apps ou jogue e some pontos na hora, com crédito automático.",
-          "**5. Caixas Surpresa:** assista a um anúncio curto e abra uma caixa para ganhar um prêmio aleatório de 1 a 500 pontos.",
-          "**6. Check-in diário:** entre todos os dias e resgate seus pontos de presença diária.",
-          "**7. Bônus de boas-vindas:** ao se cadastrar você recebe 500 pontos ($0,50 USD) de presente para começar.",
-          "**8. Indicações:** convide amigos com seu código de indicação e ganhe 10% de comissão sobre os ganhos deles.",
+          "**1. Pesquisas:** complete pesquisas dos nossos provedores parceiros (CPX Research, TheoremReach, TimeWall e RapidoReach). Os pontos são creditados automaticamente ao final.",
+          "**2. Tarefas de anunciantes:** visite o link de uma campanha, cumpra a orientação (por exemplo, visitar um site ou rede social) e envie a captura de tela como prova. O anunciante aprova ou rejeita o envio.",
+          "**3. Apps e jogos (CPAGrip):** baixe apps ou jogue e some pontos na hora, com crédito automático.",
+          "**4. Bônus de boas-vindas:** ao se cadastrar você recebe 500 pontos ($0,50 USD) de presente para começar.",
+          "**5. Indicações:** convide amigos com seu código de indicação e ganhe 10% de comissão sobre os ganhos deles.",
+          "**6. Multiplicador de pontos:** transforme em mais pontos os pontos que você já ganhou em pesquisas usando seus giros diários gratuitos (veja a pergunta sobre o multiplicador).",
+        ],
+      },
+      {
+        q: "O multiplicador de pontos é uma aposta ou um jogo de azar?",
+        paragraphs: [
+          "**Não.** O Multiplicador (a \"roleta\" de pontos) é um **incentivo de gamificação**: um módulo gratuito e opcional que permite transformar em mais pontos os pontos que você já ganhou respondendo pesquisas. Não é um cassino, uma casa de apostas, uma loteria nem um jogo de azar com dinheiro real.",
+          "Você não paga nada para participar e não pode depositar dinheiro: os giros são gratuitos (4 por dia, com requisitos e limites que dependem do seu país) e **só são usados pontos que você ganhou em pesquisas válidas**. Bônus e saldo promocional não podem ser usados no multiplicador.",
+          "Os pontos não são dinheiro: são uma unidade de recompensa virtual que só se converte em USD quando um saque é aprovado. O resultado de cada giro é creditado **sempre como pontos**, nunca como dinheiro, e em um giro você só destina pontos que já tem: você nunca fica em dívida nem deve nada.",
+          "A plataforma pode alterar, limitar ou desabilitar o multiplicador (regras, probabilidades, tetos diários) com aviso prévio. Usar bots, scripts, contas múltiplas ou VPN para alterar resultados ou limites é fraude e esses pontos são anulados. O detalhe legal completo está nos Termos e Condições (seção 18).",
+          "Além disso, **todos os sistemas de gamificação estão sujeitos a alterações**: podemos modificar suas regras, removê-los ou criar novos incentivos no futuro para melhorar o site, sempre com aviso prévio na plataforma.",
         ],
       },
       {
@@ -431,11 +419,11 @@ export default {
         paragraphs: [
           "A plataforma **não é responsável por pontos, créditos ou recompensas não concedidos** após completar pesquisas, downloads de aplicativos, cadastros ou tarefas. Esses módulos pertencem a provedores externos, e são eles que auditam, validam e aprovam de forma exclusiva o cumprimento correto de cada ação. Em caso de problema, você deve reclamar diretamente aos provedores pelos seguintes canais oficiais incluídos no app:",
           "**CPX Research (Pesquisas e Tarefas):** se uma pesquisa concluída com sucesso não creditou seus pontos, abra o menu de três linhas da seção de ofertas, vá à opção \"Help\" (Ajuda) e abra um ticket de suporte. Você também pode contatá-los pelo site oficial [cpx-research.com](https://www.cpx-research.com/) ou pelo e-mail [hello@cpx-research.com](mailto:hello@cpx-research.com).",
-          "**TimeWall (Mural de Ofertas e Microtarefas):** se você completou uma oferta do mural do TimeWall e não recebeu seus pontos, abra um ticket de suporte no menu dentro do mural de ofertas ou contate o TimeWall pelo site oficial [timewall.io](https://timewall.io).",
+          "**TimeWall (Mural de Ofertas e Microtarefas):** se você completou uma oferta do mural do TimeWall e não recebeu seus pontos, abra um ticket de suporte no menu dentro do mural de ofertas ou contate o TimeWall na página oficial de suporte [timewall.io/contactus](https://timewall.io/contactus).",
           "**Monetag (Instalações de Apps, Jogos e Ofertas):** se você cumpriu todos os requisitos de uma tarefa e não recebeu seus pontos, abra o menu da oferta dentro do nosso site, clique na opção \"Status / Report an Issue\" da Monetag ou contate diretamente a central de ajuda. Você também pode escrever para os e-mails oficiais de suporte técnico: [support@monetag.com](mailto:support@monetag.com) ou [contact.us@monetag.com](mailto:contact.us@monetag.com).",
-          "**TheoremReach (Pesquisas premium):** se você completou uma pesquisa do mural do TheoremReach e não recebeu seus pontos, abra um ticket de suporte no menu dentro do mural ou contate o TheoremReach pelo site oficial [theoremreach.com](https://theoremreach.com).",
+          "**TheoremReach (Pesquisas premium):** se você completou uma pesquisa do mural do TheoremReach e não recebeu seus pontos, abra um ticket de suporte no menu dentro do mural ou escreva para o e-mail oficial de usuários [support@theoremreach.com](mailto:support@theoremreach.com). Você também pode usar o formulário: [info.theoremreach.com/contact](https://info.theoremreach.com/contact/).",
           "**CPAGrip (Apps, Jogos e Ofertas):** se você baixou um app ou completou uma oferta da CPAGrip e não recebeu seus pontos, abra o menu da oferta dentro do mural e procure a opção de suporte, ou contate a CPAGrip pelo site oficial [cpagrip.com](https://www.cpagrip.com).",
-          "**RapidoReach (Pesquisas e Ofertas):** se você completou uma pesquisa ou oferta do mural do RapidoReach e não recebeu seus pontos, aguarde o prazo de crédito indicado pelo provedor e, se o problema continuar, abra um ticket no menu de suporte do próprio mural ou contate o RapidoReach pelo site oficial [rapidoreach.com](https://www.rapidoreach.com).",
+          "**RapidoReach (Pesquisas e Ofertas):** se você completou uma pesquisa ou oferta do mural do RapidoReach e não recebeu seus pontos, aguarde o prazo de crédito indicado pelo provedor e, se o problema continuar, abra um ticket no menu de suporte do próprio mural ou escreva para [support@rapidoreach.com](mailto:support@rapidoreach.com). Formulário oficial: [rapidoreach.com/contactus](https://www.rapidoreach.com/contactus).",
         ],
       },
       {
@@ -455,25 +443,13 @@ export default {
       {
         q: "Como funciona o sistema de indicações?",
         paragraphs: [
-          "Cada usuário tem um código de indicação único. Compartilhe com seus contatos: quando alguém se cadastra usando seu código, você passa a ser o patrocinador e recebe uma **comissão de 10%** sobre os pontos que ele ganhar ao completar microtarefas válidas. A comissão é creditada automaticamente e somada ao seu saldo. A comissão não se aplica a bônus de boas-vindas, saldo promocional nem Caixas Surpresa; apenas a microtarefas concluídas. Se a tarefa do indicado for rejeitada ou revertida, a comissão também é revertida.",
+          "Cada usuário tem um código de indicação único. Compartilhe com seus contatos: quando alguém se cadastra usando seu código, você passa a ser o patrocinador e recebe uma **comissão de 10%** sobre os pontos que ele ganhar ao completar microtarefas válidas. A comissão é creditada automaticamente e somada ao seu saldo. A comissão não se aplica a bônus de boas-vindas nem saldo promocional; apenas a microtarefas concluídas. Se a tarefa do indicado for rejeitada ou revertida, a comissão também é revertida.",
         ],
       },
       {
         q: "O que é o bônus de boas-vindas?",
         paragraphs: [
-          "Ao se cadastrar você recebe automaticamente **500 pontos ($0,50 USD)** de bônus de boas-vindas. Esse bônus é creditado uma única vez e você pode usá-lo para sacar ou para criar campanhas como anunciante. Se criar uma campanha, o saldo bônus é consumido primeiro e é **isento da comissão de 30%** da plataforma. O bônus é revogável se for detectada fraude ou conta múltipla.",
-        ],
-      },
-      {
-        q: "O que são as Caixas Surpresa?",
-        paragraphs: [
-          "As Caixas Surpresa são prêmios que você pode desbloquear assistindo a um anúncio curto. Cada caixa concede um prêmio aleatório entre **1 e 500 pontos**. As probabilidades de cada prêmio são definidas pela plataforma e podem variar. Os pontos ganhos são somados ao saldo disponível e podem ser sacados como qualquer outro ponto. Não é permitido usar bots ou ferramentas automatizadas para manipular as Caixas Surpresa.",
-        ],
-      },
-      {
-        q: "O que é o check-in diário?",
-        paragraphs: [
-          "O check-in diário permite somar pontos extras simplesmente por entrar todos os dias. Você pode resgatá-lo **uma vez por dia**. O valor pode variar e a plataforma pode alterá-lo ou desabilitá-lo com aviso prévio.",
+          "Ao se cadastrar você recebe automaticamente **500 pontos ($0,50 USD)** de bônus de boas-vindas. Esse bônus é creditado uma única vez e você pode usá-lo para sacar ou para criar campanhas como anunciante. Se criar uma campanha, o saldo bônus é consumido primeiro e é **isento da comissão de 30%** da plataforma. O bônus é revogável se for detectada fraude ou conta múltipla. **Não pode ser apostado na roleta Multiplicador:** ali só se jogam pontos ganhos em pesquisas.",
         ],
       },
       {
@@ -513,15 +489,9 @@ export default {
         ],
       },
       {
-        q: "Existe um limite de vídeos por dia?",
-        paragraphs: [
-          "Sim. O sistema de vídeos recompensados tem um limite diário que reinicia a cada 24 horas. O contador aparece na aba \"Ganhar\" para você saber quantas visualizações ainda restam.",
-        ],
-      },
-      {
         q: "De quais países posso usar o LatamBucks?",
         paragraphs: [
-          "O LatamBucks foi criado para usuários da América Latina. Ao se cadastrar, você seleciona seu país de residência. A disponibilidade de pesquisas e tarefas pode variar conforme o país.",
+          "O LatamBucks está disponível para usuários da América Latina e do resto do mundo. Ao se cadastrar, você seleciona seu país de residência. A disponibilidade de pesquisas e tarefas pode variar conforme o país.",
         ],
       },
       {

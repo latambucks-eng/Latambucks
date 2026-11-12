@@ -5,6 +5,7 @@ let _key = "";
 const REST = `${SUPABASE_URL}/rest/v1`;
 const AUTH = `${SUPABASE_URL}/auth/v1`;
 const STORAGE = `${SUPABASE_URL}/storage/v1`;
+const FUNCTIONS = `${SUPABASE_URL}/functions/v1`;
 // Publishable key de Supabase: es una clave PÚBLICA, pensada para usarse en el
 // navegador. No otorga permisos extra — cada tabla la sigue controlando RLS.
 // Antes se pedía a una función del backend en cada carga de la app; ahora vive
@@ -220,7 +221,10 @@ export async function supabaseUpdateUser(token, data) {
 }
 
 export async function supabaseRecoverPassword(email) {
-  const redirectTo = `${window.location.origin}/actualizar-clave`;
+  // BASE_URL respeta subdirectorios (GitHub Pages: /repo/). En dominio raíz
+  // es "/" y el enlace queda igual que antes.
+  const basePath = (import.meta.env?.BASE_URL || "/").replace(/\/+$/, "");
+  const redirectTo = `${window.location.origin}${basePath}/actualizar-clave`;
   const res = await fetch(`${AUTH}/recover`, {
     method: "POST",
     headers: baseHeaders(),
@@ -237,6 +241,22 @@ export async function fetchPerfil(token, userId) {
   );
   const rows = await parse(res);
   return Array.isArray(rows) ? rows[0] : null;
+}
+
+// País real por IP: la Edge Function valida el JWT, resuelve la
+// geolocalización y fija perfiles.pais_detectado con service_role (el
+// cliente no puede escribir esa columna). Devuelve { pais_detectado } o
+// null si no se pudo detectar; se reintenta en el próximo inicio de sesión.
+export async function detectarPaisUsuario(token) {
+  if (!token) return null;
+  const res = await fetch(`${FUNCTIONS}/detectar-pais`, {
+    method: "POST",
+    headers: baseHeaders(token),
+    body: "{}",
+  });
+  if (!res.ok) return null;
+  const data = await res.json().catch(() => null);
+  return data?.pais_detectado ? data : null;
 }
 
 export async function insertPerfil(token, userId, email, pais, referidoPor) {
@@ -562,6 +582,25 @@ export async function fetchMisCampanas(token, email) {
     { headers: baseHeaders(token) }
   );
   return parse(res);
+}
+
+/* ---------- BLOG ---------- */
+
+// Artículos del blog: lectura pública, sin sesión. Si la tabla todavía no
+// existe o viene vacía devuelve [] y las páginas usan el contenido incluido
+// en el repo (src/lib/blog/blogContent.js).
+export async function fetchBlogArticulos() {
+  try {
+    await initSupabaseConfig();
+    const res = await fetch(
+      `${REST}/blog_articulos?publicado=eq.true&select=slug,titulo,extracto,etiquetas,contenido,autor,minutos_lectura,publicado_en&order=publicado_en.desc`,
+      { headers: baseHeaders() }
+    );
+    const rows = await parse(res);
+    return Array.isArray(rows) ? rows : [];
+  } catch {
+    return [];
+  }
 }
 
 /* ---------- DISPUTAS Y RECLAMOS ---------- */

@@ -111,6 +111,530 @@
   }
 }
 
+/* ══ SLOT BUKS: mueble de casino 3D (cromo + LED cian + teclas físicas) ══ */
+@layer components {
+  /* Escenario: sala de casino. El mueble apoya en la alfombra, no flota. */
+  .casino-stage {
+    position: relative;
+    perspective: 1500px;
+    perspective-origin: 50% 18%;
+    isolation: isolate;
+  }
+  /* Viñeta fotográfica: concentra la luz en el mueble y hunde los bordes */
+  .casino-stage::after {
+    content: "";
+    position: absolute;
+    inset: -18px -12px -6px;
+    z-index: 6;
+    border-radius: 26px;
+    pointer-events: none;
+    background: radial-gradient(82% 60% at 50% 34%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.28) 100%);
+  }
+
+  /* SALA: fondo oscuro, fila de máquinas al fondo y alfombra en perspectiva */
+  .casino-lobby {
+    position: absolute;
+    inset: -18px -12px -4px;
+    z-index: 0;
+    overflow: hidden;
+    border-radius: 26px;
+    pointer-events: none;
+    background:
+      radial-gradient(80% 55% at 50% 0%, rgba(0, 229, 255, 0.12), transparent 70%),
+      radial-gradient(70% 60% at 50% 100%, rgba(139, 92, 246, 0.16), transparent 72%),
+      linear-gradient(180deg, #05070a 0%, #0a0c11 46%, #121620 100%);
+  }
+  /* Máquinas del fondo: siluetas con pantallas encendidas */
+  .casino-lobby__machines {
+    position: absolute;
+    left: -12%;
+    right: -12%;
+    top: 5%;
+    height: 66%;
+    opacity: 0.9;
+    background:
+      repeating-linear-gradient(90deg, #0c1016 0 46px, rgba(0, 229, 255, 0.22) 46px 50px, #0c1016 50px 54px, transparent 54px 78px),
+      repeating-linear-gradient(90deg, transparent 0 30px, rgba(139, 92, 246, 0.18) 30px 52px, transparent 52px 104px);
+    -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.5) 62%, transparent 100%);
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.5) 62%, transparent 100%);
+  }
+  /* Alfombra: plano en perspectiva con el dibujo ondulado */
+  .casino-lobby__floor {
+    position: absolute;
+    left: -34%;
+    right: -34%;
+    bottom: -8%;
+    height: 52%;
+    transform: perspective(620px) rotateX(74deg);
+    transform-origin: 50% 0%;
+    background:
+      repeating-radial-gradient(circle at 18% 24%, rgba(211, 188, 200, 0.22) 0 5px, transparent 5px 20px),
+      repeating-radial-gradient(circle at 68% 62%, rgba(180, 148, 172, 0.2) 0 4px, transparent 4px 18px),
+      linear-gradient(180deg, #2a2231 0%, #171320 100%);
+    box-shadow: inset 0 24px 40px -24px rgba(0, 0, 0, 0.9);
+  }
+  /* Luz del mueble derramada sobre la alfombra */
+  .casino-lobby__spill {
+    position: absolute;
+    left: 50%;
+    bottom: -6%;
+    width: 168%;
+    height: 50%;
+    transform: translateX(-50%);
+    background:
+      radial-gradient(38% 46% at 50% 96%, rgba(0, 240, 255, 0.5), transparent 72%),
+      radial-gradient(62% 40% at 50% 100%, rgba(139, 92, 246, 0.26), transparent 76%);
+    filter: blur(14px);
+  }
+  /* Sombra de contacto: el mueble se apoya en el piso */
+  .cabinet-floorcast {
+    position: absolute;
+    left: 2%;
+    right: 2%;
+    bottom: -20px;
+    z-index: 0;
+    height: 46px;
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.5) 44%, transparent 72%);
+    filter: blur(6px);
+  }
+
+  /* Giro del mueble: se arrastra con el dedo o el mouse */
+  .casino-tilt {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    touch-action: pan-y;
+    will-change: transform;
+  }
+  .casino-tilt:active {
+    transition: none;
+  }
+
+  /* Volumen: costados, techo y base */
+  .cabinet-3d__side,
+  .cabinet-3d__top,
+  .cabinet-3d__base {
+    position: absolute;
+    pointer-events: none;
+  }
+  .cabinet-3d__side {
+    top: 14px;
+    bottom: 14px;
+    width: 58px;
+    background:
+      repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.06) 0 1px, rgba(0, 0, 0, 0.14) 1px 3px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.92) 0%, rgba(255, 255, 255, 0.16) 20%, rgba(0, 0, 0, 0.55) 58%, rgba(0, 0, 0, 0.96) 100%),
+      linear-gradient(180deg, #23282e 0%, #13161a 100%);
+    box-shadow:
+      inset 0 0 30px rgba(0, 0, 0, 0.95),
+      inset 0 90px 60px -60px rgba(0, 229, 255, 0.35);
+  }
+  .cabinet-3d__side--left {
+    left: 0;
+    transform-origin: 0% 50%;
+    transform: rotateY(90deg);
+    border-right: 1px solid rgba(210, 218, 226, 0.5);
+  }
+  .cabinet-3d__side--right {
+    right: 0;
+    transform-origin: 100% 50%;
+    transform: rotateY(-90deg);
+    border-left: 1px solid rgba(210, 218, 226, 0.5);
+  }
+  .cabinet-3d__top {
+    top: 2px;
+    left: 0;
+    right: 0;
+    height: 58px;
+    transform-origin: 50% 0%;
+    transform: rotateX(-90deg);
+    background: linear-gradient(180deg, #363d45 0%, #101418 100%);
+  }
+  .cabinet-3d__base {
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    height: 58px;
+    transform-origin: 50% 100%;
+    transform: rotateX(90deg);
+    background: linear-gradient(180deg, #04070a 0%, #0a0f14 100%);
+  }
+
+  /* CUERPO: chapa grafito cepillada, barrido especular y perfiles cromados */
+  .casino-cabinet {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 12px;
+    border-radius: 18px 18px 8px 8px;
+    transform-style: preserve-3d;
+    background:
+      repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.055) 0 1px, rgba(0, 0, 0, 0.11) 1px 2px),
+      linear-gradient(102deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.04) 14%, rgba(255, 255, 255, 0) 32%, rgba(255, 255, 255, 0) 58%, rgba(255, 255, 255, 0.11) 84%, rgba(255, 255, 255, 0) 100%),
+      linear-gradient(180deg, #2c333b 0%, #1b2026 44%, #10141a 76%, #070a0e 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(240, 244, 248, 0.7),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.95),
+      inset 0 0 0 1px rgba(150, 160, 172, 0.35),
+      inset 0 34px 44px -34px rgba(0, 229, 255, 0.28),
+      inset 0 -70px 70px -50px rgba(0, 0, 0, 0.95),
+      0 0 36px -12px rgba(0, 229, 255, 0.45),
+      0 34px 60px -28px rgba(0, 0, 0, 1);
+  }
+  /* Perfiles cromados laterales con tornillos de fijación */
+  .casino-cabinet::before,
+  .casino-cabinet::after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    width: 7px;
+    border-radius: 4px;
+    background:
+      radial-gradient(circle at 50% 12px, #ffffff 0 1.1px, #79818a 1.1px 1.9px, transparent 2.1px) 0 0 / 100% 46px repeat-y,
+      linear-gradient(180deg, #ffffff 0%, #e4eaef 14%, #4f565e 44%, #ffffff 54%, #5c646c 74%, #f8fbff 100%);
+    box-shadow:
+      inset 0 0 2px rgba(255, 255, 255, 0.95),
+      inset 0 0 7px rgba(0, 0, 0, 0.45),
+      0 0 12px -3px rgba(0, 229, 255, 0.5);
+    pointer-events: none;
+  }
+  .casino-cabinet::before {
+    left: 1px;
+  }
+  .casino-cabinet::after {
+    right: 1px;
+  }
+
+  /* 1. CAPOTA: techo con la tira LED cian en el canto */
+  .cabinet-canopy {
+    position: relative;
+    z-index: 3;
+    margin-top: 8px;
+    padding: 7px 9px 9px;
+    border-radius: 10px 10px 4px 4px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 24%),
+      linear-gradient(180deg, #333a43 0%, #171c22 58%, #05070a 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.42),
+      inset 0 12px 18px -14px rgba(0, 0, 0, 1),
+      inset 0 -14px 20px -12px rgba(0, 229, 255, 0.7),
+      0 10px 16px -10px rgba(0, 0, 0, 1);
+  }
+  .cabinet-ledtop {
+    height: 8px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(0, 229, 255, 0.2), #eaffff 42%, #ffffff 50%, #00e5ff 58%, rgba(0, 229, 255, 0.2));
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      0 0 18px rgba(0, 229, 255, 1),
+      0 0 44px rgba(0, 229, 255, 0.75),
+      0 12px 34px -6px rgba(0, 229, 255, 0.7);
+  }
+
+  /* 2. MONITOR DEL TEMA: marco cromado grueso */
+  .cabinet-topmonitor {
+    position: relative;
+    z-index: 2;
+    margin-top: 9px;
+    padding: 6px;
+    border-radius: 10px;
+    background:
+      repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.16) 0 1px, rgba(105, 115, 126, 0.16) 1px 2px),
+      linear-gradient(180deg, #ffffff 0%, #e9eef3 12%, #a7b0ba 32%, #f7f9fb 46%, #7b848d 66%, #dfe5eb 84%, #939ca5 100%);
+    box-shadow:
+      inset 0 1px 0 #ffffff,
+      inset 0 2px 5px rgba(0, 0, 0, 0.45),
+      inset 0 -2px 0 rgba(255, 255, 255, 0.45),
+      0 0 0 1px rgba(0, 0, 0, 0.92),
+      0 12px 20px -12px rgba(0, 0, 0, 1),
+      0 0 26px -12px rgba(0, 229, 255, 0.5);
+  }
+  .cabinet-topmonitor__screen {
+    position: relative;
+    overflow: hidden;
+    border-radius: 7px;
+    padding: 13px 10px;
+    background:
+      radial-gradient(95% 130% at 50% 0%, rgba(139, 92, 246, 0.6) 0%, rgba(75, 0, 130, 0.45) 44%, transparent 76%),
+      linear-gradient(180deg, #241247 0%, #170b2b 56%, #08040f 100%);
+    box-shadow:
+      inset 0 0 30px rgba(0, 0, 0, 0.92),
+      inset 0 0 0 1px rgba(0, 229, 255, 0.35),
+      inset 0 20px 28px -20px rgba(255, 255, 255, 0.4);
+  }
+  /* Reflejo del acrílico del monitor */
+  .cabinet-topmonitor__screen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(118deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.05) 20%, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0) 74%, rgba(255, 255, 255, 0.07) 90%, rgba(255, 255, 255, 0) 100%);
+  }
+  .lb-slot-chrome-text {
+    color: #fff9dd;
+    text-shadow:
+      0 1px 0 #b8860b,
+      0 2px 0 #6b4d0b,
+      0 3px 6px rgba(0, 0, 0, 0.85),
+      0 0 18px rgba(255, 215, 0, 0.75),
+      0 0 34px rgba(139, 92, 246, 0.6);
+  }
+
+  /* 3. PANTALLA PRINCIPAL: bisel cromado saliente sobre los rodillos */
+  .cabinet-screenframe {
+    position: relative;
+    z-index: 2;
+    margin-top: 11px;
+    padding: 9px;
+    border-radius: 12px;
+    transform: translateZ(14px);
+    background:
+      repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.17) 0 1px, rgba(100, 110, 122, 0.18) 1px 2px),
+      linear-gradient(180deg, #ffffff 0%, #eaf0f5 10%, #a4adb7 30%, #f8fafc 45%, #79828b 66%, #dde4ea 84%, #98a1aa 100%);
+    box-shadow:
+      inset 0 1px 0 #ffffff,
+      inset 0 3px 8px rgba(0, 0, 0, 0.5),
+      inset 0 -2px 0 rgba(255, 255, 255, 0.45),
+      0 0 0 1px rgba(0, 0, 0, 0.95),
+      0 18px 26px -16px rgba(0, 0, 0, 1),
+      0 0 30px -14px rgba(0, 229, 255, 0.55);
+  }
+  .cabinet-screen {
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    min-height: 8rem;
+    background: radial-gradient(120% 100% at 50% 42%, #161b21 0%, #000 74%), #000;
+    box-shadow:
+      inset 0 26px 30px -16px rgba(0, 0, 0, 1),
+      inset 0 -26px 30px -16px rgba(0, 0, 0, 1),
+      inset 0 0 52px rgba(0, 0, 0, 1);
+  }
+  .cabinet-screen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 30%),
+      linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.28) 9%, rgba(0, 0, 0, 0) 24%);
+  }
+  /* Vidrio del visor: reflejo diagonal sobre los rodillos */
+  .cabinet-screen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+    background: linear-gradient(118deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.07) 16%, rgba(255, 255, 255, 0) 34%, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 0.09) 88%, rgba(255, 255, 255, 0) 100%);
+  }
+  .lb-slot-reel {
+    contain: paint;
+    isolation: isolate;
+    box-shadow:
+      inset 11px 0 18px -11px rgba(0, 0, 0, 0.95),
+      inset -11px 0 18px -11px rgba(0, 0, 0, 0.95),
+      inset 0 0 26px rgba(0, 0, 0, 0.8),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  }
+  /* Banda especular del cilindro del rodillo */
+  .lb-slot-reel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 16%, rgba(255, 255, 255, 0.22) 30%, rgba(255, 255, 255, 0.05) 44%, rgba(255, 255, 255, 0) 62%, rgba(255, 255, 255, 0) 100%);
+  }
+  /* Divisor cromado entre rodillos */
+  .lb-slot-reel:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    right: -2px;
+    z-index: 2;
+    width: 2px;
+    border-radius: 999px;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(198, 208, 218, 0.55) 46%, rgba(255, 255, 255, 0.05));
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.95);
+  }
+
+  /* 4. DECK: consola que sobresale e inclina hacia el jugador */
+  .cabinet-deck {
+    position: relative;
+    z-index: 3;
+    margin: 16px -4px 0;
+    padding: 11px 10px 13px;
+    border-radius: 14px;
+    transform: rotateX(9deg) translateZ(12px);
+    transform-style: preserve-3d;
+    background:
+      repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0 1px, rgba(0, 0, 0, 0.09) 1px 2px),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 26%),
+      linear-gradient(180deg, #363d46 0%, #1b2027 50%, #06080b 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      inset 0 5px 12px -6px rgba(0, 0, 0, 0.95),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.95),
+      0 22px 30px -16px rgba(0, 0, 0, 1),
+      0 8px 14px -10px rgba(0, 0, 0, 0.9);
+  }
+  .cabinet-deck__led {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 3px;
+    height: 6px;
+    border-radius: 999px;
+    pointer-events: none;
+    background: linear-gradient(90deg, rgba(0, 229, 255, 0), #b8fbff 50%, rgba(0, 229, 255, 0));
+    box-shadow: 0 0 14px rgba(0, 229, 255, 0.9), 0 8px 22px -6px rgba(0, 229, 255, 0.55);
+  }
+  .cabinet-infoscreen {
+    flex: 1 1 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border-radius: 6px;
+    padding: 6px 8px;
+    background:
+      radial-gradient(80% 70% at 50% 0%, rgba(0, 229, 255, 0.16), transparent 70%),
+      linear-gradient(180deg, #04121a 0%, #020a10 100%);
+    box-shadow:
+      inset 0 3px 9px rgba(0, 0, 0, 0.95),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 0 0 1px rgba(0, 229, 255, 0.45),
+      inset 0 0 16px -6px rgba(0, 229, 255, 0.55),
+      0 0 18px -8px rgba(0, 229, 255, 0.85);
+  }
+
+  /* TECLA FÍSICA: base hundida en el deck + capuchón que baja al presionar */
+  .casino-key {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .casino-key__socket {
+    position: absolute;
+    inset: -7px -5px -7px;
+    border-radius: 14px;
+    pointer-events: none;
+    background: linear-gradient(180deg, #04060a 0%, #0e131a 100%);
+    box-shadow:
+      inset 0 4px 8px rgba(0, 0, 0, 1),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.07),
+      0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  .casino-key__cap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px 12px;
+    border-radius: 11px;
+    color: #101820;
+    background-image: linear-gradient(180deg, #ffffff 0%, #dbe3ea 30%, #a9b3bf 64%, #77828f 100%);
+    box-shadow:
+      inset 0 2px 0 rgba(255, 255, 255, 0.95),
+      inset 0 -10px 14px -8px rgba(0, 0, 0, 0.5),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.35),
+      0 7px 0 -1px #1a2028,
+      0 11px 0 -1px #0a0d12,
+      0 18px 22px -10px rgba(0, 0, 0, 0.95),
+      0 0 26px -8px rgba(0, 229, 255, 0.75);
+    transition: transform 0.08s cubic-bezier(0.3, 0.7, 0.4, 1), box-shadow 0.08s ease-out;
+  }
+  .casino-key__cap::before {
+    content: "";
+    position: absolute;
+    inset: 3px 6% auto 6%;
+    height: 36%;
+    border-radius: 8px;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+  }
+  .casino-key:active:not(:disabled) .casino-key__cap {
+    transform: translateY(6px);
+    box-shadow:
+      inset 0 3px 9px rgba(0, 0, 0, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      0 2px 0 -1px #1a2028,
+      0 4px 0 -1px #0a0d12,
+      0 7px 10px -6px rgba(0, 0, 0, 0.95),
+      0 0 18px -6px rgba(0, 229, 255, 0.9);
+  }
+  .casino-key:disabled {
+    cursor: default;
+  }
+  .casino-key:disabled .casino-key__cap {
+    filter: saturate(0.6) brightness(0.82);
+    box-shadow:
+      inset 0 -10px 14px -8px rgba(0, 0, 0, 0.5),
+      0 6px 0 -1px #1a2028,
+      0 10px 16px -10px rgba(0, 0, 0, 0.9);
+  }
+
+  /* 5. TIRA LED DE LA BASE + PLACA CROMADA */
+  .cabinet-baseled {
+    position: relative;
+    height: 9px;
+    margin: 16px 12px 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(0, 229, 255, 0.1), #eaffff 44%, #00e5ff 56%, rgba(0, 229, 255, 0.1));
+    box-shadow:
+      0 0 18px 4px rgba(0, 229, 255, 0.85),
+      0 0 46px 12px rgba(0, 229, 255, 0.35);
+  }
+  .cabinet-handle {
+    height: 16px;
+    width: 48%;
+    max-width: 190px;
+    margin: 12px auto 0;
+    border-radius: 7px;
+    background: linear-gradient(180deg, #f6f8fa 0%, #a3abb4 46%, #646b73 56%, #dde3e9 100%);
+    box-shadow:
+      inset 0 1px 0 #ffffff,
+      inset 0 -2px 4px rgba(0, 0, 0, 0.55),
+      0 6px 14px -8px rgba(0, 0, 0, 1);
+  }
+
+  /* 6. ZÓCALO: apoyo de piso */
+  .cabinet-kick {
+    position: relative;
+    z-index: 0;
+    height: 12px;
+    margin: 11px 14px 0;
+    border-radius: 0 0 8px 8px;
+    background: linear-gradient(180deg, #06080a 0%, #000 100%);
+    box-shadow:
+      inset 0 2px 6px rgba(0, 0, 0, 1),
+      0 6px 12px -6px rgba(0, 0, 0, 1);
+  }
+
+  /* En pantallas angostas el mueble se gira menos */
+  @media (max-width: 520px) {
+    .casino-cabinet {
+      border-radius: 16px 16px 8px 8px;
+    }
+  }
+}
+
 /* Desktop ambient glow outside the phone-proportioned stage */
 @media (min-width: 481px) {
   body {
@@ -152,4 +676,272 @@
 .lb-menu-scroll::-webkit-scrollbar-thumb {
   background: hsl(var(--muted-foreground) / 0.5);
   border-radius: 999px;
+}
+
+/* ══ RULETA MULTIPLICADORA 3D: aro cromado, luces y cúpula de vidrio ══ */
+@layer components {
+  .lb-wheel-stage {
+    position: relative;
+    perspective: 1000px;
+    perspective-origin: 50% 24%;
+  }
+
+  /* El mueble se inclina en perspectiva y se endereza al girar */
+  .lb-wheel-tilt {
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(16deg);
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .lb-wheel-stage[data-spinning="true"] .lb-wheel-tilt {
+    transform: rotateX(4deg) scale(1.03);
+  }
+
+  /* Aro cromado con bisel interior */
+  .lb-wheel-rim {
+    position: relative;
+    border-radius: 9999px;
+    padding: 12px;
+    background: conic-gradient(from 200deg, #f8fafc 0%, #94a3b8 10%, #3f4b5b 24%, #e2e8f0 36%, #64748b 50%, #1f2937 62%, #cbd5e1 78%, #f8fafc 100%);
+    box-shadow:
+      inset 0 2px 3px rgba(255, 255, 255, 0.9),
+      inset 0 -8px 14px rgba(0, 0, 0, 0.8),
+      0 26px 44px -20px rgba(0, 0, 0, 1),
+      0 0 40px -10px rgba(139, 92, 246, 0.8);
+  }
+  .lb-wheel-rim::after {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border-radius: 9999px;
+    pointer-events: none;
+    box-shadow:
+      inset 0 0 0 2px rgba(8, 11, 18, 0.9),
+      inset 0 0 26px rgba(0, 0, 0, 0.8);
+  }
+
+  /* Luces del aro */
+  .lb-wheel-led {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 7px;
+    width: 7px;
+    margin: -3.5px 0 0 -3.5px;
+    border-radius: 9999px;
+    background: radial-gradient(circle at 35% 30%, #ffffff 0 28%, #ffd7a8 48%, #f97316 100%);
+    box-shadow: 0 0 8px rgba(249, 115, 22, 0.95), 0 0 18px rgba(249, 115, 22, 0.55);
+    animation: lb-led-pulse 1.6s ease-in-out infinite;
+  }
+  .lb-wheel-led--violet {
+    background: radial-gradient(circle at 35% 30%, #ffffff 0 28%, #ddd6fe 48%, #8b5cf6 100%);
+    box-shadow: 0 0 8px rgba(139, 92, 246, 0.95), 0 0 18px rgba(139, 92, 246, 0.55);
+  }
+  .lb-wheel-stage[data-spinning="true"] .lb-wheel-led {
+    animation-duration: 0.32s;
+  }
+  @keyframes lb-led-pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  /* Aguja: repica contra los pernos mientras gira */
+  .lb-wheel-pointer {
+    position: absolute;
+    left: 50%;
+    top: -12px;
+    z-index: 20;
+    width: 24px;
+    height: 30px;
+    transform: translateX(-50%);
+    transform-origin: 50% 14%;
+    filter: drop-shadow(0 7px 10px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 10px rgba(249, 115, 22, 0.65));
+  }
+  .lb-wheel-stage[data-spinning="true"] .lb-wheel-pointer {
+    animation: lb-pointer-tick 0.18s ease-in-out infinite;
+  }
+  @keyframes lb-pointer-tick {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    35% { transform: translateX(-50%) rotate(-7deg); }
+    70% { transform: translateX(-50%) rotate(7deg); }
+  }
+
+  /* Disco */
+  .lb-wheel-disc {
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    transform-style: preserve-3d;
+    will-change: transform;
+    box-shadow:
+      inset 0 0 34px rgba(0, 0, 0, 0.55),
+      inset 0 0 0 1px rgba(0, 0, 0, 0.35);
+  }
+
+  /* Cúpula de vidrio (fija al espectador): brillo convexo + reflejo que barre */
+  .lb-wheel-sheen {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    overflow: hidden;
+    border-radius: 9999px;
+    pointer-events: none;
+    background:
+      radial-gradient(58% 42% at 30% 20%, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1) 46%, transparent 66%),
+      radial-gradient(120% 90% at 50% 118%, rgba(0, 0, 0, 0.5), transparent 62%);
+  }
+  .lb-wheel-sheen::after {
+    content: "";
+    position: absolute;
+    inset: -30% -60%;
+    background: linear-gradient(112deg, transparent 40%, rgba(255, 255, 255, 0.34) 48%, rgba(255, 255, 255, 0.06) 55%, transparent 62%);
+    transform: translateX(-70%);
+  }
+  .lb-wheel-stage[data-spinning="true"] .lb-wheel-sheen::after {
+    animation: lb-sheen 1.1s linear infinite;
+  }
+  @keyframes lb-sheen {
+    from { transform: translateX(-70%); }
+    to { transform: translateX(70%); }
+  }
+
+  /* Perno cromado */
+  .lb-wheel-peg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 6px;
+    width: 6px;
+    margin: -3px 0 0 -3px;
+    border-radius: 9999px;
+    background: radial-gradient(circle at 32% 28%, #ffffff, #cbd5e1 55%, #64748b 100%);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.7), 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+
+  /* Sombra de contacto: la rueda apoya, no flota */
+  .lb-wheel-shadow {
+    position: absolute;
+    left: 12%;
+    right: 12%;
+    bottom: -16px;
+    z-index: 0;
+    height: 26px;
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.45) 52%, transparent 78%);
+    filter: blur(7px);
+  }
+
+  /* Chispas alrededor mientras la rueda corre */
+  .lb-wheel-spark {
+    position: absolute;
+    z-index: 15;
+    font-size: 12px;
+    line-height: 1;
+    color: #fde68a;
+    text-shadow: 0 0 10px rgba(253, 230, 138, 0.9);
+    animation: lb-spark 1.4s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes lb-spark {
+    0%, 100% { opacity: 0; transform: scale(0.6) translateY(4px); }
+    50% { opacity: 1; transform: scale(1.15) translateY(-4px); }
+  }
+
+  /* Estallido del premio mayor */
+  .lb-wheel-burst {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 30;
+    height: 0;
+    width: 0;
+    pointer-events: none;
+  }
+  .lb-wheel-burst i {
+    position: absolute;
+    height: 8px;
+    width: 8px;
+    border-radius: 2px;
+    animation: lb-burst 1.1s cubic-bezier(0.2, 0.7, 0.3, 1) forwards;
+  }
+  @keyframes lb-burst {
+    0% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
+    100% { transform: translate(var(--bx), var(--by)) rotate(var(--br)) scale(0.4); opacity: 0; }
+  }
+
+  /* Aparición del resultado */
+  .lb-result-pop {
+    animation: lb-result-pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @keyframes lb-result-pop {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+}
+
+/* ══ BLOG: tipografía de los artículos (el contenido es HTML editorial) ══ */
+@layer components {
+  .lb-article {
+    color: hsl(var(--muted-foreground));
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+  .lb-article p {
+    margin: 0.85rem 0;
+  }
+  .lb-article h2 {
+    margin: 1.8rem 0 0.45rem;
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: hsl(var(--foreground));
+  }
+  .lb-article h3 {
+    margin: 1.3rem 0 0.35rem;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: hsl(var(--foreground));
+  }
+  .lb-article strong {
+    color: hsl(var(--foreground));
+    font-weight: 600;
+  }
+  .lb-article ul {
+    margin: 0.9rem 0;
+    padding-left: 1.15rem;
+    list-style: disc;
+  }
+  .lb-article li {
+    margin: 0.4rem 0;
+  }
+  .lb-article li::marker {
+    color: hsl(var(--primary));
+  }
+  .lb-article .lb-lead {
+    font-size: 1.02rem;
+    color: hsl(var(--foreground) / 0.9);
+  }
+  .lb-article .lb-callout {
+    margin: 1.5rem 0;
+    padding: 0.95rem 1.05rem;
+    border-radius: 1rem;
+    border: 1px solid hsl(var(--primary) / 0.35);
+    background: hsl(var(--primary) / 0.08);
+  }
+  .lb-article .lb-callout strong {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: hsl(var(--primary));
+  }
+  .lb-article .lb-callout p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: hsl(var(--foreground) / 0.85);
+  }
 }

@@ -16,10 +16,10 @@ import {
   CheckCircle2,
   Send,
   X,
-  Sparkles,
   Target,
   TrendingUp,
 } from "lucide-react";
+import Icon3D from "@/components/latambucks/Icon3D";
 import { useI18n } from "@/lib/i18n/LanguageContext";
 
 export default function CampanasLocales() {
@@ -64,7 +64,7 @@ export default function CampanasLocales() {
   // Carga automática al montar — sin desplegable, la lista se ve directo.
   useEffect(() => {
     if (token && user?.id) cargar();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
   }, [token, user?.id]);
 
   const comenzar = (item) => {
@@ -281,9 +281,7 @@ export default function CampanasLocales() {
                 <div className="relative flex items-start justify-between gap-3">
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2">
-                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-violet-500/15 text-violet-400">
-                        <Sparkles className="h-4 w-4" />
-                      </span>
+                      <Icon3D name="megaphone" className="h-8 w-8" />
                       <p className="truncate text-sm font-semibold text-foreground">{item.titulo}</p>
                     </div>
                     <div className="mt-2 flex flex-wrap items-center gap-1.5">

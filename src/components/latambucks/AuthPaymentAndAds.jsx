@@ -1,14 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Wallet, Megaphone, Users, Smartphone, Globe, Store, Sparkles, Gift, CalendarClock, Clock, DollarSign, CheckCircle2 } from "lucide-react";
+import { Wallet, Megaphone } from "lucide-react";
+import { Image } from "@/components/ui/image";
 import { useI18n } from "@/lib/i18n/LanguageContext";
+import { authHero2, authHero3, authHero5 } from "@/lib/localAssets";
+import WD_WALLET_3D from "@/assets/external/icon-withdrawals.png";
+import WD_CALENDAR_3D from "@/assets/external/icon-calendar.png";
+import WD_CLOCK_3D from "@/assets/external/icon-clock.png";
+import WD_CHECK_3D from "@/assets/external/icon-check.png";
+import AD_PEOPLE_3D from "@/assets/external/icon-people.png";
+import AD_GLOBE_3D from "@/assets/external/icon-globe.png";
+import AD_STORE_3D from "@/assets/external/icon-store.png";
+import AD_BUDGET_3D from "@/assets/external/icon-budget.png";
+
+// Íconos 3D (mismo set visual que el resto de la pantalla de acceso).
+const WD_COIN_3D = authHero5; // pago en USD
+const AD_APPS_3D = authHero3; // apps y juegos
+const AD_GIFT_3D = authHero2; // promociones
 
 // Tarjetas del slider de retiros — explica el ciclo de facturación semanal
 // del sitio: acumulación → corte → procesamiento → pago en USD.
 const WITHDRAWAL_CARDS = [
   {
     id: "viernes",
-    icon: Wallet,
+    image: WD_WALLET_3D,
     title: "authw.wd.viernes.title",
     desc: "authw.wd.viernes.desc",
     tag: "authw.wd.viernes.tag",
@@ -19,7 +34,7 @@ const WITHDRAWAL_CARDS = [
   },
   {
     id: "corte",
-    icon: CalendarClock,
+    image: WD_CALENDAR_3D,
     title: "authw.wd.corte.title",
     desc: "authw.wd.corte.desc",
     tag: "authw.wd.corte.tag",
@@ -30,7 +45,7 @@ const WITHDRAWAL_CARDS = [
   },
   {
     id: "acumulacion",
-    icon: Clock,
+    image: WD_CLOCK_3D,
     title: "authw.wd.acumulacion.title",
     desc: "authw.wd.acumulacion.desc",
     tag: "authw.wd.acumulacion.tag",
@@ -41,7 +56,7 @@ const WITHDRAWAL_CARDS = [
   },
   {
     id: "usd",
-    icon: DollarSign,
+    image: WD_COIN_3D,
     title: "authw.wd.usd.title",
     desc: "authw.wd.usd.desc",
     tag: "authw.wd.usd.tag",
@@ -52,7 +67,7 @@ const WITHDRAWAL_CARDS = [
   },
   {
     id: "automatico",
-    icon: CheckCircle2,
+    image: WD_CHECK_3D,
     title: "authw.wd.automatico.title",
     desc: "authw.wd.automatico.desc",
     tag: "authw.wd.automatico.tag",
@@ -68,7 +83,7 @@ const WITHDRAWAL_CARDS = [
 const ADVERTISER_CARDS = [
   {
     id: "influencers",
-    icon: Users,
+    image: AD_PEOPLE_3D,
     title: "authw.ad.influencers.title",
     desc: "authw.ad.influencers.desc",
     tag: "authw.ad.influencers.tag",
@@ -79,7 +94,7 @@ const ADVERTISER_CARDS = [
   },
   {
     id: "apps",
-    icon: Smartphone,
+    image: AD_APPS_3D,
     title: "authw.ad.apps.title",
     desc: "authw.ad.apps.desc",
     tag: "authw.ad.apps.tag",
@@ -90,7 +105,7 @@ const ADVERTISER_CARDS = [
   },
   {
     id: "webs",
-    icon: Globe,
+    image: AD_GLOBE_3D,
     title: "authw.ad.webs.title",
     desc: "authw.ad.webs.desc",
     tag: "authw.ad.webs.tag",
@@ -101,7 +116,7 @@ const ADVERTISER_CARDS = [
   },
   {
     id: "negocios",
-    icon: Store,
+    image: AD_STORE_3D,
     title: "authw.ad.negocios.title",
     desc: "authw.ad.negocios.desc",
     tag: "authw.ad.negocios.tag",
@@ -112,7 +127,7 @@ const ADVERTISER_CARDS = [
   },
   {
     id: "presupuesto",
-    icon: Wallet,
+    image: AD_BUDGET_3D,
     title: "authw.ad.presupuesto.title",
     desc: "authw.ad.presupuesto.desc",
     tag: "authw.ad.presupuesto.tag",
@@ -123,7 +138,7 @@ const ADVERTISER_CARDS = [
   },
   {
     id: "promo",
-    icon: Gift,
+    image: AD_GIFT_3D,
     title: "authw.ad.promo.title",
     desc: "authw.ad.promo.desc",
     tag: "authw.ad.promo.tag",
@@ -200,10 +215,15 @@ export default function AuthPaymentAndAds() {
                 <motion.div
                   animate={{ y: [0, -4, 0] }}
                   transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                  className={`relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${withdrawalCard.iconBg} shadow-[0_8px_24px_-6px] shadow-black/50 ring-1 ${withdrawalCard.ring}`}
+                  className={`relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br ${withdrawalCard.iconBg} shadow-[0_8px_24px_-6px] shadow-black/50 ring-1 ${withdrawalCard.ring}`}
                 >
-                  <withdrawalCard.icon className="h-7 w-7 text-white drop-shadow-lg" />
-                  <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-white/30 via-transparent to-black/20" />
+                  <Image
+                    src={withdrawalCard.image}
+                    alt={t(withdrawalCard.title)}
+                    fittingType="fill"
+                    className="h-full w-full"
+                  />
+                  <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-white/25 via-transparent to-black/25" />
                 </motion.div>
 
                 {/* Texto */}
@@ -249,7 +269,6 @@ export default function AuthPaymentAndAds() {
           <p className="font-display text-sm font-bold tracking-wide text-foreground">
             {t("authw.adsTitle")}
           </p>
-          <Sparkles className="ml-auto h-4 w-4 text-amber-300" />
         </div>
 
         <div
@@ -285,10 +304,15 @@ export default function AuthPaymentAndAds() {
                 <motion.div
                   animate={{ y: [0, -4, 0] }}
                   transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                  className={`relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${card.iconBg} shadow-[0_8px_24px_-6px] shadow-black/50 ring-1 ${card.ring}`}
+                  className={`relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br ${card.iconBg} shadow-[0_8px_24px_-6px] shadow-black/50 ring-1 ${card.ring}`}
                 >
-                  <card.icon className="h-7 w-7 text-white drop-shadow-lg" />
-                  <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-white/30 via-transparent to-black/20" />
+                  <Image
+                    src={card.image}
+                    alt={t(card.title)}
+                    fittingType="fill"
+                    className="h-full w-full"
+                  />
+                  <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-white/25 via-transparent to-black/25" />
                 </motion.div>
 
                 {/* Texto */}

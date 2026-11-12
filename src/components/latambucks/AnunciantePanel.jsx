@@ -9,7 +9,8 @@ import {
   rechazarPrueba,
   administrarEstadoCampana,
 } from "@/lib/supabaseClient";
-import { Megaphone, Loader2, Check, X, Inbox, BarChart3, Link2, Wallet, Info, Pause } from "lucide-react";
+import { Megaphone, Loader2, Check, X, Inbox, Link2, Wallet, Info, Pause } from "lucide-react";
+import Icon3D from "@/components/latambucks/Icon3D";
 import { Image } from "@/components/ui/image";
 import { PaymentLogoBadge } from "@/components/latambucks/PaymentLogos";
 import AnunciarAqui from "@/components/latambucks/AnunciarAqui";
@@ -122,7 +123,7 @@ export default function AnunciantePanel() {
   return (
     <div className="space-y-4 px-4 pb-4">
       <header className="flex items-center gap-2 pt-1">
-        <Megaphone className="h-5 w-5 text-orange-400" />
+        <Icon3D name="megaphone" className="h-9 w-9" />
         <div>
           <h2 className="font-display text-xl font-bold text-foreground">{t("tabs.anunciante.title")}</h2>
           <p className="text-sm text-muted-foreground">{t("tabs.anunciante.sub")}</p>
@@ -143,7 +144,7 @@ export default function AnunciantePanel() {
       {!loading && campanas.length > 0 && (
         <div className="space-y-2">
           <div className="flex items-center gap-2 pt-1">
-            <BarChart3 className="h-4 w-4 text-violet-400" />
+            <Icon3D name="trending" className="h-7 w-7" />
             <h3 className="font-display text-sm font-semibold text-foreground">
               {t("an.mis")}
             </h3>
@@ -233,7 +234,7 @@ export default function AnunciantePanel() {
 
       {/* Pruebas pendientes */}
       <div className="flex items-center gap-2 pt-2">
-        <Inbox className="h-4 w-4 text-orange-400" />
+        <Icon3D name="surveys" className="h-7 w-7" />
         <h3 className="font-display text-sm font-semibold text-foreground">
           {t("an.pruebas")}
         </h3>

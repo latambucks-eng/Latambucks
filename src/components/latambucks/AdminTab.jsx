@@ -6,7 +6,8 @@ import AdminDisputas from "@/components/latambucks/AdminDisputas";
 import AdminAvisos from "@/components/latambucks/AdminAvisos";
 import AdminAvisosUsuario from "@/components/latambucks/AdminAvisosUsuario";
 import AdminTimewall from "@/components/latambucks/AdminTimewall";
-import { Shield, Loader2, Check, X, Inbox, Megaphone, FileCheck2 } from "lucide-react";
+import { Loader2, Check, X, Inbox, FileCheck2 } from "lucide-react";
+import Icon3D from "@/components/latambucks/Icon3D";
 
 export default function AdminTab() {
   const { t } = useI18n();
@@ -128,7 +129,7 @@ useEffect(() => {
   return (
     <div className="space-y-6 px-4 pb-4">
       <header className="flex items-center gap-2 pt-1">
-        <Shield className="h-5 w-5 text-violet-400" />
+        <Icon3D name="shield" className="h-9 w-9" />
         <div>
           <h2 className="font-display text-xl font-bold text-foreground">{t("tabs.admin.title")}</h2>
           <p className="text-sm text-muted-foreground">{t("tabs.admin.sub")}</p>
@@ -138,7 +139,7 @@ useEffect(() => {
       {/* Auto-aprobación de vencidas — acción explícita (no automática) */}
       <section className="rounded-2xl border border-border bg-card p-4 space-y-3">
         <div className="flex items-start gap-2">
-          <FileCheck2 className="mt-0.5 h-4 w-4 shrink-0 text-orange-400" />
+          <Icon3D name="surveys" className="mt-0.5 h-7 w-7" />
           <div>
             <h3 className="font-display text-sm font-semibold text-foreground">
               {t("adm.auto.title")}
@@ -175,7 +176,7 @@ useEffect(() => {
       {/* Campañas pendientes de aprobación */}
       <section className="space-y-3">
         <div className="flex items-center gap-2">
-          <Megaphone className="h-4 w-4 text-orange-400" />
+          <Icon3D name="megaphone" className="h-7 w-7" />
           <h3 className="font-display text-sm font-semibold text-foreground">
             {t("adm.camp.title")}
           </h3>

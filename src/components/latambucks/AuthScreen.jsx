@@ -10,18 +10,20 @@ import {
   CheckCircle2,
   Wallet,
   TrendingUp,
-  Sparkles,
   ShieldCheck,
   Clock,
 } from "lucide-react";
 import SiteFooter from "@/components/latambucks/SiteFooter";
+import BlogSection from "@/components/latambucks/BlogSection";
 import FloatingIcons from "@/components/latambucks/FloatingIcons";
 import AuthShowcase from "@/components/latambucks/AuthShowcase";
 import AuthPaymentAndAds from "@/components/latambucks/AuthPaymentAndAds";
 import CountrySelector from "@/components/latambucks/CountrySelector";
 import LanguagePicker from "@/components/latambucks/LanguagePicker";
 import { useI18n } from "@/lib/i18n/LanguageContext";
+import { Image } from "@/components/ui/image";
 import { authHero1, brandLogo } from "@/lib/localAssets";
+import CTA_3D_URL from "@/assets/external/icon-earn.png";
 
 const LOGO_URL = brandLogo;
 
@@ -368,7 +370,14 @@ export default function AuthScreen({ initialMode = "login" }) {
       {/* CTA final centrado a ancho completo */}
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mx-auto max-w-md rounded-3xl border border-orange-500/40 bg-card/80 p-6 text-center shadow-[0_8px_40px_-12px] shadow-orange-500/20 backdrop-blur-xl">
-          <Sparkles className="mx-auto mb-2 h-6 w-6 text-orange-400" />
+          <div className="mx-auto mb-3 h-16 w-16 overflow-hidden rounded-2xl ring-1 ring-orange-500/40 shadow-[0_10px_28px_-8px] shadow-black/60">
+            <Image
+              src={CTA_3D_URL}
+              alt=""
+              fittingType="fill"
+              className="h-full w-full"
+            />
+          </div>
           <p className="font-display text-lg font-bold text-foreground">
             {t("auth.cta.title")}
           </p>
@@ -387,6 +396,9 @@ export default function AuthScreen({ initialMode = "login" }) {
           </button>
         </div>
       </div>
+
+      {/* Blog al final de la landing (los artículos son públicos y ayudan al SEO) */}
+      <BlogSection />
 
       {/* Footer a ancho completo, centrado */}
       <SiteFooter />

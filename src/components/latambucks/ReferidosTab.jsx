@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { useLatamBucks } from "@/lib/latambucksStore";
 import { useI18n } from "@/lib/i18n/LanguageContext";
 import ReferidosPanel from "@/components/latambucks/ReferidosPanel";
-import { Copy, Check, Gift, Users } from "lucide-react";
+import ReferralEarnings from "@/components/latambucks/ReferralEarnings";
+import PayoutInfo from "@/components/latambucks/PayoutInfo";
+import { Copy, Check, Gift } from "lucide-react";
+import Icon3D from "@/components/latambucks/Icon3D";
 
 export default function ReferidosTab() {
   const { perfil } = useLatamBucks();
@@ -13,7 +16,10 @@ export default function ReferidosTab() {
   const porReferidos = perfil?.puntos_por_referidos ?? 0;
 
   const copyCode = () => {
-    const refLink = `${window.location.origin}/?ref=${encodeURIComponent(codigo)}`;
+    // BASE_URL respeta subdirectorios (GitHub Pages: /repo/) para que el
+    // enlace de invitación abra la app y no la raíz del dominio.
+    const basePath = (import.meta.env?.BASE_URL || "/").replace(/\/+$/, "");
+    const refLink = `${window.location.origin}${basePath}/?ref=${encodeURIComponent(codigo)}`;
     navigator.clipboard?.writeText(refLink);
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
@@ -27,6 +33,9 @@ export default function ReferidosTab() {
           {t("tabs.referidos.sub")}
         </p>
       </header>
+
+      {/* Aclaración del 10% de por vida + ejemplos de ganancia */}
+      <ReferralEarnings />
 
       {/* Referral code */}
       <div className="rounded-2xl border border-border bg-card p-4">
@@ -60,9 +69,7 @@ export default function ReferidosTab() {
       {/* Puntos por Referidos (comisión 10%) */}
       <div className="rounded-2xl border border-violet-500/30 bg-gradient-to-br from-violet-500/10 via-card to-card p-4">
         <div className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-violet-500/15 text-violet-400">
-            <Users className="h-4 w-4" />
-          </div>
+          <Icon3D name="referrals" className="h-9 w-9" />
           <div>
             <p className="text-[11px] text-muted-foreground">{t("referidos.puntos.title")}</p>
             <p className="font-display text-xl font-bold text-violet-400">
@@ -77,6 +84,8 @@ export default function ReferidosTab() {
 
       {/* Historial de referidos y guía de ganancias */}
       <ReferidosPanel />
+
+      <PayoutInfo compact />
     </div>
   );
 }

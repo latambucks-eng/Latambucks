@@ -3,7 +3,7 @@ import { useLatamBucks } from "@/lib/latambucksStore";
 import { useI18n } from "@/lib/i18n/LanguageContext";
 import { openCpxOfferWall } from "@/lib/cpxOfferWall";
 import { openCpagripLocker } from "@/lib/cpagripOfferWall";
-import { ClipboardList, Smartphone } from "lucide-react";
+import Icon3D from "@/components/latambucks/Icon3D";
 import CpagripGuide from "@/components/latambucks/CpagripGuide";
 import RapidoReachOfferWall from "@/components/latambucks/RapidoReachOfferWall";
 
@@ -21,7 +21,7 @@ export default function EarnTab() {
       {/* More tasks (coming soon) */}
       <div className="grid gap-3">
         <TaskCard
-          icon={ClipboardList}
+          icon="surveys"
           accent="sky"
           title={t("earn.surveys.title")}
           desc={t("earn.surveys.desc")}
@@ -31,7 +31,7 @@ export default function EarnTab() {
           onClick={() => openCpxOfferWall(user, token)}
         />
         <TaskCard
-          icon={Smartphone}
+          icon="apps"
           accent="violet"
           title={t("earn.apps.title")}
           desc={t("earn.apps.desc")}
@@ -53,7 +53,7 @@ export default function EarnTab() {
   );
 }
 
-function TaskCard({ icon: Icon, title, desc, reward, rewardSub, disabled, onClick, accent = "violet", hint }) {
+function TaskCard({ icon, title, desc, reward, rewardSub, disabled, onClick, accent = "violet", hint }) {
   const Wrapper = onClick && !disabled ? "button" : "div";
   const accents = {
     violet: { bg: "from-violet-500/25 to-violet-600/5", text: "text-violet-400", ring: "ring-violet-500/25", glow: "bg-violet-500/20" },
@@ -68,9 +68,7 @@ function TaskCard({ icon: Icon, title, desc, reward, rewardSub, disabled, onClic
       }`}
     >
       <div className={`pointer-events-none absolute -left-6 top-1/2 h-20 w-20 -translate-y-1/2 rounded-full ${a.glow} opacity-50 blur-2xl transition group-hover:opacity-80`} />
-      <div className={`relative flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${a.bg} ${a.text} ring-1 ${a.ring} shadow-lg shadow-black/30`}>
-        <Icon className="h-6 w-6 drop-shadow-[0_2px_3px_rgba(0,0,0,0.4)]" />
-      </div>
+      <Icon3D name={icon} className="relative h-12 w-12 rounded-xl shadow-lg shadow-black/30" />
       <div className="relative flex-1">
         <p className="text-sm font-medium text-foreground">{title}</p>
         <p className="text-xs text-muted-foreground">{desc}</p>
