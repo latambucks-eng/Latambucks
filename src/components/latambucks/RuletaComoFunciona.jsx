@@ -1,16 +1,21 @@
 import React from "react";
 import { HelpCircle } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { fill } from "@/lib/i18n/content/multiplicar";
+import { MULTIPLICAR, fill } from "@/lib/i18n/content/multiplicar";
+import { useI18n } from "@/lib/i18n/LanguageContext";
+import LimitesRuletaContenido from "@/components/latambucks/LimitesRuletaContenido";
+import EjemploRuleta from "@/components/latambucks/EjemploRuleta";
 
 // Sección "¿Cómo funciona?": explica las reglas con los valores del país del
-// usuario (nunca menciona tiers ni otros países).
-export default function RuletaComoFunciona({ copy, minEncuesta, maxApuesta, topeNeto }) {
+// usuario e incluye, debajo, la tabla de probabilidades y los límites por tier.
+export default function RuletaComoFunciona({ copy, minEncuesta, maxApuesta }) {
+  const { lang } = useI18n();
+  const limits = (MULTIPLICAR[lang] || MULTIPLICAR.es).limits;
+  // Los límites de apuesta y los resultados posibles ya se detallan en la
+  // tabla de probabilidades y tiers, así que aquí solo quedan las reglas.
   const items = [
     { title: copy.howSpinsTitle, text: fill(copy.howSpins, { min: minEncuesta }) },
     { title: copy.howBalanceTitle, text: copy.howBalance },
-    { title: copy.howLimitsTitle, text: fill(copy.howLimits, { max: maxApuesta, cap: topeNeto }) },
-    { title: copy.howResultsTitle, text: copy.howResults },
   ];
 
   return (
@@ -36,6 +41,14 @@ export default function RuletaComoFunciona({ copy, minEncuesta, maxApuesta, tope
             </li>
           ))}
         </ul>
+
+        <div className="mt-4">
+          <EjemploRuleta copy={copy.example} apuesta={maxApuesta} tiers={limits?.tiers} />
+        </div>
+
+        <div className="mt-4 border-t border-border pt-4">
+          <LimitesRuletaContenido copy={limits} />
+        </div>
       </DialogContent>
     </Dialog>
   );
