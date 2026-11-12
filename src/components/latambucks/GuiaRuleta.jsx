@@ -14,7 +14,10 @@ const SPARKLE_3D =
 export default function GuiaRuleta() {
   const { lang } = useI18n();
   const copy = MULTIPLICAR[lang] || MULTIPLICAR.es;
-  const g = copy.guide;
+  // Si un idioma quedara sin bloque de guía, cae a español y, como último
+  // recurso, no renderiza nada: nunca debe tumbar la pestaña entera.
+  const g = copy.guide || MULTIPLICAR.es.guide;
+  if (!g) return null;
 
   return (
     <section className="rounded-2xl border border-border bg-card p-4">
