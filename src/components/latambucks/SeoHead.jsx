@@ -1,68 +1,103 @@
-import { useEffect } from "react";
-import { brandLogo } from "@/lib/localAssets";
+import React, { useEffect } from "react";
+import { useI18n } from "@/lib/i18n/LanguageContext";
 
 const SITE_NAME = "LatamBucks";
-const SITE_URL = typeof window !== "undefined" ? window.location.origin : "";
-const DEFAULT_IMAGE = brandLogo;
+const SITE_URL = "https://latambucks.base44.app";
+const DEFAULT_IMAGE =
+  "https://media.base44.com/images/public/6aac56144f542d29eaac794b/2a9717c86_generated_image.png";
+const DEFAULT_LOCALE = "es";
+const OG_LOCALES = { es: "es_ES", en: "en_US", pt: "pt_BR" };
 
 /**
- * Actualiza dinámicamente el <head> por ruta (SPA):
- * document.title + meta description + Open Graph + Twitter Card + canonical.
+ * Actualiza dinámicamente el <head> por ruta e idioma:
+ * document.title, meta description, Open Graph, Twitter Card, canonical,
+ * og:locale y alternates hreflang (es / en / pt / x-default), para que Google
+ * indexe cada idioma con su propia dirección (?lang=en, ?lang=pt).
  * Limpia los tags al desmontar para que no persistan entre páginas.
  */
 export default function SeoHead({ title, description, path }) {
+  const { lang } = useI18n();
+
   useEffect(() => {
     if (!title) return;
+    const active = OG_LOCALES[lang] ? lang : DEFAULT_LOCALE;
     const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
-    const canonical = path ? `${SITE_URL}${path}` : SITE_URL;
+    const urlFor = (code) => `${SITE_URL}${path || ""}${code === DEFAULT_LOCALE ? "" : `?lang=${code}`}`;
+    const canonical = urlFor(active);
+    const previousTitle = document.title;
 
-    const ensure = (selector, attrs) => {
-      let el = document.head.querySelector(selector);
+    const created = [];
+    const restore = [];
+
+    const meta = (attr, key, value) => {
+      if (!value) return;
+      let el = document.head.querySelector(`meta[${attr}="${key}"]`);
       if (!el) {
         el = document.createElement("meta");
+        el.setAttribute(attr, key);
         document.head.appendChild(el);
+        created.push(el);
+      } else {
+        restore.push([el, "content", el.getAttribute("content") || ""]);
       }
-      Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
-      return el;
-    };
-
-    const originals = {
-      title: document.title,
-      description: document.querySelector('meta[name="description"]')?.getAttribute("content") || "",
-      ogTitle: document.querySelector('meta[property="og:title"]')?.getAttribute("content") || "",
-      ogDesc: document.querySelector('meta[property="og:description"]')?.getAttribute("content") || "",
-      ogUrl: document.querySelector('meta[property="og:url"]')?.getAttribute("content") || "",
-      twTitle: document.querySelector('meta[name="twitter:title"]')?.getAttribute("content") || "",
-      twDesc: document.querySelector('meta[name="twitter:description"]')?.getAttribute("content") || "",
-      canonical: document.querySelector('link[rel="canonical"]')?.getAttribute("href") || "",
+      el.setAttribute("content", value);
     };
 
     document.title = fullTitle;
-    ensure('meta[name="description"]', { name: "description", content: description });
-    ensure('meta[property="og:title"]', { property: "og:title", content: fullTitle });
-    ensure('meta[property="og:description"]', { property: "og:description", content: description });
-    ensure('meta[property="og:url"]', { property: "og:url", content: canonical });
-    ensure('meta[name="twitter:title"]', { name: "twitter:title", content: fullTitle });
-    ensure('meta[name="twitter:description"]', { name: "twitter:description", content: description });
-    let link = document.querySelector('link[rel="canonical"]');
-    if (!link) {
-      link = document.createElement("link");
-      link.setAttribute("rel", "canonical");
-      document.head.appendChild(link);
+    meta("name", "description", description);
+    meta("property", "og:title", fullTitle);
+    meta("property", "og:description", description);
+    meta("property", "og:url", canonical);
+    meta("property", "og:type", "website");
+    meta("property", "og:site_name", SITE_NAME);
+    meta("property", "og:image", DEFAULT_IMAGE);
+    meta("property", "og:locale", OG_LOCALES[active]);
+    meta("name", "twitter:card", "summary_large_image");
+    meta("name", "twitter:title", fullTitle);
+    meta("name", "twitter:description", description);
+    meta("name", "twitter:image", DEFAULT_IMAGE);
+
+    // Canonical del idioma activo.
+    let linkCanonical = document.head.querySelector('link[rel="canonical"]');
+    if (!linkCanonical) {
+      linkCanonical = document.createElement("link");
+      linkCanonical.setAttribute("rel", "canonical");
+      document.head.appendChild(linkCanonical);
+      created.push(linkCanonical);
+    } else {
+      restore.push([linkCanonical, "href", linkCanonical.getAttribute("href") || ""]);
     }
-    link.setAttribute("href", canonical);
+    linkCanonical.setAttribute("href", canonical);
+
+    // Versiones por idioma de esta misma página.
+    document.head
+      .querySelectorAll('link[data-lb-hreflang="1"]')
+      .forEach((el) => el.remove());
+    const alternates = [
+      ...["es", "en", "pt"].map((code) => ({ hreflang: code, href: urlFor(code) })),
+      { hreflang: "x-default", href: urlFor(DEFAULT_LOCALE) },
+    ];
+    alternates.forEach(({ hreflang, href }) => {
+      const el = document.createElement("link");
+      el.setAttribute("rel", "alternate");
+      el.setAttribute("hreflang", hreflang);
+      el.setAttribute("href", href);
+      el.setAttribute("data-lb-hreflang", "1");
+      document.head.appendChild(el);
+    });
 
     return () => {
-      document.title = originals.title;
-      ensure('meta[name="description"]', { name: "description", content: originals.description });
-      ensure('meta[property="og:title"]', { property: "og:title", content: originals.ogTitle });
-      ensure('meta[property="og:description"]', { property: "og:description", content: originals.ogDesc });
-      ensure('meta[property="og:url"]', { property: "og:url", content: originals.ogUrl });
-      ensure('meta[name="twitter:title"]', { name: "twitter:title", content: originals.twTitle });
-      ensure('meta[name="twitter:description"]', { name: "twitter:description", content: originals.twDesc });
-      link.setAttribute("href", originals.canonical);
+      document.title = previousTitle;
+      created.forEach((el) => el.remove());
+      restore.forEach(([el, attr, value]) => {
+        if (value) el.setAttribute(attr, value);
+        else el.removeAttribute(attr);
+      });
+      document.head
+        .querySelectorAll('link[data-lb-hreflang="1"]')
+        .forEach((el) => el.remove());
     };
-  }, [title, description, path]);
+  }, [title, description, path, lang]);
 
   return null;
 }
