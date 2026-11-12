@@ -3,7 +3,21 @@ import { rpcGetAvisoActivo } from "@/lib/supabaseClient";
 import { useLatamBucks } from "@/lib/latambucksStore";
 import { Info, CheckCircle, AlertTriangle, XCircle, X } from "lucide-react";
 import { useI18n } from "@/lib/i18n/LanguageContext";
-import { resolverAviso } from "@/lib/i18n/avisoIdioma";
+// Elige la versión del aviso según el idioma del usuario; si falta la
+// traducción, se muestra el texto original en español.
+const CAMPOS_IDIOMA = {
+  en: { titulo: "titulo_en", mensaje: "mensaje_en" },
+  pt: { titulo: "titulo_pt", mensaje: "mensaje_pt" },
+};
+
+const resolverAviso = (aviso, lang) => {
+  if (!aviso) return { titulo: "", mensaje: "" };
+  const campo = CAMPOS_IDIOMA[lang];
+  return {
+    titulo: (campo && aviso[campo.titulo]) || aviso.titulo || "",
+    mensaje: (campo && aviso[campo.mensaje]) || aviso.mensaje || "",
+  };
+};
 
 const TIPOS = {
   info: {
