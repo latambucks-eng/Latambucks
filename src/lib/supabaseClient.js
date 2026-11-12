@@ -921,7 +921,7 @@ export async function supabaseUpdatePassword(accessToken, tokenHash, password) {
 }
 
 /* ============================================================
-   RPC WRAPPERS — Reemplazan las antiguas backend functions
+   RPC WRAPPERS — Reemplazan backend functions de Base44
    ============================================================ */
 
 // Verifica si el usuario es admin (reemplaza checkAdminStatus)
@@ -969,7 +969,7 @@ export async function rpcRegistrarReferido(token, codigo, pais) {
 // Obtiene ganadores recientes con país del usuario (reemplaza getGanadoresRecientes).
 // RPC get_ganadores_recientes(): corre en el servidor (SECURITY DEFINER), consulta
 // historial_tareas + perfiles y devuelve cada ganador con su país (pais) para
-// mostrar la bandera. No depende de ningún backend externo.
+// mostrar la bandera. No depende del backend de Base44.
 export async function rpcGetGanadores(token) {
   const data = await callRpc(token, "get_ganadores_recientes");
   return { ganadores: Array.isArray(data?.ganadores) ? data.ganadores : [] };
@@ -1046,16 +1046,45 @@ export async function fetchAvisosSistema(token) {
   return await parse(res);
 }
 
+// Las columnas de traducción existen recién después de ejecutar
+// avisos_multidioma.sql. Se comprueba una sola vez y se recuerda: si todavía no
+// están, los avisos se guardan igual (solo en español) sin romper nada.
+let avisosIdiomasListos = null;
+async function avisosConIdiomas(token) {
+  if (avisosIdiomasListos !== null) return avisosIdiomasListos;
+  try {
+    const res = await fetch(`${REST}/avisos_sistema?select=titulo_en&limit=1`, {
+      headers: baseHeaders(token),
+    });
+    avisosIdiomasListos = res.ok;
+  } catch {
+    avisosIdiomasListos = false;
+  }
+  return avisosIdiomasListos;
+}
+
+function traduccionAviso(data) {
+  return {
+    titulo_en: data.titulo_en ? String(data.titulo_en).slice(0, 120) : null,
+    mensaje_en: data.mensaje_en ? String(data.mensaje_en).slice(0, 1000) : null,
+    titulo_pt: data.titulo_pt ? String(data.titulo_pt).slice(0, 120) : null,
+    mensaje_pt: data.mensaje_pt ? String(data.mensaje_pt).slice(0, 1000) : null,
+  };
+}
+
 export async function createAvisoSistema(token, data) {
+  const body = {
+    titulo: String(data.titulo).slice(0, 120),
+    mensaje: String(data.mensaje).slice(0, 1000),
+    tipo: ["info", "success", "warning", "error"].includes(data.tipo) ? data.tipo : "info",
+    activo: data.activo !== false,
+  };
+  if (await avisosConIdiomas(token)) Object.assign(body, traduccionAviso(data));
+
   const res = await fetch(`${REST}/avisos_sistema`, {
     method: "POST",
     headers: { ...baseHeaders(token), "Content-Type": "application/json", Prefer: "return=representation" },
-    body: JSON.stringify({
-      titulo: String(data.titulo).slice(0, 120),
-      mensaje: String(data.mensaje).slice(0, 1000),
-      tipo: ["info", "success", "warning", "error"].includes(data.tipo) ? data.tipo : "info",
-      activo: data.activo !== false,
-    }),
+    body: JSON.stringify(body),
   });
   return await parse(res);
 }
@@ -1066,6 +1095,12 @@ export async function updateAvisoSistema(token, id, data) {
   if (data.mensaje !== undefined) patch.mensaje = String(data.mensaje).slice(0, 1000);
   if (data.tipo !== undefined && ["info", "success", "warning", "error"].includes(data.tipo)) patch.tipo = data.tipo;
   if (data.activo !== undefined) patch.activo = !!data.activo;
+  if (await avisosConIdiomas(token)) {
+    if (data.titulo_en !== undefined) patch.titulo_en = data.titulo_en ? String(data.titulo_en).slice(0, 120) : null;
+    if (data.mensaje_en !== undefined) patch.mensaje_en = data.mensaje_en ? String(data.mensaje_en).slice(0, 1000) : null;
+    if (data.titulo_pt !== undefined) patch.titulo_pt = data.titulo_pt ? String(data.titulo_pt).slice(0, 120) : null;
+    if (data.mensaje_pt !== undefined) patch.mensaje_pt = data.mensaje_pt ? String(data.mensaje_pt).slice(0, 1000) : null;
+  }
   patch.updated_date = new Date().toISOString();
   const res = await fetch(`${REST}/avisos_sistema?id=eq.${encodeURIComponent(id)}`, {
     method: "PATCH",
