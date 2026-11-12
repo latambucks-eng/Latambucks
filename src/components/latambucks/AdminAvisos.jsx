@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { fetchAvisosSistema, createAvisoSistema, updateAvisoSistema, deleteAvisoSistema } from "@/lib/supabaseClient";
 import { useLatamBucks } from "@/lib/latambucksStore";
 import { useI18n } from "@/lib/i18n/LanguageContext";
-import { Megaphone, Plus, Pencil, Trash2, Check, Loader2, Inbox } from "lucide-react";
+import { Megaphone, Plus, Pencil, Trash2, X, Check, Loader2, Inbox } from "lucide-react";
 
 const TIPOS = [
   { value: "info", color: "text-sky-400" },
@@ -11,7 +11,21 @@ const TIPOS = [
   { value: "error", color: "text-rose-400" },
 ];
 
-const EMPTY = { titulo: "", mensaje: "", tipo: "info", activo: true };
+const IDIOMAS = [
+  { code: "en", label: "English" },
+  { code: "pt", label: "Português" },
+];
+
+const EMPTY = {
+  titulo: "",
+  mensaje: "",
+  tipo: "info",
+  activo: true,
+  titulo_en: "",
+  mensaje_en: "",
+  titulo_pt: "",
+  mensaje_pt: "",
+};
 
 export default function AdminAvisos() {
   const { t } = useI18n();
@@ -53,6 +67,10 @@ export default function AdminAvisos() {
       mensaje: aviso.mensaje || "",
       tipo: aviso.tipo || "info",
       activo: aviso.activo !== false,
+      titulo_en: aviso.titulo_en || "",
+      mensaje_en: aviso.mensaje_en || "",
+      titulo_pt: aviso.titulo_pt || "",
+      mensaje_pt: aviso.mensaje_pt || "",
     });
     setErr("");
   };
@@ -178,6 +196,39 @@ export default function AdminAvisos() {
             />
             {t("admav.active")}
           </label>
+
+          {/* Versiones en otros idiomas: se escriben a mano y son opcionales. */}
+          <div className="space-y-3 rounded-xl border border-border bg-background/40 p-3">
+            <div>
+              <p className="text-[11px] font-semibold text-foreground">{t("admav.otherLangs")}</p>
+              <p className="mt-0.5 text-[10px] leading-relaxed text-muted-foreground">
+                {t("admav.optionalHint")}
+              </p>
+            </div>
+            {IDIOMAS.map(({ code, label }) => (
+              <div key={code} className="space-y-1.5">
+                <p className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground/70">
+                  {label}
+                </p>
+                <input
+                  value={form[`titulo_${code}`]}
+                  onChange={(e) => setForm({ ...form, [`titulo_${code}`]: e.target.value })}
+                  maxLength={120}
+                  placeholder={t("admav.fieldTitlePh")}
+                  className="lb-input"
+                />
+                <textarea
+                  value={form[`mensaje_${code}`]}
+                  onChange={(e) => setForm({ ...form, [`mensaje_${code}`]: e.target.value })}
+                  maxLength={1000}
+                  rows={2}
+                  placeholder={t("admav.fieldMessagePh")}
+                  className="lb-input resize-none"
+                />
+              </div>
+            ))}
+          </div>
+
           <div className="flex gap-2">
             <button
               onClick={save}
