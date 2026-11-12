@@ -23,16 +23,6 @@ export const MULTIPLICAR = {
         "A más encuestas, mayor apuesta: la apuesta máxima por giro depende de tu país y de tu saldo apostable.",
       ],
     },
-    guide: {
-      title: "Multiplicá tus encuestas y cobrá antes el viernes",
-      sub: "Transformá los puntos de tus encuestas en premios instantáneos con nuestra ruleta.",
-      checks: [
-        "80% de chances de ganar extra o mantener tu saldo: Girá hasta 4 veces cada 24 h y multiplicá tus puntos hasta x1.5 al instante.",
-        "Ganá giros con cada encuesta: Completá encuestas aprobadas y desbloqueá hasta 4 giros diarios gratis.",
-        "Jugá sin arriesgar tu bono: Apostá solo tus ganancias de encuestas. Tus 500 pts de bienvenida quedan 100% protegidos para tu retiro.",
-      ],
-      limitsLink: "Ver límites y probabilidades por país",
-    },
     limits: {
       title: "Límites y probabilidades por país",
       probTitle: "Tabla de probabilidades",
@@ -44,9 +34,9 @@ export const MULTIPLICAR = {
       ],
       tiersTitle: "Límites por tier",
       tiers: [
-        { tier: "Tier 1", countries: "EE.UU. y países principales", min: "Encuesta mínima 500 pts", max: "Apuesta máxima 1,000 pts" },
-        { tier: "Tier 2", countries: "España", min: "Encuesta mínima 150 pts", max: "Apuesta máxima 400 pts" },
-        { tier: "Tier 3", countries: "Latinoamérica y resto", min: "Encuesta mínima 50 pts", max: "Apuesta máxima 200 pts" },
+        { tier: "Tier 1", countries: "EE.UU. y países principales", min: "Encuesta mínima 500 pts", max: "Apuesta máxima 1,000 pts", bet: 1000 },
+        { tier: "Tier 2", countries: "España", min: "Encuesta mínima 150 pts", max: "Apuesta máxima 400 pts", bet: 400 },
+        { tier: "Tier 3", countries: "Latinoamérica y resto", min: "Encuesta mínima 50 pts", max: "Apuesta máxima 200 pts", bet: 200 },
       ],
       note: "Los límites exactos se aplican automáticamente según el país de tu cuenta.",
     },
@@ -82,6 +72,14 @@ export const MULTIPLICAR = {
       howLimits: "Puedes apostar hasta {max} pts por giro. El tope máximo de ganancia neta es de {cap} pts cada 24 horas.",
       howResultsTitle: "Resultados posibles",
       howResults: "En cada giro puedes multiplicar tu apuesta por x1.1, x1.5, recuperar tu jugada (x1.0) o perder la mitad (x0.5).",
+      example: {
+        title: "Ejemplo con importes reales",
+        lead: "Mirá cuánto te llevás si apostás el máximo de tu país y sale x1.5:",
+        betLabel: "Apuesta",
+        you: "Tu país",
+        foot: "Con el x1.1 igual sumás, y con el x1.0 recuperás toda tu apuesta.",
+        cta: "Hasta 4 giros cada 24 h: tu saldo puede crecer sin hacer más encuestas.",
+      },
       blocked: {
         sin_giros: "Ya usaste los 4 giros de las últimas 24 h. Vuelve cuando se libere la ventana.",
         requisito: "Completa una encuesta o tarea externa de al menos {min} pts para desbloquear 1 giro.",
@@ -135,16 +133,6 @@ export const MULTIPLICAR = {
         "More surveys, bigger bets: your max bet per spin depends on your country and your wagerable balance.",
       ],
     },
-    guide: {
-      title: "Multiply your surveys and get paid before Friday",
-      sub: "Turn your survey points into instant prizes with our wheel.",
-      checks: [
-        "80% chance to win extra or keep your balance: Spin up to 4 times every 24 h and multiply your points up to x1.5 instantly.",
-        "Earn spins with every survey: Complete approved surveys and unlock up to 4 free daily spins.",
-        "Play without risking your bonus: Bet only your survey earnings. Your 500 welcome pts stay 100% protected for your withdrawal.",
-      ],
-      limitsLink: "See limits and odds by country",
-    },
     limits: {
       title: "Limits and odds by country",
       probTitle: "Odds table",
@@ -156,9 +144,9 @@ export const MULTIPLICAR = {
       ],
       tiersTitle: "Limits by tier",
       tiers: [
-        { tier: "Tier 1", countries: "US & main countries", min: "Minimum survey 500 pts", max: "Max bet 1,000 pts" },
-        { tier: "Tier 2", countries: "Spain", min: "Minimum survey 150 pts", max: "Max bet 400 pts" },
-        { tier: "Tier 3", countries: "Latin America & rest", min: "Minimum survey 50 pts", max: "Max bet 200 pts" },
+        { tier: "Tier 1", countries: "US & main countries", min: "Minimum survey 500 pts", max: "Max bet 1,000 pts", bet: 1000 },
+        { tier: "Tier 2", countries: "Spain", min: "Minimum survey 150 pts", max: "Max bet 400 pts", bet: 400 },
+        { tier: "Tier 3", countries: "Latin America & rest", min: "Minimum survey 50 pts", max: "Max bet 200 pts", bet: 200 },
       ],
       note: "Your exact limits are applied automatically based on your account's country.",
     },
@@ -194,6 +182,14 @@ export const MULTIPLICAR = {
       howLimits: "You can bet up to {max} pts per spin. The maximum net profit cap is {cap} pts every 24 hours.",
       howResultsTitle: "Possible results",
       howResults: "On each spin you can multiply your bet by x1.1, x1.5, get your bet back (x1.0) or lose half (x0.5).",
+      example: {
+        title: "An example with real amounts",
+        lead: "See what you take home if you bet your country's maximum and hit x1.5:",
+        betLabel: "Bet",
+        you: "Your country",
+        foot: "Hit x1.1 and you still gain; hit x1.0 and you get your whole bet back.",
+        cta: "You get up to 4 spins every 24 h: your balance can grow without doing more surveys.",
+      },
       blocked: {
         sin_giros: "You've used all 4 spins of the last 24 h. Come back when the window frees up.",
         requisito: "Complete a survey or external task of at least {min} pts to unlock 1 spin.",
@@ -247,16 +243,6 @@ export const MULTIPLICAR = {
         "Quanto mais enquetes, maior a aposta: a aposta máxima por giro depende do seu país e do seu saldo apostável.",
       ],
     },
-    guide: {
-      title: "Multiplique suas enquetes e receba antes da sexta",
-      sub: "Transforme os pontos das suas enquetes em prêmios instantâneos com a nossa roleta.",
-      checks: [
-        "80% de chance de ganhar extra ou manter seu saldo: Gire até 4 vezes a cada 24 h e multiplique seus pontos até x1.5 na hora.",
-        "Ganhe giros com cada enquete: Complete enquetes aprovadas e desbloqueie até 4 giros diários grátis.",
-        "Jogue sem arriscar seu bônus: Aposte apenas os ganhos das suas enquetes. Seus 500 pts de boas-vindas ficam 100% protegidos para o saque.",
-      ],
-      limitsLink: "Ver limites e probabilidades por país",
-    },
     limits: {
       title: "Limites e probabilidades por país",
       probTitle: "Tabela de probabilidades",
@@ -268,9 +254,9 @@ export const MULTIPLICAR = {
       ],
       tiersTitle: "Limites por tier",
       tiers: [
-        { tier: "Tier 1", countries: "EUA e principais países", min: "Enquete mínima 500 pts", max: "Aposta máxima 1,000 pts" },
-        { tier: "Tier 2", countries: "Espanha", min: "Enquete mínima 150 pts", max: "Aposta máxima 400 pts" },
-        { tier: "Tier 3", countries: "América Latina e demais", min: "Enquete mínima 50 pts", max: "Aposta máxima 200 pts" },
+        { tier: "Tier 1", countries: "EUA e principais países", min: "Enquete mínima 500 pts", max: "Aposta máxima 1,000 pts", bet: 1000 },
+        { tier: "Tier 2", countries: "Espanha", min: "Enquete mínima 150 pts", max: "Aposta máxima 400 pts", bet: 400 },
+        { tier: "Tier 3", countries: "América Latina e demais", min: "Enquete mínima 50 pts", max: "Aposta máxima 200 pts", bet: 200 },
       ],
       note: "Os limites exatos são aplicados automaticamente conforme o país da sua conta.",
     },
@@ -306,6 +292,14 @@ export const MULTIPLICAR = {
       howLimits: "Você pode apostar até {max} pts por giro. O teto máximo de lucro líquido é de {cap} pts a cada 24 horas.",
       howResultsTitle: "Resultados possíveis",
       howResults: "Em cada giro você pode multiplicar sua aposta por x1.1, x1.5, recuperar a jogada (x1.0) ou perder metade (x0.5).",
+      example: {
+        title: "Exemplo com valores reais",
+        lead: "Veja quanto você leva se apostar o máximo do seu país e cair x1.5:",
+        betLabel: "Aposta",
+        you: "Seu país",
+        foot: "Se cair x1.1 você ainda ganha, e se cair x1.0 recupera toda a aposta.",
+        cta: "Você tem até 4 giros a cada 24 h: seu saldo pode crescer sem fazer mais pesquisas.",
+      },
       blocked: {
         sin_giros: "Você usou os 4 giros das últimas 24 h. Volte quando a janela liberar.",
         requisito: "Complete uma enquete ou tarefa externa de pelo menos {min} pts para liberar 1 giro.",
