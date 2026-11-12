@@ -42,6 +42,30 @@ export default {
         ],
       },
       {
+        q: "¿Cómo consigo giros en el multiplicador y cuántos tengo?",
+        paragraphs: [
+          "Cada encuesta o tarea externa **aprobada** con al menos el mínimo de tu país te da **1 giro**: 500 pts en Tier 1 (EE.UU. y países principales), 150 pts en Tier 2 (España) y 50 pts en Tier 3 (Latinoamérica y resto). Cuentan las conversiones de las **últimas 24 horas**.",
+          "Podés tener hasta **4 giros cada 24 horas** y la ventana es móvil: cada giro se libera cuando la encuesta que lo generó sale de las últimas 24 h. Arriba de la ruleta ves cuántos te quedan (\"Giros disponibles: X de 4\").",
+          "Si no tenés giros, el botón de la ruleta te lleva directo a las encuestas para que consigas uno. Las tareas internas y los videos no generan giros.",
+        ],
+      },
+      {
+        q: "¿Qué pasa si en un giro me sale x0.5 o x1.0? ¿Pierdo puntos?",
+        paragraphs: [
+          "El premio se calcula como **apuesta × multiplicador**: con x1.5 tu saldo de encuestas sube un 50% de lo apostado, con x1.1 sube un 10%, con x1.0 queda igual y con x0.5 se descuenta la mitad de lo apostado.",
+          "Nunca perdés más de lo que pusiste en ese giro y **nunca quedás en deuda**: el giro solo afecta los puntos que apostaste. El bono de bienvenida y el saldo promocional no se tocan, porque no se pueden apostar.",
+          "Hay un **tope de ganancia neta cada 24 h** por país: si lo alcanzás, la ruleta te avisa y podés volver a girar cuando el tope se libere.",
+        ],
+      },
+      {
+        q: "¿Cuáles son las probabilidades y los límites del multiplicador?",
+        paragraphs: [
+          "**Tabla de probabilidades:** x1.1 = 45% · x1.0 = 30% · x0.5 = 20% · x1.5 = 5%. Cada giro es independiente del anterior: las chances no se acumulan ni se pueden \"cargar\" de un giro a otro.",
+          "**Límites por país:** Tier 1 (EE.UU. y países principales) encuesta mínima 500 pts y apuesta máxima 1,000 pts por giro; Tier 2 (España) 150 pts y 400 pts; Tier 3 (Latinoamérica y resto) 50 pts y 200 pts.",
+          "También aplican un máximo de 4 giros cada 24 h y un tope de ganancia neta diaria. Los valores exactos de tu país están en la ruleta, en \"Límites y probabilidades por país\", y el detalle legal en los Términos y Condiciones (sección 18).",
+        ],
+      },
+      {
         q: "¿Cuánto vale cada punto?",
         paragraphs: [
           "**1000 puntos equivalen a 1 USD** (dólar estadounidense). El saldo se expresa y abona en USD para todos los usuarios, independientemente de su país de residencia.",
@@ -209,6 +233,30 @@ export default {
         ],
       },
       {
+        q: "How do I get multiplier spins and how many do I have?",
+        paragraphs: [
+          "Every **approved** survey or external task worth at least your country's minimum gives you **1 spin**: 500 pts in Tier 1 (US and main countries), 150 pts in Tier 2 (Spain) and 50 pts in Tier 3 (Latin America and the rest). Conversions from the **last 24 hours** count.",
+          "You can hold up to **4 spins every 24 hours** and the window rolls: each spin is released once the survey that generated it leaves the last 24 h. Above the wheel you can see how many you have left (\"Spins available: X of 4\").",
+          "If you have no spins, the wheel button takes you straight to the surveys so you can earn one. Internal tasks and videos do not generate spins.",
+        ],
+      },
+      {
+        q: "What happens if a spin lands on x0.5 or x1.0? Do I lose points?",
+        paragraphs: [
+          "The prize is calculated as **bet × multiplier**: with x1.5 your survey balance grows by 50% of the bet, with x1.1 by 10%, with x1.0 it stays the same and with x0.5 half of the bet is deducted.",
+          "You never lose more than what you put into that spin and **you never end up in debt**: a spin only affects the points you bet. The welcome bonus and promotional balance are untouched, because they cannot be bet.",
+          "Each country has a **daily net-profit cap**: if you reach it, the wheel tells you and you can spin again once the cap is released.",
+        ],
+      },
+      {
+        q: "What are the multiplier's odds and limits?",
+        paragraphs: [
+          "**Odds table:** x1.1 = 45% · x1.0 = 30% · x0.5 = 20% · x1.5 = 5%. Every spin is independent of the previous one: chances do not build up or \"load\" from one spin to the next.",
+          "**Country limits:** Tier 1 (US and main countries) minimum survey 500 pts and maximum bet 1,000 pts per spin; Tier 2 (Spain) 150 pts and 400 pts; Tier 3 (Latin America and the rest) 50 pts and 200 pts.",
+          "A maximum of 4 spins every 24 h and a daily net-profit cap also apply. Your country's exact values are on the wheel, under \"Limits and odds by country\", and the legal detail is in the Terms & Conditions (section 18).",
+        ],
+      },
+      {
         q: "How much is each point worth?",
         paragraphs: [
           "**1000 points equal 1 USD** (US dollar). Balances are expressed and paid in USD for all users, regardless of their country of residence.",
@@ -373,6 +421,30 @@ export default {
           "Os pontos não são dinheiro: são uma unidade de recompensa virtual que só se converte em USD quando um saque é aprovado. O resultado de cada giro é creditado **sempre como pontos**, nunca como dinheiro, e em um giro você só destina pontos que já tem: você nunca fica em dívida nem deve nada.",
           "A plataforma pode alterar, limitar ou desabilitar o multiplicador (regras, probabilidades, tetos diários) com aviso prévio. Usar bots, scripts, contas múltiplas ou VPN para alterar resultados ou limites é fraude e esses pontos são anulados. O detalhe legal completo está nos Termos e Condições (seção 18).",
           "Além disso, **todos os sistemas de gamificação estão sujeitos a alterações**: podemos modificar suas regras, removê-los ou criar novos incentivos no futuro para melhorar o site, sempre com aviso prévio na plataforma.",
+        ],
+      },
+      {
+        q: "Como consigo giros no multiplicador e quantos eu tenho?",
+        paragraphs: [
+          "Cada pesquisa ou tarefa externa **aprovada** com pelo menos o mínimo do seu país dá **1 giro**: 500 pts no Tier 1 (EUA e países principais), 150 pts no Tier 2 (Espanha) e 50 pts no Tier 3 (América Latina e restante). Contam as conversões das **últimas 24 horas**.",
+          "Você pode ter até **4 giros a cada 24 horas** e a janela é móvel: cada giro é liberado quando a pesquisa que o gerou sai das últimas 24 h. Acima da roleta você vê quantos ainda tem (\"Giros disponíveis: X de 4\").",
+          "Se não tiver giros, o botão da roleta leva direto às pesquisas para você conseguir um. Tarefas internas e vídeos não geram giros.",
+        ],
+      },
+      {
+        q: "O que acontece se um giro cair em x0.5 ou x1.0? Perco pontos?",
+        paragraphs: [
+          "O prêmio é calculado como **aposta × multiplicador**: com x1.5 seu saldo de pesquisas sobe 50% do que foi apostado, com x1.1 sobe 10%, com x1.0 fica igual e com x0.5 é descontada a metade do que foi apostado.",
+          "Você nunca perde mais do que colocou naquele giro e **nunca fica em dívida**: o giro afeta só os pontos que você apostou. O bônus de boas-vindas e o saldo promocional não são afetados, porque não podem ser apostados.",
+          "Cada país tem um **teto de lucro líquido a cada 24 h**: se você o atingir, a roleta avisa e você pode girar de novo quando o teto for liberado.",
+        ],
+      },
+      {
+        q: "Quais são as probabilidades e os limites do multiplicador?",
+        paragraphs: [
+          "**Tabela de probabilidades:** x1.1 = 45% · x1.0 = 30% · x0.5 = 20% · x1.5 = 5%. Cada giro é independente do anterior: as chances não se acumulam nem se \"carregam\" de um giro para outro.",
+          "**Limites por país:** Tier 1 (EUA e países principais) pesquisa mínima 500 pts e aposta máxima 1.000 pts por giro; Tier 2 (Espanha) 150 pts e 400 pts; Tier 3 (América Latina e restante) 50 pts e 200 pts.",
+          "Também se aplicam um máximo de 4 giros a cada 24 h e um teto de lucro líquido diário. Os valores exatos do seu país estão na roleta, em \"Limites e probabilidades por país\", e o detalhe legal nos Termos e Condições (seção 18).",
         ],
       },
       {
