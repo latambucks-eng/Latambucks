@@ -15,9 +15,12 @@ import {
   ShieldCheck,
   Lightbulb,
   Check,
+  Info,
 } from "lucide-react";
 import { useI18n } from "@/lib/i18n/LanguageContext";
 import { GUIA } from "@/lib/i18n/content/guia";
+import { MULTIPLICAR } from "@/lib/i18n/content/multiplicar";
+import LimitesRuletaContenido from "@/components/latambucks/LimitesRuletaContenido";
 
 // ============================================================
 // Guía interactiva — recorrido paso a paso por todo LatamBucks
@@ -55,25 +58,35 @@ export default function GuiaInteractiva({ open, onClose }) {
   const navigate = useNavigate();
   const { lang } = useI18n();
   const [step, setStep] = useState(0);
+  const [limitsOpen, setLimitsOpen] = useState(false);
 
   // Cada vez que se abre, arranca desde el principio.
   useEffect(() => {
-    if (open) setStep(0);
+    if (open) {
+      setStep(0);
+      setLimitsOpen(false);
+    }
   }, [open]);
 
-  // Cerrar con Escape.
+  // Cerrar con Escape: primero el panel de límites, después la guía.
   useEffect(() => {
     if (!open) return undefined;
     const onKey = (e) => {
-      if (e.key === "Escape") onClose?.();
+      if (e.key !== "Escape") return;
+      if (limitsOpen) {
+        setLimitsOpen(false);
+        return;
+      }
+      onClose?.();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [open, onClose]);
+  }, [open, onClose, limitsOpen]);
 
   if (!open) return null;
 
   const content = GUIA[lang] || GUIA.es;
+  const limitsCopy = (MULTIPLICAR[lang] || MULTIPLICAR.es).limits;
   const ui = content.ui;
   const steps = STEP_META.map((meta, i) => ({
     ...meta,
@@ -153,6 +166,17 @@ export default function GuiaInteractiva({ open, onClose }) {
             ))}
           </ul>
 
+          {s.limitsLink && (
+            <button
+              type="button"
+              onClick={() => setLimitsOpen(true)}
+              className="mt-3 flex w-full items-center justify-center gap-1 text-[11px] font-medium text-muted-foreground underline-offset-2 transition hover:text-foreground hover:underline"
+            >
+              <Info className="h-3 w-3 shrink-0" />
+              {s.limitsLink}
+            </button>
+          )}
+
           {s.tip && (
             <div className="mt-4 flex items-start gap-2 rounded-xl border border-border bg-background/60 p-3">
               <Lightbulb className="mt-0.5 h-4 w-4 shrink-0 text-amber-300" />
@@ -207,6 +231,33 @@ export default function GuiaInteractiva({ open, onClose }) {
           </button>
         </div>
       </div>
+
+      {/* Panel de límites y probabilidades por país, encima de la guía. */}
+      {limitsOpen && (
+        <div
+          className="absolute inset-0 z-10 flex items-end justify-center bg-black/70 p-4 backdrop-blur-sm sm:items-center"
+          role="dialog"
+          aria-modal="true"
+          aria-label={limitsCopy.title}
+        >
+          <div className="lb-menu-scroll max-h-[85dvh] w-full max-w-md overflow-y-auto rounded-2xl border border-border bg-card p-4 shadow-2xl shadow-black/50">
+            <div className="flex items-start justify-between gap-3">
+              <h3 className="font-display text-base font-bold text-foreground">{limitsCopy.title}</h3>
+              <button
+                type="button"
+                onClick={() => setLimitsOpen(false)}
+                aria-label={ui.cerrar}
+                className="rounded-lg p-1 text-muted-foreground transition hover:bg-background/60 hover:text-foreground"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+            <div className="mt-3">
+              <LimitesRuletaContenido copy={limitsCopy} />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
