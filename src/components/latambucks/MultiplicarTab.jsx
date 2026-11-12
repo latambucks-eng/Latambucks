@@ -1,14 +1,10 @@
 import React from "react";
 import { useI18n } from "@/lib/i18n/LanguageContext";
 import { MULTIPLICAR } from "@/lib/i18n/content/multiplicar";
-import { Image } from "@/components/ui/image";
+import Icon3D from "@/components/latambucks/Icon3D";
 import WelcomeBanner from "@/components/latambucks/WelcomeBanner";
 import MultiplierWheel from "@/components/latambucks/MultiplierWheel";
 import PayoutInfo from "@/components/latambucks/PayoutInfo";
-
-// Icono 3D del bloque "cómo funciona".
-const SPARKLE_3D =
-  "https://media.base44.com/images/public/6aac56144f542d29eaac794b/0b087ee69_generated_image.png";
 
 // Pestaña "Multiplicar puntos" (antes "Ganar"): ruleta + reglas.
 export default function MultiplicarTab() {
@@ -28,7 +24,7 @@ export default function MultiplicarTab() {
 
       <section className="rounded-2xl border border-border bg-card p-4">
         <div className="flex items-start gap-2.5">
-          <Image src={SPARKLE_3D} alt="" className="h-9 w-9 shrink-0 rounded-xl" />
+          <Icon3D name="sparkle" className="h-9 w-9 rounded-xl" />
           <p className="pt-0.5 font-display text-sm font-bold leading-snug text-foreground">
             {copy.tabs.rulesTitle}
           </p>
@@ -56,3 +52,6 @@ export default function MultiplicarTab() {
     </div>
   );
 }
+      
+        
+  
