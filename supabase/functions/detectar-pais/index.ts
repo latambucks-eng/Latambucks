@@ -134,6 +134,19 @@ async function paisPorIp(ip: string | null): Promise<string | null> {
     const txt = (await res.text()).trim();
     if (esIso(txt)) return txt.toUpperCase();
   } catch {
+    /* se prueba el tercer proveedor */
+  }
+  // Tercer respaldo: ip-api.com. ipapi.co limita mucho las consultas sin
+  // plan pago, así que sin este proveedor muchos usuarios quedaban sin país.
+  try {
+    const res = await fetch(`http://ip-api.com/json/${ip}?fields=status,countryCode`, {
+      signal: AbortSignal.timeout(5000),
+    });
+    const data = await res.json();
+    if (data?.status === "success" && esIso(data?.countryCode)) {
+      return String(data.countryCode).trim().toUpperCase();
+    }
+  } catch {
     /* sin geolocalización */
   }
   return null;
