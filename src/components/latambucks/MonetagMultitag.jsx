@@ -6,7 +6,7 @@ import { useEffect } from "react";
 //   2) MULTITAG_DATA_ZONE   → el data-zone (número de zona)
 // Mientras estén vacíos, este componente no hace absolutamente nada.
 // ══════════════════════════════════════════════════════════════════════
-const MULTITAG_SCRIPT_URL = "https://quge5.com";
+const MULTITAG_SCRIPT_URL = "https://quge5.com/88/tag.min.js";
 const MULTITAG_DATA_ZONE = "308998";
 // ══════════════════════════════════════════════════════════════════════
 
