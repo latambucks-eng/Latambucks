@@ -24,7 +24,7 @@
     "@radix-ui/react-hover-card": "^1.1.6",
     "@radix-ui/react-label": "^2.1.2",
     "@radix-ui/react-menubar": "^1.1.6",
-    "@radix-ui/react-navigation-menu": "^2.1.5",
+    "@radix-ui/react-navigation-menu": "^1.2.5",
     "@radix-ui/react-popover": "^1.1.6",
     "@radix-ui/react-progress": "^1.1.2",
     "@radix-ui/react-radio-group": "^1.2.3",
@@ -39,6 +39,7 @@
     "@radix-ui/react-toggle": "^1.1.2",
     "@radix-ui/react-toggle-group": "^1.1.2",
     "@radix-ui/react-tooltip": "^1.1.8",
+    "@supabase/supabase-js": "^2.49.1",
     "@tanstack/react-query": "^5.84.1",
     "browser-image-compression": "^2.0.2",
     "canvas-confetti": "^1.9.4",
@@ -69,7 +70,7 @@
     "@types/node": "^22.13.5",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
-    "@vitejs/plugin-react": "^6.0.5",
+    "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
     "baseline-browser-mapping": "^2.11.32",
     "eslint": "^9.19.0",
@@ -81,16 +82,6 @@
     "postcss": "^8.5.3",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.8.2",
-    "vite": "~8.2.4"
-  },
-  "overrides": {
-    "@humanfs/node": "^0.16.8",
-    "brace-expansion": "^1.1.21",
-    "browserslist": "^4.29.4",
-    "dompurify": "^3.4.17",
-    "fflate": "^0.8.3",
-    "js-yaml": "^4.3.2",
-    "postcss-selector-parser": "^6.1.5",
-    "socket.io-parser": "^4.2.7"
+    "vite": "^6.2.0"
   }
 }
