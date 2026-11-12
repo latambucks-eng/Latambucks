@@ -6,8 +6,8 @@ import { useEffect } from "react";
 //   2) MULTITAG_DATA_ZONE   → el data-zone (número de zona)
 // Mientras estén vacíos, este componente no hace absolutamente nada.
 // ══════════════════════════════════════════════════════════════════════
-const MULTITAG_SCRIPT_URL = "";
-const MULTITAG_DATA_ZONE = "";
+const MULTITAG_SCRIPT_URL = "https://quge5.com";
+const MULTITAG_DATA_ZONE = "308998";
 // ══════════════════════════════════════════════════════════════════════
 
 // Misma clave que usa CookieConsentBanner: el tag de publicidad sólo arranca
