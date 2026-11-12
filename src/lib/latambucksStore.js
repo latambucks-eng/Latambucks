@@ -180,7 +180,11 @@ export function LatamBucksProvider({ children }) {
     if (data.refresh_token) localStorage.setItem(REFRESH_TOKEN_KEY, data.refresh_token);
     setToken(tkn);
     setUser(data.user);
-    await refreshPerfil(tkn, data.user.id);
+    const p = await refreshPerfil(tkn, data.user.id);
+    // Detectar el país real por IP también al iniciar sesión: si el registro
+    // quedó pendiente de confirmar el email (sin sesión), la detección no había
+    // corrido nunca. No se espera: el login no debe demorar por la geolocalización.
+    fijarPaisDetectado(tkn, data.user.id, p).catch(() => {});
     await checkAdmin(tkn);
     await checkAnunciante(tkn, data.user.email);
     await fetchExchangeRate(tkn);
