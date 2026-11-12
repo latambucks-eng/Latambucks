@@ -3,6 +3,7 @@ import { rpcGetAvisoActivo } from "@/lib/supabaseClient";
 import { useLatamBucks } from "@/lib/latambucksStore";
 import { Info, CheckCircle, AlertTriangle, XCircle, X } from "lucide-react";
 import { useI18n } from "@/lib/i18n/LanguageContext";
+import { resolverAviso } from "@/lib/i18n/avisoIdioma";
 
 const TIPOS = {
   info: {
@@ -37,7 +38,7 @@ const TIPOS = {
 
 export default function AvisoBanner() {
   const { token } = useLatamBucks();
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const [aviso, setAviso] = useState(null);
   const [dismissed, setDismissed] = useState(false);
 
@@ -77,15 +78,16 @@ export default function AvisoBanner() {
 
   const config = TIPOS[aviso.tipo] || TIPOS.info;
   const Icon = config.icon;
+  const { titulo, mensaje } = resolverAviso(aviso, lang);
 
   return (
     <div className={`mx-3 mt-2 rounded-xl border ${config.border} ${config.bg} p-3`}>
       <div className="flex items-start gap-2.5">
         <Icon className={`mt-0.5 h-4 w-4 shrink-0 ${config.iconColor}`} />
         <div className="min-w-0 flex-1">
-          <p className={`text-xs font-semibold ${config.text}`}>{aviso.titulo}</p>
+          <p className={`text-xs font-semibold ${config.text}`}>{titulo}</p>
           <p className="mt-0.5 text-[11px] leading-relaxed text-muted-foreground whitespace-pre-line">
-            {aviso.mensaje}
+            {mensaje}
           </p>
         </div>
         <button
