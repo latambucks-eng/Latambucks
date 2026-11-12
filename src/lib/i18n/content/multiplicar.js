@@ -23,6 +23,16 @@ export const MULTIPLICAR = {
         "A más encuestas, mayor apuesta: la apuesta máxima por giro depende de tu país y de tu saldo apostable.",
       ],
     },
+    guide: {
+      title: "Multiplicá tus encuestas y cobrá antes el viernes",
+      sub: "Transformá los puntos de tus encuestas en premios instantáneos con nuestra ruleta.",
+      checks: [
+        "80% de chances de ganar extra o mantener tu saldo: Girá hasta 4 veces cada 24 h y multiplicá tus puntos hasta x1.5 al instante.",
+        "Ganá giros con cada encuesta: Completá encuestas aprobadas y desbloqueá hasta 4 giros diarios gratis.",
+        "Jugá sin arriesgar tu bono: Apostá solo tus ganancias de encuestas. Tus 500 pts de bienvenida quedan 100% protegidos para tu retiro.",
+      ],
+      limitsLink: "Ver límites y probabilidades por país",
+    },
     limits: {
       title: "Límites y probabilidades por país",
       probTitle: "Tabla de probabilidades",
@@ -133,6 +143,16 @@ export const MULTIPLICAR = {
         "More surveys, bigger bets: your max bet per spin depends on your country and your wagerable balance.",
       ],
     },
+    guide: {
+      title: "Multiply your surveys and get paid before Friday",
+      sub: "Turn your survey points into instant prizes with our wheel.",
+      checks: [
+        "80% chance to win extra or keep your balance: Spin up to 4 times every 24 h and multiply your points up to x1.5 instantly.",
+        "Earn spins with every survey: Complete approved surveys and unlock up to 4 free daily spins.",
+        "Play without risking your bonus: Bet only your survey earnings. Your 500 welcome pts stay 100% protected for your withdrawal.",
+      ],
+      limitsLink: "See limits and odds by country",
+    },
     limits: {
       title: "Limits and odds by country",
       probTitle: "Odds table",
@@ -242,6 +262,16 @@ export const MULTIPLICAR = {
         "Seu bônus está 100% protegido: você joga apenas com os pontos das suas enquetes; seus 500 pts ($0.50 USD) de boas-vindas ficam intactos e contam para o saque.",
         "Quanto mais enquetes, maior a aposta: a aposta máxima por giro depende do seu país e do seu saldo apostável.",
       ],
+    },
+    guide: {
+      title: "Multiplique suas enquetes e receba antes da sexta",
+      sub: "Transforme os pontos das suas enquetes em prêmios instantâneos com a nossa roleta.",
+      checks: [
+        "80% de chance de ganhar extra ou manter seu saldo: Gire até 4 vezes a cada 24 h e multiplique seus pontos até x1.5 na hora.",
+        "Ganhe giros com cada enquete: Complete enquetes aprovadas e desbloqueie até 4 giros diários grátis.",
+        "Jogue sem arriscar seu bônus: Aposte apenas os ganhos das suas enquetes. Seus 500 pts de boas-vindas ficam 100% protegidos para o saque.",
+      ],
+      limitsLink: "Ver limites e probabilidades por país",
     },
     limits: {
       title: "Limites e probabilidades por país",
