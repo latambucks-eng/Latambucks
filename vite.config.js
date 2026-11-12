@@ -1,13 +1,10 @@
-/* global process */
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import { readFileSync } from 'fs'
 import { fileURLToPath } from 'url'
 
-// LatamBucks — build independiente (sin dependencias propietarias).
-// `base`: si publicás en un subdirectorio (GitHub Pages: /nombre-del-repo/)
-// definí PUBLIC_BASE=/nombre-del-repo/ al compilar. En dominio raíz queda "/".
-const base = process.env.PUBLIC_BASE || '/'
+// LatamBucks — build independiente configurado para dominio raíz (latambucks.com).
+const base = '/'
 
 // GitHub Pages no reescribe URLs: las rutas del cliente (/faq, /perfiles…)
 // dan 404 al entrar directo. Copiamos 404.html a dist/ con la base real
