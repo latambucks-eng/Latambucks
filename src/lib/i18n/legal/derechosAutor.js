@@ -16,7 +16,7 @@ export default {
         title: "2. Marcas registradas",
         paragraphs: [
           "\"LatamBucks\", su logotipo y los nombres de servicios asociados son marcas de la Plataforma. Su uso no autorizado por terceros está prohibido y será objeto de las acciones legales correspondientes.",
-          "Las marcas de terceros (Payoneer, Airtm, PayPal, CPX Research y otros proveedores) son propiedad de sus respectivos titulares y se mencionan únicamente con fines identificatorios. La Plataforma no tiene relación comercial ni de propiedad con dichas marcas más allá de la utilización de sus servicios.",
+          "Las marcas de terceros (PayPal, Binance, NOWPayments, CPX Research y otros proveedores) son propiedad de sus respectivos titulares y se mencionan únicamente con fines identificatorios. La Plataforma no tiene relación comercial ni de propiedad con dichas marcas más allá de la utilización de sus servicios.",
         ],
       },
       {
@@ -89,7 +89,7 @@ export default {
         title: "2. Trademarks",
         paragraphs: [
           "\"LatamBucks\", its logo and the names of associated services are trademarks of the Platform. Unauthorized use by third parties is forbidden and will lead to the corresponding legal actions.",
-          "Third-party trademarks (Payoneer, Airtm, PayPal, CPX Research and other providers) belong to their respective owners and are mentioned for identification purposes only. The Platform has no commercial or ownership relationship with those trademarks beyond the use of their services.",
+          "Third-party trademarks (PayPal, Binance, NOWPayments, CPX Research and other providers) belong to their respective owners and are mentioned for identification purposes only. The Platform has no commercial or ownership relationship with those trademarks beyond the use of their services.",
         ],
       },
       {
@@ -162,7 +162,7 @@ export default {
         title: "2. Marcas registradas",
         paragraphs: [
           "\"LatamBucks\", seu logotipo e os nomes dos serviços associados são marcas da Plataforma. O uso não autorizado por terceiros é proibido e estará sujeito às ações legais correspondentes.",
-          "As marcas de terceiros (Payoneer, Airtm, PayPal, CPX Research e outros provedores) pertencem aos seus respectivos titulares e são mencionadas apenas para fins de identificação. A Plataforma não tem relação comercial nem de propriedade com essas marcas além da utilização de seus serviços.",
+          "As marcas de terceiros (PayPal, Binance, NOWPayments, CPX Research e outros provedores) pertencem aos seus respectivos titulares e são mencionadas apenas para fins de identificação. A Plataforma não tem relação comercial nem de propriedade com essas marcas além da utilização de seus serviços.",
         ],
       },
       {
