@@ -18,10 +18,7 @@ import Icon3D from "@/components/latambucks/Icon3D";
 // Logo de TheoremReach recortado a su contenido real (el original era un PNG
 // cuadrado con mucho margen en blanco, por eso se veía más chico y borroso).
 import THEOREMREACH_LOGO_URL from "@/assets/theoremreach-logo.png";
-// Versiones cuadradas de los logotipos horizontales: el isotipo original de
-// cada marca, para que entren nítidos en el recuadro cuadrado del encabezado.
-import CPX_ICON_URL from "@/assets/cpx-research-icon.svg";
-import THEOREMREACH_ICON_URL from "@/assets/theoremreach-icon.png";
+
 
 const TIMEWALL_LOGO_URL = "https://images.timebucks.com/TimewallImages/icon.png";
 
@@ -265,14 +262,14 @@ export default function EncuestasTab() {
               la sección de TimeWall. */}
           {providerFilter === "cpx_research" && (
             <ProviderHeader
-              logo={CPX_ICON_URL}
+              logo={CPX_LOGO_URL}
               title={t("cpx.surveys.title")}
               subtitle={t("cpx.surveys.sub")}
             />
           )}
           {providerFilter === "theoremreach" && (
             <ProviderHeader
-              logo={THEOREMREACH_ICON_URL}
+              logo={THEOREMREACH_LOGO_URL}
               title={t("tr.surveys.title")}
               subtitle={t("tr.surveys.sub")}
             />
