@@ -1,9 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Coins, Info } from "lucide-react";
+import { ArrowLeft, Info } from "lucide-react";
 import SiteFooter from "@/components/latambucks/SiteFooter";
 import LanguagePicker from "@/components/latambucks/LanguagePicker";
+import { Image } from "@/components/ui/image";
 import { useI18n } from "@/lib/i18n/LanguageContext";
+
+// Icono real del sitio (el mismo que usa el pie de página).
+const LOGO_URL = "https://media.base44.com/images/public/6aac56144f542d29eaac794b/2a9717c86_generated_image.png";
 
 export function Section({ title, children }) {
   return (
@@ -36,9 +40,11 @@ export default function LegalLayout({ title, subtitle, notice, children }) {
           <ArrowLeft className="h-4 w-4" />
         </Link>
         <div className="flex items-center gap-2">
-          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-orange-500/15 text-orange-400">
-            <Coins className="h-3.5 w-3.5" />
-          </div>
+          <Image
+            src={LOGO_URL}
+            alt="LatamBucks"
+            className="h-7 w-7 rounded-lg ring-1 ring-border"
+          />
           <span className="font-display text-sm font-bold tracking-tight text-foreground">
             Latam<span className="text-orange-400">Bucks</span>
           </span>
