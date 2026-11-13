@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Image } from "@/components/ui/image";
-import { PaymentLogoBadge, PAYMENT_METHODS } from "@/components/latambucks/PaymentLogos";
+import { PaymentLogoBadge } from "@/components/latambucks/PaymentLogos";
 import { useI18n } from "@/lib/i18n/LanguageContext";
 import { Wallet } from "lucide-react";
-import { brandLogo } from "@/lib/localAssets";
 
 const REDDIT_ICON = (
   <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden="true">
@@ -12,7 +11,7 @@ const REDDIT_ICON = (
   </svg>
 );
 
-const LOGO_URL = brandLogo;
+const LOGO_URL = "https://media.base44.com/images/public/6aac56144f542d29eaac794b/2a9717c86_generated_image.png";
 
 export default function SiteFooter() {
   const { t } = useI18n();
@@ -53,7 +52,7 @@ export default function SiteFooter() {
         to="/blog"
         className="mt-3 inline-flex items-center gap-1 rounded-full border border-orange-500/40 bg-orange-500/10 px-3 py-1.5 text-[11px] font-semibold text-orange-400 transition hover:bg-orange-500/20"
       >
-        Blog LatamBucks
+        {t("blog.sectionTitle")}
       </Link>
       <p className="mt-3 text-[10px] leading-relaxed text-muted-foreground/60">
         © {new Date().getFullYear()} LatamBucks. {t("footer.tagline")}
@@ -88,10 +87,10 @@ export default function SiteFooter() {
           <span className="text-[10px] font-bold text-foreground">{t("footer.metodosRetiro")}</span>
         </div>
         <div className="flex items-center justify-center gap-2.5">
-          {PAYMENT_METHODS.map((m) => (
+          {["paypal", "binance"].map((m) => (
             <PaymentLogoBadge
-              key={m.id}
-              metodo={m.id}
+              key={m}
+              metodo={m}
               className="h-12 w-24 rounded-lg p-1"
               logoClassName="h-full w-full object-contain"
             />
