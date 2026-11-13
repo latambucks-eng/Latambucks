@@ -3,10 +3,11 @@ import { useLatamBucks } from "@/lib/latambucksStore";
 import { useI18n } from "@/lib/i18n/LanguageContext";
 import { fetchPendingRetiros, patchRetiro, fetchPendingCampanas, patchCampana, rpcAutoAprobarVencidas, rpcRechazarRetiro } from "@/lib/supabaseClient";
 import AdminDisputas from "@/components/latambucks/AdminDisputas";
+import AdminRecargasPaypal from "@/components/latambucks/AdminRecargasPaypal";
 import AdminAvisos from "@/components/latambucks/AdminAvisos";
 import AdminAvisosUsuario from "@/components/latambucks/AdminAvisosUsuario";
 import AdminTimewall from "@/components/latambucks/AdminTimewall";
-import { Loader2, Check, X, Inbox, FileCheck2 } from "lucide-react";
+import { Shield, Loader2, Check, X, Inbox, Megaphone, FileCheck2 } from "lucide-react";
 import Icon3D from "@/components/latambucks/Icon3D";
 
 export default function AdminTab() {
@@ -289,6 +290,8 @@ useEffect(() => {
       <AdminTimewall />
 
       {/* Disputas pendientes */}
+      <AdminRecargasPaypal />
+
       <AdminDisputas />
 
       {/* Solicitudes de retiro pendientes */}
