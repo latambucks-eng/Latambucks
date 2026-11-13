@@ -65,7 +65,7 @@ export const BLOG_ARTICLES_PT = [
 <p class="lb-lead">A pergunta mais repetida nos comentários e no canal do WhatsApp é também a mais difícil de responder sem promessas vazias: quanto dá para juntar por mês? Aqui não há salários dos sonhos. Há três ritmos de uso reais, com pontos estimados, o equivalente em dólares e o tempo que cada perfil leva para chegar ao primeiro saque.</p>
 
 <h2>As duas regras que organizam tudo</h2>
-<p>Primeira: no LatamBucks <strong>1.000 pontos equivalem a 1 dólar</strong>. Segunda: o saque mínimo é de <strong>5.000 pontos</strong>, ou seja, 5 dólares. Todo o resto sai desses dois números e de quantas tarefas reais você conclui.</p>
+<p>Primeira: no LatamBucks <strong>1.000 pontos equivalem a 1 dólar</strong>. Segunda: o saque mínimo depende do seu país e do método: <strong>3.000 pontos</strong> (3 dólares) por Binance USDT na maioria dos países e <strong>5.000 pontos</strong> (5 dólares) por PayPal ou se você está nos Estados Unidos, Canadá ou Europa. Todo o resto sai dessas cifras e de quantas tarefas reais você conclui.</p>
 
 <h2>Perfil 1 — O curioso: 10 minutos por dia</h2>
 <p>Entra três ou quatro vezes por semana, faz uma enquete curta, assiste a um vídeo e resgata o bônus diário quando lembra. Fecha o mês com algo como <strong>600 a 1.200 pontos</strong>, isto é, entre 0,60 e 1,20 dólar.</p>
