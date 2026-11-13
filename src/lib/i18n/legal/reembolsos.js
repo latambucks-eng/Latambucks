@@ -49,7 +49,7 @@ export default {
         ],
         bullets: [
           "Devoluciones a tarjetas, cuentas bancarias o billeteras digitales.",
-          "Transferencias a pasarelas de pago (Payoneer, Airtm, PayPal u otras).",
+          "Transferencias a pasarelas de pago (PayPal o criptomonedas vía NOWPayments).",
           "Retiros en dinero fiduciario de saldos internos o créditos de campaña.",
         ],
         closing: [
@@ -59,7 +59,7 @@ export default {
       {
         title: "6. Único supuesto de devolución externa",
         paragraphs: [
-          "El único caso en el que procede una devolución al medio de pago externo original (Payoneer, Airtm o PayPal) es cuando el pago fue realizado pero **la campaña no fue aprobada ni activada** por el equipo administrativo de la Plataforma. En este supuesto excepcional, y siempre que el pago no haya sido utilizado para fondear ninguna campaña, se gestiona la devolución del monto total ingresado por el mismo medio de pago utilizado en la compra.",
+          "El único caso en el que procede una devolución al medio de pago externo original (PayPal o criptomonedas vía NOWPayments) es cuando el pago fue realizado pero **la campaña no fue aprobada ni activada** por el equipo administrativo de la Plataforma. En este supuesto excepcional, y siempre que el pago no haya sido utilizado para fondear ninguna campaña, se gestiona la devolución del monto total ingresado por el mismo medio de pago utilizado en la compra.",
           "Una vez que la campaña fue aprobada y activada, el pago se considera consumido conforme a la comisión del 30% y al fondeo de cupos, y no procede devolución externa alguna.",
         ],
       },
@@ -74,7 +74,7 @@ export default {
           "La comisión del 30% cobrada por adelantado al fondear la campaña.",
           "La campaña fue retirada por el anunciante voluntariamente después de haber recibido tareas.",
           "La campaña fue retirada por la Plataforma por violación de los Términos o las Normas de la Comunidad.",
-          "El pago fue rechazado o revertido por el proveedor (Payoneer, Airtm o PayPal).",
+          "El pago fue rechazado o revertido por el proveedor (PayPal o NOWPayments).",
           "El anunciante proporcionó datos de campaña incorrectos que impidieron la ejecución (enlace caído, URL inválida no atribuible a la Plataforma).",
         ],
       },
@@ -155,7 +155,7 @@ export default {
         ],
         bullets: [
           "Returns to cards, bank accounts or digital wallets.",
-          "Transfers to payment gateways (Payoneer, Airtm, PayPal or others).",
+          "Transfers to payment gateways (PayPal or crypto via NOWPayments).",
           "Cash withdrawals of internal balances or campaign credits.",
         ],
         closing: [
@@ -165,7 +165,7 @@ export default {
       {
         title: "6. The only case of an external refund",
         paragraphs: [
-          "The only case in which a refund to the original external payment method (Payoneer, Airtm or PayPal) applies is when the payment was made but **the campaign was not approved or activated** by the Platform's administrative team. In this exceptional case, and provided the payment was not used to fund any campaign, the full amount paid in is returned through the same payment method used in the purchase.",
+          "The only case in which a refund to the original external payment method (PayPal or crypto via NOWPayments) applies is when the payment was made but **the campaign was not approved or activated** by the Platform's administrative team. In this exceptional case, and provided the payment was not used to fund any campaign, the full amount paid in is returned through the same payment method used in the purchase.",
           "Once the campaign has been approved and activated, the payment is considered consumed under the 30% commission and the funding of slots, and no external refund applies.",
         ],
       },
@@ -180,7 +180,7 @@ export default {
           "The 30% commission charged in advance when funding the campaign.",
           "The campaign was withdrawn voluntarily by the advertiser after receiving tasks.",
           "The campaign was withdrawn by the Platform for violating the Terms or the Community Rules.",
-          "The payment was rejected or reversed by the provider (Payoneer, Airtm or PayPal).",
+          "The payment was rejected or reversed by the provider (PayPal or NOWPayments).",
           "The advertiser provided incorrect campaign data that prevented execution (dead link, invalid URL not attributable to the Platform).",
         ],
       },
@@ -259,7 +259,7 @@ export default {
         ],
         bullets: [
           "Devoluções para cartões, contas bancárias ou carteiras digitais.",
-          "Transferências para gateways de pagamento (Payoneer, Airtm, PayPal ou outros).",
+          "Transferências para gateways de pagamento (PayPal ou criptomoedas via NOWPayments).",
           "Saques em dinheiro fiduciário de saldos internos ou créditos de campanha.",
         ],
         closing: [
@@ -269,7 +269,7 @@ export default {
       {
         title: "6. Único caso de devolução externa",
         paragraphs: [
-          "O único caso em que cabe uma devolução ao meio de pagamento externo original (Payoneer, Airtm ou PayPal) é quando o pagamento foi realizado, mas **a campanha não foi aprovada nem ativada** pela equipe administrativa da Plataforma. Nesse caso excepcional, e desde que o pagamento não tenha sido usado para financiar nenhuma campanha, é processada a devolução do valor total depositado pelo mesmo meio de pagamento utilizado na compra.",
+          "O único caso em que cabe uma devolução ao meio de pagamento externo original (PayPal ou criptomoedas via NOWPayments) é quando o pagamento foi realizado, mas **a campanha não foi aprovada nem ativada** pela equipe administrativa da Plataforma. Nesse caso excepcional, e desde que o pagamento não tenha sido usado para financiar nenhuma campanha, é processada a devolução do valor total depositado pelo mesmo meio de pagamento utilizado na compra.",
           "Depois que a campanha foi aprovada e ativada, o pagamento é considerado consumido conforme a comissão de 30% e o financiamento de cupons, e não cabe qualquer devolução externa.",
         ],
       },
@@ -284,7 +284,7 @@ export default {
           "A comissão de 30% cobrada antecipadamente ao financiar a campanha.",
           "A campanha foi retirada pelo anunciante voluntariamente depois de receber tarefas.",
           "A campanha foi retirada pela Plataforma por violação dos Termos ou das Regras da Comunidade.",
-          "O pagamento foi rejeitado ou revertido pelo provedor (Payoneer, Airtm ou PayPal).",
+          "O pagamento foi rejeitado ou revertido pelo provedor (PayPal ou NOWPayments).",
           "O anunciante forneceu dados de campanha incorretos que impediram a execução (link fora do ar, URL inválida não atribuível à Plataforma).",
         ],
       },
