@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useLatamBucks } from "@/lib/latambucksStore";
-import { fetchRapidoReachUrl } from "@/lib/rapidoReachOfferWall";
+import { fetchRapidoReachUrl, RAPIDOREACH_LOGO_URL } from "@/lib/rapidoReachOfferWall";
+import ProviderHeader from "@/components/latambucks/ProviderHeader";
 import { Loader2, AlertCircle, RefreshCw, ExternalLink } from "lucide-react";
 import { useI18n } from "@/lib/i18n/LanguageContext";
 
@@ -50,20 +51,21 @@ export default function RapidoReachOfferWall() {
 
   return (
     <div className="space-y-3">
-      <div className="flex items-center justify-between">
-        <div>
-          <h3 className="font-display text-lg font-bold text-foreground">RapidoReach</h3>
-          <p className="text-xs text-muted-foreground">{t("rr.sub")}</p>
-        </div>
-        <button
-          onClick={loadUrl}
-          disabled={loading}
-          aria-label={t("rr.reloadAria")}
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-border bg-card text-muted-foreground transition hover:text-foreground disabled:opacity-50"
-        >
-          <RefreshCw className={`h-4 w-4 ${loading ? "animate-spin" : ""}`} />
-        </button>
-      </div>
+      <ProviderHeader
+        logo={RAPIDOREACH_LOGO_URL}
+        title="RapidoReach"
+        subtitle={t("rr.sub")}
+        action={
+          <button
+            onClick={loadUrl}
+            disabled={loading}
+            aria-label={t("rr.reloadAria")}
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-border bg-card text-muted-foreground transition hover:text-foreground disabled:opacity-50"
+          >
+            <RefreshCw className={`h-4 w-4 ${loading ? "animate-spin" : ""}`} />
+          </button>
+        }
+      />
 
       <div className="overflow-hidden rounded-2xl border border-border bg-card">
         {/* Estado de carga */}
