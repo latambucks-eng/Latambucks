@@ -1,22 +1,28 @@
 import { useEffect, useState } from "react";
 import { fetchBlogArticulos } from "@/lib/supabaseClient";
-import { BLOG_ARTICLES, mergeArticles } from "@/lib/blog/blogContent";
+import { getBlogArticles, mergeArticles } from "@/lib/blog/blogContent";
+import { useI18n } from "@/lib/i18n/LanguageContext";
 
-// Artículos del blog: arranca con el contenido del repo (siempre disponible,
-// sin esperas ni pantallas vacías) y, si la tabla blog_articulos de Supabase
-// tiene filas, adopta esos textos.
+// Artículos del blog en el idioma elegido en el sitio. Arranca con el contenido
+// del repo (siempre disponible, sin pantallas vacías) y, en español, adopta los
+// textos de la tabla blog_articulos de Supabase si tiene filas.
 export default function useBlogArticles() {
-  const [articulos, setArticulos] = useState(BLOG_ARTICLES);
+  const { lang } = useI18n();
+  const [articulos, setArticulos] = useState(() => getBlogArticles(lang));
 
   useEffect(() => {
+    setArticulos(getBlogArticles(lang));
+    // Los textos guardados en la base están en español: no pisan EN ni PT.
+    if (lang !== "es") return undefined;
+
     let vivo = true;
     fetchBlogArticulos().then((filas) => {
-      if (vivo && filas?.length) setArticulos(mergeArticles(BLOG_ARTICLES, filas));
+      if (vivo && filas?.length) setArticulos(mergeArticles(getBlogArticles("es"), filas));
     });
     return () => {
       vivo = false;
     };
-  }, []);
+  }, [lang]);
 
   return articulos;
 }
