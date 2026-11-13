@@ -10,8 +10,8 @@ import radiografiaImg from "@/assets/blog/radiografia.png";
 import ganarAlMesImg from "@/assets/blog/ganar-al-mes.png";
 import rutinaDiariaImg from "@/assets/blog/rutina-diaria.png";
 import retirosImg from "@/assets/blog/retiros.png";
-import { BLOG_ARTICLES_EN } from "@/lib/blog/blogContentEn";
-import { BLOG_ARTICLES_PT } from "@/lib/blog/blogContentPt";
+import { BLOG_ARTICLES_EN } from "@/lib/blog/blogContentEn.js";
+import { BLOG_ARTICLES_PT } from "@/lib/blog/blogContentPt.js";
 
 export const BLOG_ARTICLES = [
   {
