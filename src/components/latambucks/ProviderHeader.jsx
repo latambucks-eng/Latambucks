@@ -1,3 +1,4 @@
+
 import React from "react";
 
 // Encabezado de proveedor: logo en recuadro blanco + título y subtítulo.
