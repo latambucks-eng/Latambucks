@@ -10,6 +10,8 @@ import radiografiaImg from "@/assets/blog/radiografia.png";
 import ganarAlMesImg from "@/assets/blog/ganar-al-mes.png";
 import rutinaDiariaImg from "@/assets/blog/rutina-diaria.png";
 import retirosImg from "@/assets/blog/retiros.png";
+import { BLOG_ARTICLES_EN } from "@/lib/blog/blogContentEn";
+import { BLOG_ARTICLES_PT } from "@/lib/blog/blogContentPt";
 
 export const BLOG_ARTICLES = [
   {
@@ -156,59 +158,110 @@ export const BLOG_ARTICLES = [
   },
   {
     slug: "de-puntos-a-dinero-retiros",
-    titulo: "De puntos a dinero: retiros, plazos y los errores que más frenan los pagos",
+    titulo: "De puntos a dinero: tarjetas fijas, mínimos por país y cuándo se paga",
     extracto:
-      "Payoneer, Airtm y PayPal explicados sin vueltas, cuánto es el mínimo, cuándo se paga y por qué un retiro puede volver atrás.",
+      "Elegís una tarjeta fija de PayPal o de Binance USDT, con mínimos según tu país y pago los viernes. Montos, datos que necesitás y por qué se frena un canje.",
     etiquetas: ["Retiros", "Pagos", "Seguridad"],
-    fecha: "2026-11-10",
-    minutos: 7,
+    fecha: "2026-11-13",
+    minutos: 6,
     autor: "Equipo LatamBucks",
     imagen: retirosImg,
     imagenAlt: "Mano sosteniendo una tarjeta junto a un celular sobre un escritorio oscuro",
-    metaTitulo: "Cómo retirar en LatamBucks: métodos, plazos y errores comunes",
+    metaTitulo: "Cómo canjear tus puntos en LatamBucks: tarjetas de PayPal y Binance",
     metaDescripcion:
-      "Cómo se convierten los puntos a dólares en LatamBucks, qué métodos de pago existen, cuándo se paga cada semana y cómo evitar que un retiro vuelva atrás.",
+      "Métodos, montos y mínimos de retiro en LatamBucks: tarjetas fijas de PayPal desde 5 USD y de Binance USDT desde 3 USD, corte los jueves y pago los viernes.",
     contenido: `
-<p class="lb-lead">Llegaste al saldo, tocaste "solicitar retiro" y ahora esperás. Esta guía explica cómo se convierte el saldo, cuándo se paga, dónde suele trabarse un pago y qué hacer si tu plataforma de cobro rechaza la transferencia.</p>
+<p class="lb-lead">El sistema de retiros cambió. Ya no se pide un monto libre y Payoneer y Airtm quedaron atrás: ahora elegís una <strong>tarjeta fija</strong>, indicás a qué cuenta de PayPal o Binance querés cobrar y el pedido queda pendiente hasta el pago del viernes. Esta guía explica montos, mínimos por país y qué frena un canje.</p>
 
-<h2>Cómo se convierte el saldo</h2>
-<p>La cuenta es simple y no cambia: <strong>1.000 puntos = 1 dólar</strong>. El retiro mínimo es de <strong>5.000 puntos</strong>, o sea 5 dólares. En la pestaña Retiros vas a ver siempre las tres cifras juntas: puntos disponibles, equivalente en dólares y, si estás en Argentina, una referencia en pesos.</p>
+<h2>Cómo funciona el canje hoy</h2>
+<p>En Retiros ves tu saldo disponible y una grilla de tarjetas. Elegís método y monto, confirmás los datos de cobro y el pedido se registra en el historial como <strong>pendiente</strong>. Cuando se paga pasa a <strong>procesado</strong>; si no se puede pagar queda <strong>rechazado</strong> y el saldo vuelve a tu cuenta.</p>
+<p>La conversión no cambió: <strong>1.000 puntos = 1 dólar</strong>. Lo que cambió es que el monto lo define la tarjeta y no un formulario abierto.</p>
 
-<h2>Los tres métodos y para quién es cada uno</h2>
+<h2>PayPal: tarjetas de 5 a 100 dólares</h2>
 <ul>
-<li><strong>Payoneer:</strong> la opción más cómoda si ya cobrás otras cosas por ahí o si querés una cuenta en dólares con tarjeta. Necesitás tener la cuenta creada y verificada antes de pedir el retiro.</li>
-<li><strong>Airtm:</strong> práctica para quien prefiere una billetera digital con saldo en dólares y pasar después a moneda local. Muy usada en Venezuela, Argentina y Colombia.</li>
-<li><strong>PayPal:</strong> la más universal, y también la que más rechazos genera cuando los datos no coinciden exactamente con el nombre de la cuenta.</li>
+<li>Montos: <strong>5, 10, 20, 25, 50 y 100 USD</strong>.</li>
+<li>Necesitás el <strong>correo de tu cuenta PayPal</strong> y el <strong>nombre del titular</strong>, igual que figura en PayPal.</li>
+<li>PayPal puede aplicar su propia comisión al recibir: lo que te llega puede ser algo menos que el monto de la tarjeta.</li>
 </ul>
+
+<h2>Binance USDT: desde 3 dólares</h2>
+<ul>
+<li>Montos: <strong>3, 5, 10, 20, 50 y 100 USD</strong>, acreditados en USDT.</li>
+<li>Necesitás tu <strong>Binance ID (UID)</strong> o el correo vinculado a la cuenta.</li>
+<li>El pago llega a tu billetera de Binance: no pasa por un correo ni por un banco.</li>
+</ul>
+
+<h2>Mínimos según tu país</h2>
+<p>El mínimo depende del país que la plataforma detectó en tu cuenta y del método elegido:</p>
+<ul>
+<li><strong>Estados Unidos, Canadá, Reino Unido, Alemania, Australia, Francia, Italia, Países Bajos, Suecia, Suiza, Noruega y Dinamarca:</strong> <strong>5.000 puntos</strong> (5 USD).</li>
+<li><strong>Resto de los países:</strong> <strong>3.000 puntos</strong> (3 USD) por Binance USDT y <strong>5.000 puntos</strong> por PayPal.</li>
+</ul>
+<p>El mínimo vigente aparece siempre escrito arriba de las tarjetas. Si tu saldo no alcanza, la tarjeta se ve atenuada y te indica cuántos puntos faltan.</p>
 
 <h2>Cuándo se paga</h2>
-<p>El corte es automático <strong>todos los jueves a las 16:00 (hora de Argentina)</strong>. Si tu saldo disponible supera el mínimo, pasa a "Pago en Proceso" y el envío se realiza <strong>los viernes</strong>, según el método que hayas elegido. Si pedís el retiro un sábado no se pierde: entra en el corte siguiente.</p>
+<p>Los pedidos hechos <strong>antes del jueves a las 16:00 (hora de Argentina)</strong> se pagan el <strong>viernes</strong>. Un canje pedido un sábado no se pierde: entra al corte siguiente. Mientras espera, figura como pendiente en el historial.</p>
 
-<h2>Por qué un retiro puede volver atrás</h2>
-<p>Casi todos los problemas de pago tienen una de estas cuatro causas:</p>
+<h2>El bono de bienvenida tiene tope</h2>
+<p>Del bono de bienvenida podés usar hasta <strong>500 puntos</strong> en un retiro. El resto tiene que venir de encuestas, ofertas o la ruleta. Si tu saldo está armado casi entero con bono, el sistema te pide ganar esa diferencia antes de canjear.</p>
+
+<h2>Los cuatro motivos que frenan un retiro</h2>
 <ul>
-<li><strong>Datos que no coinciden.</strong> El nombre de la cuenta de cobro tiene que ser el mismo del titular registrado. Un apellido mal escrito hace que la plataforma devuelva el dinero.</li>
-<li><strong>Cuenta no verificada.</strong> Payoneer y PayPal exigen identidad confirmada. Si el proceso no está completo, el pago rebota.</li>
-<li><strong>Reversos de proveedores.</strong> Si una encuesta o una oferta se invalida después de acreditarse, el sistema ajusta el saldo. Si ya habías pedido el retiro, ese monto puede descontarse del siguiente.</li>
-<li><strong>Revisión de seguridad.</strong> Cuentas nuevas con retiros grandes, dispositivos compartidos o accesos desde varias ubicaciones pasan por una revisión manual antes de pagarse.</li>
+<li><strong>Datos que no coinciden.</strong> En PayPal el nombre del titular tiene que ser el de la cuenta: un apellido mal escrito hace que el pago se rechace.</li>
+<li><strong>País que no coincide.</strong> Si el país detectado en tu conexión no es el de tu perfil, el retiro se bloquea hasta que escribas a soporte. Por eso las VPN juegan en contra.</li>
+<li><strong>Reversos de proveedores.</strong> Si una encuesta u oferta se invalida después de acreditarse, el sistema descuenta esos puntos. Si ya los habías canjeado, el ajuste se aplica al saldo siguiente.</li>
+<li><strong>Revisión de seguridad o cuenta bloqueada.</strong> Cuentas nuevas con canjes altos o accesos desde varias ubicaciones pasan por revisión manual, y una cuenta bloqueada no puede canjear hasta que soporte la revise.</li>
 </ul>
 
-<h2>Cómo proteger tu cuenta</h2>
-<p>Usá una sola cuenta por persona, con tu correo real. No compartas la contraseña ni abras la sesión en dispositivos de terceros. Evitá las VPN: cambiar de país constantemente es la señal de alarma más común para los sistemas antifraude. Y si te llega un mensaje pidiendo datos o pagos por adelantado, no es nuestro: LatamBucks nunca cobra para pagarte.</p>
+<h2>Pagos retenidos: el interruptor que frena todo</h2>
+<p>En Retiros existe la opción de <strong>retener pagos</strong>. Sirve si preferís acumular, pero mientras esté activa el canje se rechaza con un aviso. Si no recordás haberla activado, revisala antes de escribir a soporte.</p>
 
-<h2>Si tu pago demora más de lo esperado</h2>
-<p>Primero revisá el estado en la pestaña Retiros: ahí figura si está en proceso, enviado o rechazado. Si aparece como enviado y no lo ves, revisá la bandeja del correo asociado a tu billetera antes de escribir. Cuando necesites ayuda, mandá un solo mensaje con tu correo de cuenta, el monto y la fecha del retiro: los tickets duplicados hacen más lento el proceso, no más rápido.</p>
+<h2>Cómo pedir el retiro, paso a paso</h2>
+<ul>
+<li>Entrá a la pestaña Retiros y mirá tu saldo y el mínimo de tu país.</li>
+<li>Elegí PayPal o Binance USDT y tocá la tarjeta del monto.</li>
+<li>Completá los datos de cobro: correo y titular en PayPal, UID o correo en Binance.</li>
+<li>Confirmá el canje. El monto se descuenta y el pedido aparece como pendiente.</li>
+<li>Cargá los datos en tu billetera antes del jueves 16:00 para entrar en el pago del viernes.</li>
+</ul>
 
-<div class="lb-callout"><strong>Antes de pedir el retiro</strong><p>Verificá el método elegido, que el nombre coincida y que la cuenta esté activa. La mayoría de los pagos que se demoran empiezan con un dato mal cargado.</p></div>
+<h2>Si el pago demora o vuelve rechazado</h2>
+<p>Revisá el estado en el historial: pendiente significa que está en la fila del pago; rechazado indica que no pudo procesarse y el saldo ya volvió a tu cuenta. Si figura como procesado y no lo ves, revisá el correo asociado a la billetera antes de escribir. Para pedir ayuda, mandá un solo mensaje con tu correo de cuenta, el monto y la fecha del canje: los tickets duplicados hacen más lento el proceso.</p>
+
+<div class="lb-callout"><strong>Antes de canjear</strong><p>Método correcto, una tarjeta que exista y datos exactos de la cuenta. Casi todos los retiros detenidos empiezan con un dato mal cargado.</p></div>
 `,
   },
 ];
 
-// Da formato legible a la fecha ISO del artículo (es-AR: "4 de noviembre de 2026").
-export function formatFecha(iso) {
+// Idioma del blog = idioma elegido en el sitio. El español es la fuente de
+// verdad; inglés y portugués viven en sus propios archivos con los mismos slugs.
+const POR_IDIOMA = { es: BLOG_ARTICLES, en: BLOG_ARTICLES_EN, pt: BLOG_ARTICLES_PT };
+const LOCALE_FECHA = { es: "es-AR", en: "en-US", pt: "pt-BR" };
+
+export function getBlogArticles(lang = "es") {
+  const base = BLOG_ARTICLES;
+  const lista = POR_IDIOMA[lang] || base;
+  // Las imágenes son locales y las aporta el archivo en español.
+  const imagenes = new Map(base.map((a) => [a.slug, a]));
+  return lista.map((art) => {
+    const es = imagenes.get(art.slug);
+    return {
+      ...art,
+      imagen: es?.imagen,
+      imagenAlt: art.imagenAlt || es?.imagenAlt,
+    };
+  });
+}
+
+// Da formato legible a la fecha ISO del artículo ("4 de noviembre de 2026").
+export function formatFecha(iso, lang = "es") {
   const d = new Date(`${iso}T12:00:00`);
   if (Number.isNaN(d.getTime())) return "";
-  return d.toLocaleDateString("es-AR", { day: "numeric", month: "long", year: "numeric" });
+  return d.toLocaleDateString(LOCALE_FECHA[lang] || LOCALE_FECHA.es, {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
 }
 
 // Si Supabase devuelve filas, sus textos mandan; si una columna viene vacía se
