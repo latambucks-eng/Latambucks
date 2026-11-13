@@ -1,57 +1,12 @@
 import React from "react";
-import { Image } from "@/components/ui/image";
-import { airtmLogo } from "@/lib/localAssets";
 
 // ============================================================
-// LatamBucks — Métodos de pago unificados (USD para todos)
-// Marcas de pago: SVG inline y PNG original de Airtm recortado.
-//   - Payoneer: marca oficial (swoosh naranja)
-//   - Airtm: wordmark original sin márgenes vacíos
-//   - PayPal: wordmark oficial bicolor (azul + celeste)
+// LatamBucks — Marcas de pago vigentes
+//   · PayPal: wordmark oficial bicolor (azul + celeste)
+//   · Binance: isotipo + wordmark en amarillo #F3BA2F
+// Los métodos de recarga de publicidad (cripto vía NOWPayments y
+// PayPal) y los retiros (PayPal y Binance USDT) usan estas marcas.
 // ============================================================
-
-export const PAYMENT_METHODS = [
-  { id: "payoneer", label: "Payoneer", placeholder: "email@payoneer.com" },
-  { id: "airtm", label: "Airtm", placeholder: "email@airtm.com" },
-  { id: "paypal", label: "PayPal", placeholder: "email@paypal.com" },
-];
-
-export function getPaymentMethodLabel(id) {
-  const m = PAYMENT_METHODS.find((x) => x.id === id);
-  return m ? m.label : id;
-}
-
-// Logo oficial de Payoneer (swoosh naranja, SVG inline).
-export function PayoneerLogo({ className = "h-8 w-auto", title = "Payoneer" }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      role="img"
-      aria-label={title}
-      className={className}
-      preserveAspectRatio="xMidYMid meet"
-    >
-      <title>{title}</title>
-      <path fill="#FF4800" d="M1.474 3.31c.234 1.802 1.035 5.642 1.398 7.263.095.459.201.853.298 1.013.501.865.907-.287.907-.287C5.644 6.616 3.17 3.597 2.38 2.787c-.139-.15-.384-.332-.608-.396-.32-.095-.374.086-.374.236.01.148.065.565.075.682zm21.835-1.463c.31.224 1.386 1.355 0 1.526-1.984.234-5.76.373-12.022 5.61C8.92 10.968 3.607 16.311.76 22.957a.181.181 0 01-.216.106c-.255-.074-.714-.352-.48-1.418.32-1.44 3.201-8.938 10.817-15.552 2.485-2.155 8.416-7.232 12.426-4.245z" />
-    </svg>
-  );
-}
-
-// Marca original de Airtm, recortada sin pérdida para eliminar márgenes vacíos.
-export function AirtmLogo({ className = "h-8 w-auto", title = "Airtm" }) {
-  return (
-    <Image
-      src={airtmLogo}
-      alt={title}
-      className={className}
-      fittingType="fit"
-      width={548}
-      height={148}
-      draggable={false}
-    />
-  );
-}
 
 // Logo oficial de PayPal (wordmark bicolor, SVG inline).
 export function PayPalLogo({ className = "h-8 w-auto", title = "PayPal" }) {
@@ -79,39 +34,53 @@ export function PayPalLogo({ className = "h-8 w-auto", title = "PayPal" }) {
   );
 }
 
-// Contenedor blanco redondeado para mostrar un logo de pago.
-// Tamaño por defecto grande y landscape para que los logos se vean nítidos.
+// Logo oficial de Binance (isotipo de rombos + wordmark), amarillo #F3BA2F.
+export function BinanceLogo({ className = "h-8 w-auto", title = "Binance" }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 632.014 126.611"
+      role="img"
+      aria-label={title}
+      className={className}
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <title>{title}</title>
+      <g fill="#F3BA2F">
+        <polygon points="38.171,53.203 62.759,28.616 87.36,53.216 101.667,38.909 62.759,0 23.864,38.896" />
+        <rect x="3.644" y="53.188" transform="matrix(0.7071 0.7071 -0.7071 0.7071 48.7933 8.8106)" width="20.233" height="20.234" />
+        <polygon points="38.171,73.408 62.759,97.995 87.359,73.396 101.674,87.695 101.667,87.703 62.759,126.611 23.863,87.716 23.843,87.696" />
+        <rect x="101.64" y="53.189" transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 235.5457 29.0503)" width="20.234" height="20.233" />
+        <polygon points="77.271,63.298 77.277,63.298 62.759,48.78 52.03,59.509 52.029,59.509 50.797,60.742 48.254,63.285 48.234,63.305 48.254,63.326 62.759,77.831 77.277,63.313 77.284,63.305" />
+        <path d="M148.37,30.679h31.117c7.723,0,13.563,1.982,17.521,5.946c3.063,3.07,4.594,6.875,4.594,11.414v0.192 c0,1.918-0.237,3.613-0.714,5.083c-0.476,1.472-1.112,2.797-1.907,3.98c-0.793,1.184-1.715,2.223-2.763,3.117 c-1.049,0.896-2.176,1.664-3.383,2.302c3.882,1.472,6.938,3.469,9.166,5.995c2.227,2.527,3.342,6.028,3.342,10.503v0.191 c0,3.07-0.59,5.755-1.771,8.058c-1.181,2.301-2.873,4.22-5.076,5.755c-2.203,1.535-4.852,2.685-7.948,3.453 c-3.096,0.767-6.527,1.15-10.292,1.15H148.37V30.679z M176.376,57.822c3.262,0,5.852-0.558,7.769-1.678 c1.918-1.119,2.877-2.926,2.877-5.419v-0.192c0-2.237-0.832-3.947-2.494-5.131c-1.663-1.183-4.061-1.775-7.193-1.775h-14.579v14.195 H176.376z M180.309,84.871c3.261,0,5.817-0.59,7.673-1.774c1.854-1.183,2.782-3.022,2.782-5.516V77.39 c0-2.238-0.864-4.012-2.59-5.324c-1.727-1.309-4.508-1.965-8.345-1.965h-17.073v14.771H180.309z" />
+        <path d="M223.875,30.679h14.772v67.141h-14.772V30.679z" />
+        <path d="M261.02,30.679h13.618l31.461,41.34v-41.34h14.579v67.141h-12.564l-32.516-42.682v42.682H261.02V30.679z" />
+        <path d="M365.398,30.2h13.619l28.776,67.62H392.35l-6.139-15.058h-28.391l-6.138,15.058h-15.061L365.398,30.2z M380.936,69.716l-8.921-21.772l-8.918,21.772H380.936z" />
+        <path d="M423.738,30.679h13.621l31.459,41.34v-41.34h14.579v67.141h-12.564l-32.516-42.682v42.682h-14.579V30.679z" />
+        <path d="M536.557,98.97c-4.926,0-9.496-0.896-13.717-2.685s-7.865-4.236-10.934-7.338 c-3.07-3.101-5.469-6.762-7.193-10.982c-1.727-4.221-2.59-8.729-2.59-13.525v-0.191c0-4.796,0.863-9.287,2.59-13.476 c1.725-4.188,4.123-7.865,7.193-11.03c3.068-3.165,6.746-5.66,11.029-7.482s9.018-2.733,14.197-2.733 c3.131,0,5.992,0.257,8.582,0.767c2.59,0.513,4.939,1.215,7.051,2.11c2.111,0.896,4.059,1.983,5.852,3.261 c1.787,1.28,3.451,2.686,4.986,4.221l-9.398,10.838c-2.625-2.365-5.293-4.221-8.01-5.563c-2.719-1.342-5.771-2.014-9.16-2.014 c-2.814,0-5.42,0.544-7.816,1.631c-2.398,1.087-4.461,2.589-6.188,4.507c-1.725,1.918-3.068,4.141-4.029,6.666 c-0.957,2.527-1.436,5.228-1.436,8.105v0.191c0,2.877,0.479,5.596,1.436,8.152c0.961,2.559,2.285,4.796,3.982,6.714 c1.693,1.918,3.74,3.438,6.137,4.557c2.4,1.12,5.037,1.678,7.914,1.678c3.838,0,7.08-0.703,9.734-2.11 c2.654-1.405,5.293-3.324,7.914-5.755l9.4,9.496c-1.727,1.855-3.52,3.518-5.371,4.987c-1.855,1.472-3.885,2.734-6.092,3.79 c-2.205,1.054-4.621,1.855-7.24,2.397C542.756,98.697,539.816,98.97,536.557,98.97z" />
+        <path d="M581.467,30.679h50.547v13.141h-35.967v13.62h31.652v13.14h-31.652v14.1h36.449v13.14h-51.029V30.679z" />
+      </g>
+    </svg>
+  );
+}
+
+// Contenedor redondeado para mostrar un logo de pago.
 export function PaymentLogoBadge({ metodo, className = "h-12 w-20", logoClassName }) {
-  const Logo = metodo === "airtm" ? AirtmLogo : metodo === "paypal" ? PayPalLogo : PayoneerLogo;
+  // Binance lleva su marca amarilla sobre fondo oscuro (como en su sitio).
+  if (metodo === "binance") {
+    return (
+      <div
+        className={`flex items-center justify-center rounded-xl bg-[#0B0E11] p-1.5 shadow-md ring-1 ring-white/10 ${className}`}
+      >
+        <BinanceLogo className={logoClassName || "max-h-full max-w-full h-auto w-auto"} />
+      </div>
+    );
+  }
   return (
     <div
       className={`flex items-center justify-center rounded-xl bg-white p-1.5 shadow-md ring-1 ring-black/5 ${className}`}
     >
-      <Logo className={logoClassName || "max-h-full max-w-full h-auto w-auto"} />
-    </div>
-  );
-}
-
-// Selector de método de pago — botones para elegir entre Payoneer, Airtm y PayPal.
-export function PaymentMethodSelector({ value, onChange, disabled }) {
-  return (
-    <div className="grid grid-cols-3 gap-2.5">
-      {PAYMENT_METHODS.map((m) => (
-        <button
-          key={m.id}
-          type="button"
-          onClick={() => onChange(m.id)}
-          disabled={disabled}
-          className={`flex flex-col items-center gap-2 rounded-xl border px-2 py-3 text-xs font-semibold transition disabled:opacity-50 ${
-            value === m.id
-              ? "border-orange-500/60 bg-orange-500/10 text-orange-400 ring-1 ring-orange-500/30"
-              : "border-border bg-card text-muted-foreground hover:border-orange-500/30"
-          }`}
-        >
-          <PaymentLogoBadge metodo={m.id} className="h-12 w-20" />
-          <span>{m.label}</span>
-        </button>
-      ))}
+      <PayPalLogo className={logoClassName || "max-h-full max-w-full h-auto w-auto"} />
     </div>
   );
 }
