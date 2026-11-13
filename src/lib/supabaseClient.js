@@ -329,6 +329,53 @@ export async function insertRetiro(token, payload) {
   return parse(res);
 }
 
+/* ---------- RECARGAS DE SALDO PUBLICITARIO ---------- */
+
+// Registra una solicitud de recarga pagada por PayPal (queda 'pendiente'
+// hasta que un admin la aprueba). Las columnas metodo/estado las fija el
+// cliente pero la política RLS solo permite 'paypal' + 'pendiente'.
+export async function insertRecargaPaypalManual(token, payload) {
+  const res = await fetch(`${REST}/recargas_publicidad`, {
+    method: "POST",
+    headers: { ...baseHeaders(token), Prefer: "return=representation" },
+    body: JSON.stringify({ ...payload, metodo: "paypal", estado: "pendiente" }),
+  });
+  return parse(res);
+}
+
+// Admin: recargas PayPal pendientes con el correo del usuario.
+export async function fetchRecargasPaypalPendientes(token) {
+  const res = await fetch(
+    `${REST}/recargas_publicidad?metodo=eq.paypal&estado=eq.pendiente&select=*,perfiles(email)&order=creado_el.asc`,
+    { headers: baseHeaders(token) }
+  );
+  return parse(res);
+}
+
+// Admin: aprueba y acredita en saldo_promocion (RPC SECURITY DEFINER).
+export async function rpcAprobarRecargaAdmin(token, orderId) {
+  return await callRpc(token, "aprobar_recarga_manual_admin", { p_order_id: orderId });
+}
+
+// Admin: marca la solicitud como fallida.
+export async function rpcRechazarRecargaAdmin(token, orderId) {
+  return await callRpc(token, "rechazar_recarga_manual_admin", { p_order_id: orderId });
+}
+
+// Canje de un retiro por tarjeta fija (PayPal / Binance). RPC SECURITY
+// DEFINER: valida tier, país, bono y saldos en el servidor, mueve
+// saldo_disponible → saldo_pendiente y crea el retiro 'pendiente'.
+// Devuelve { success, error?, retiro_id?, puntos?, minimo? } — no lanza
+// para que la pantalla pueda mostrar el motivo exacto del rechazo.
+export async function rpcSolicitarRetiroCanje(token, args) {
+  return await callRpc(token, "solicitar_retiro_canje", {
+    p_metodo: args.metodo,
+    p_puntos: Number(args.puntos),
+    p_detalles: args.detalles,
+    p_titular: args.titular || null,
+  });
+}
+
 export async function fetchCampanasLocales(token) {
   const res = await fetch(
     `${REST}/campanas_locales?activa=eq.true&estado_pago=eq.aprobado&select=*&order=created_at.desc`,
