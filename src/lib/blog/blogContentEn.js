@@ -65,7 +65,7 @@ export const BLOG_ARTICLES_EN = [
 <p class="lb-lead">The most repeated question in comments and on the WhatsApp channel is also the hardest to answer without empty promises: how much do you collect per month? No dream salaries here. Three real usage rhythms, with estimated points, their dollar equivalent and how long each profile takes to reach a first withdrawal.</p>
 
 <h2>The two rules that organise everything</h2>
-<p>First: on LatamBucks <strong>1,000 points equal 1 dollar</strong>. Second: the minimum withdrawal is <strong>5,000 points</strong>, that is 5 dollars. Everything else follows from those two figures and how many real tasks you complete.</p>
+<p>First: on LatamBucks <strong>1,000 points equal 1 dollar</strong>. Second: the minimum withdrawal depends on your country and method: <strong>3,000 points</strong> (3 dollars) via Binance USDT in most countries, and <strong>5,000 points</strong> (5 dollars) via PayPal or if you are in the United States, Canada or Europe. Everything else follows from those figures and how many real tasks you complete.</p>
 
 <h2>Profile 1 — The curious one: 10 minutes a day</h2>
 <p>Logs in three or four times a week, takes a short survey, watches a video and claims the daily bonus when they remember. They close the month at something like <strong>600 to 1,200 points</strong>, meaning between 0.60 and 1.20 dollars.</p>
