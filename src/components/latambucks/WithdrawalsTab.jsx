@@ -1,40 +1,19 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useLatamBucks } from "@/lib/latambucksStore";
 import { useI18n } from "@/lib/i18n/LanguageContext";
-import {
-  fetchRetiros,
-  updatePerfil,
-  fetchAppConfig,
-} from "@/lib/supabaseClient";
-import { cicloActualMarker, proximoCorteEpoch, formatCountdown } from "@/lib/cicloFacturacion";
+import { fetchRetiros, updatePerfil } from "@/lib/supabaseClient";
+import { proximoCorteEpoch, formatCountdown } from "@/lib/cicloFacturacion";
 import { Switch } from "@/components/ui/switch";
-import {
-  PaymentMethodSelector,
-  getPaymentMethodLabel,
-  PAYMENT_METHODS,
-} from "@/components/latambucks/PaymentLogos";
-import {
-  Loader2,
-  Clock,
-  CheckCircle2,
-  XCircle,
-  ShieldCheck,
-  Save,
-  Hourglass,
-  Info,
-} from "lucide-react";
+import { RETIROS } from "@/lib/i18n/content/retiros";
+import RetiroCanje from "@/components/latambucks/RetiroCanje";
+import { Loader2, Clock, CheckCircle2, XCircle, ShieldCheck, Hourglass } from "lucide-react";
 import Icon3D from "@/components/latambucks/Icon3D";
 
 export default function WithdrawalsTab() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
+  const c = RETIROS[lang] || RETIROS.es;
   const { token, user, perfil, refreshPerfil, exchangeRate } = useLatamBucks();
-  const minPoints = 5000;
 
-  const [form, setForm] = useState({ destino: "", titular: "" });
-  const [metodo, setMetodo] = useState(perfil?.metodo_pago_preferido || "payoneer");
-  const [paypalFeeInfo, setPaypalFeeInfo] = useState("");
-  const [saving, setSaving] = useState(false);
-  const [saveMsg, setSaveMsg] = useState("");
   const [holdBusy, setHoldBusy] = useState(false);
   const [retiros, setRetiros] = useState([]);
   const [loadingList, setLoadingList] = useState(true);
@@ -43,19 +22,10 @@ export default function WithdrawalsTab() {
   const disponible = perfil?.saldo_disponible ?? 0;
   const enProceso = perfil?.saldo_pendiente ?? 0;
   const retener = !!perfil?.retener_pagos;
-  const cicloProcesado = perfil?.ultimo_ciclo_procesado === cicloActualMarker();
 
   const esArgentina = perfil?.pais === "Argentina";
   const equivalenteUSD = disponible / 1000;
   const equivalenteARS = esArgentina ? equivalenteUSD * exchangeRate : 0;
-
-  // Cargar info de comisión de PayPal desde app_config
-  useEffect(() => {
-    if (!token) return;
-    fetchAppConfig(token, "paypal_fee_info")
-      .then((info) => { if (info) setPaypalFeeInfo(String(info)); })
-      .catch(() => {});
-  }, [token]);
 
   const loadRetiros = useCallback(async () => {
     if (!token || !user) return;
@@ -70,39 +40,11 @@ export default function WithdrawalsTab() {
     }
   }, [token, user]);
 
-  // Precarga datos de cobro guardados
-  useEffect(() => {
-    setForm({
-      destino: perfil?.destino_pago || "",
-      titular: perfil?.titular_pago || "",
-    });
-    if (perfil?.metodo_pago_preferido) setMetodo(perfil.metodo_pago_preferido);
-  }, [perfil?.destino_pago, perfil?.titular_pago, perfil?.metodo_pago_preferido]);
-
   useEffect(() => {
     loadRetiros();
     const t = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(t);
   }, [loadRetiros]);
-
-  const guardarDatos = async (e) => {
-    e.preventDefault();
-    setSaveMsg("");
-    setSaving(true);
-    try {
-      await updatePerfil(token, user.id, {
-        destino_pago: form.destino.trim(),
-        titular_pago: form.titular.trim(),
-        metodo_pago_preferido: metodo,
-      });
-      await refreshPerfil(token, user.id);
-      setSaveMsg(t("retiros.ok.guardar"));
-    } catch (e2) {
-      setSaveMsg(e2.message || t("retiros.err.guardar"));
-    } finally {
-      setSaving(false);
-    }
-  };
 
   const toggleHold = async () => {
     setHoldBusy(true);
@@ -116,8 +58,6 @@ export default function WithdrawalsTab() {
   };
 
   const restante = proximoCorteEpoch() - now;
-  const pasasteMin = disponible >= minPoints;
-  const metodoSeleccionado = PAYMENT_METHODS.find((m) => m.id === metodo);
 
   return (
     <div className="space-y-5 px-4 pb-4">
@@ -178,8 +118,8 @@ export default function WithdrawalsTab() {
           {formatCountdown(restante)}
         </p>
         <p className="relative mt-2 text-xs leading-relaxed text-muted-foreground">
-          {t("retiros.corte.a")} <span className="font-semibold text-foreground">{t("retiros.corte.b")}</span>{t("retiros.corte.c")}{" "}
-          <span className="font-semibold text-foreground">{t("retiros.corte.d")}</span>.
+          {t("retiros.corte.a")} <span className="font-semibold text-foreground">{t("retiros.corte.b")}</span>
+          {t("retiros.corte.c")} <span className="font-semibold text-foreground">{t("retiros.corte.d")}</span>.
         </p>
       </div>
 
@@ -192,48 +132,8 @@ export default function WithdrawalsTab() {
         </p>
       </div>
 
-      {/* Estado del ciclo */}
-      <div
-        className={`flex items-start gap-3 rounded-2xl border p-4 ${
-          cicloProcesado
-            ? "border-orange-500/30 bg-orange-500/10"
-            : pasasteMin
-            ? "border-amber-500/30 bg-amber-500/10"
-            : "border-border bg-card"
-        }`}
-      >
-        {cicloProcesado ? (
-          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-orange-400" />
-        ) : (
-          <Clock className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
-        )}
-        <p className="text-xs leading-relaxed text-muted-foreground">
-          {cicloProcesado ? (
-            <>
-              {t("retiros.ciclo.ok.a")}{" "}
-              <span className="font-semibold text-foreground">{t("retiros.ciclo.ok.b")}</span>{t("retiros.ciclo.ok.c")}
-            </>
-          ) : pasasteMin ? (
-            <>
-              {t("retiros.ciclo.min.a")} <span className="font-semibold text-foreground">{t("retiros.ciclo.min.b", { pts: minPoints })}</span>{t("retiros.ciclo.min.c")}{" "}
-              <span className="font-semibold text-foreground">{t("retiros.ciclo.min.d")}</span>{t("retiros.ciclo.min.e")}
-              {retener && (
-                <span className="mt-1 block text-amber-400">
-                  {t("retiros.ciclo.hold")}
-                </span>
-              )}
-            </>
-          ) : (
-            <>
-              {t("retiros.ciclo.falta.a")}{" "}
-              <span className="font-semibold text-foreground">
-                {t("retiros.ciclo.falta.b", { pts: (minPoints - disponible).toLocaleString("es") })}
-              </span>{" "}
-              {t("retiros.ciclo.falta.c", { min: minPoints })}
-            </>
-          )}
-        </p>
-      </div>
+      {/* Catálogo de tarjetas + canje */}
+      <RetiroCanje onSaved={loadRetiros} />
 
       {/* Toggle Retener Pagos */}
       <div className="flex items-center justify-between gap-3 rounded-2xl border border-border bg-card p-4">
@@ -250,56 +150,6 @@ export default function WithdrawalsTab() {
         </div>
         <Switch checked={retener} onCheckedChange={toggleHold} disabled={holdBusy} />
       </div>
-
-      {/* Datos de cobro guardados */}
-      <form onSubmit={guardarDatos} className="space-y-4 rounded-2xl border border-border bg-card p-4">
-        <div>
-          <p className="mb-2 text-xs font-medium text-muted-foreground">{t("retiros.metodo")}</p>
-          <PaymentMethodSelector value={metodo} onChange={setMetodo} />
-        </div>
-
-        {/* Aviso de comisión de PayPal */}
-        {metodo === "paypal" && paypalFeeInfo && (
-          <div className="flex items-start gap-2 rounded-xl border border-sky-500/30 bg-sky-500/10 px-3 py-2.5 text-xs leading-relaxed text-sky-200/90">
-            <Info className="mt-0.5 h-4 w-4 shrink-0 text-sky-400" />
-            <p>{paypalFeeInfo}</p>
-          </div>
-        )}
-
-        <p className="text-[11px] text-muted-foreground">
-          {t("retiros.minimo.nota", { min: minPoints })}
-        </p>
-
-        <Field label={t("retiros.campo.correo", { metodo: getPaymentMethodLabel(metodo) })}>
-          <input
-            value={form.destino}
-            onChange={(e) => setForm({ ...form, destino: e.target.value })}
-            placeholder={metodoSeleccionado?.placeholder || "tucorreo@email.com"}
-            className="lb-input"
-          />
-        </Field>
-        <Field label={t("retiros.campo.titular")}>
-          <input
-            value={form.titular}
-            onChange={(e) => setForm({ ...form, titular: e.target.value })}
-            placeholder={t("retiros.campo.titularPh")}
-            className="lb-input"
-          />
-        </Field>
-
-        {saveMsg && (
-          <p className="rounded-lg bg-orange-500/10 px-3 py-2 text-xs text-orange-400">{saveMsg}</p>
-        )}
-
-        <button
-          type="submit"
-          disabled={saving}
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-orange-500 py-3 font-medium text-orange-950 transition hover:bg-orange-400 disabled:opacity-50"
-        >
-          {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
-          {t("retiros.guardar")}
-        </button>
-      </form>
 
       {/* History */}
       <div>
@@ -324,7 +174,7 @@ export default function WithdrawalsTab() {
                     {r.puntos_solicitados?.toLocaleString("es") ?? 0} Pts
                   </p>
                   <p className="text-[11px] text-muted-foreground">
-                    {getPaymentMethodLabel(r.metodo_pago) || r.metodo_pago}
+                    {c.historial[r.metodo_pago] || r.metodo_pago}
                   </p>
                 </div>
                 <StatusBadge estado={r.estado} />
@@ -350,14 +200,5 @@ function StatusBadge({ estado }) {
     <span className={`flex items-center gap-1 rounded-lg px-2 py-1 text-[11px] font-medium ${s.cls}`}>
       <Icon className="h-3 w-3" /> {t(s.label)}
     </span>
-  );
-}
-
-function Field({ label, children }) {
-  return (
-    <label className="block">
-      <span className="mb-1.5 block text-xs font-medium text-muted-foreground">{label}</span>
-      {children}
-    </label>
   );
 }
