@@ -1,0 +1,12 @@
+# Configuración de Supabase CLI para LatamBucks
+project_id = "ednvcqdyeakdsssrpgdg"
+
+# NOWPayments envía el IPN sin JWT de usuario: se verifica la firma HMAC
+# dentro de la función, así que se desactiva la verificación de JWT.
+[functions.webhook-nowpayments]
+verify_jwt = false
+
+# El frontend envía el token del usuario en el body; la función valida
+# la sesión contra Supabase Auth por su cuenta.
+[functions.crear-pago-publicidad]
+verify_jwt = false
