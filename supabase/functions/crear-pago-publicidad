@@ -1,0 +1,150 @@
+// ============================================================
+//  Edge Function: crear-pago-publicidad
+//  Crea una orden 'pendiente' en public.recargas_publicidad y la
+//  factura (invoice) de NOWPayments para recargar saldo publicitario.
+//  1 USD = 1.000 puntos de promoción.
+//
+//  Deploy:  supabase functions deploy crear-pago-publicidad --no-verify-jwt
+//  Secrets: NOWPAYMENTS_API_KEY, SUPABASE_URL, SUPABASE_ANON_KEY,
+//           SUPABASE_SERVICE_ROLE_KEY
+//           (opcional) PUBLIC_APP_URL — base de success/cancel
+// ============================================================
+
+const SUPABASE_URL = (Deno.env.get("SUPABASE_URL") || "").replace(/\/+$/, "");
+const ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY") || "";
+const SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "";
+const NOWPAYMENTS_API_KEY = Deno.env.get("NOWPAYMENTS_API_KEY") || "";
+const APP_URL = (Deno.env.get("PUBLIC_APP_URL") || "https://latambucks.base44.app").replace(/\/+$/, "");
+
+const REST = `${SUPABASE_URL}/rest/v1`;
+const AUTH = `${SUPABASE_URL}/auth/v1`;
+
+const MIN_USD = 5;
+const MAX_USD = 1000;
+const PUNTOS_POR_USD = 1000;
+
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+};
+
+function json(data: unknown, status = 200): Response {
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: { "Content-Type": "application/json", ...corsHeaders },
+  });
+}
+
+function getBearerToken(req: Request): string | null {
+  const h = req.headers.get("authorization") || "";
+  const m = h.match(/^Bearer\s+(.+)$/i);
+  return m ? m[1] : null;
+}
+
+function serviceHeaders(): HeadersInit {
+  return {
+    apikey: SERVICE_ROLE_KEY,
+    Authorization: `Bearer ${SERVICE_ROLE_KEY}`,
+    "Content-Type": "application/json",
+  };
+}
+
+// Valida el JWT del usuario contra Supabase Auth.
+async function verifyUser(token: string): Promise<string | null> {
+  if (!token) return null;
+  try {
+    const res = await fetch(`${AUTH}/user`, {
+      headers: { apikey: ANON_KEY, Authorization: `Bearer ${token}` },
+    });
+    if (!res.ok) return null;
+    const user = await res.json();
+    return user?.id || null;
+  } catch {
+    return null;
+  }
+}
+
+Deno.serve(async (req: Request) => {
+  if (req.method === "OPTIONS") {
+    return new Response("ok", { headers: corsHeaders });
+  }
+
+  try {
+    const body = await req.json().catch(() => ({}));
+    const token = body?.token || getBearerToken(req);
+
+    // 1. Sesión del usuario
+    const userId = await verifyUser(token || "");
+    if (!userId) return json({ error: "Unauthorized" }, 401);
+
+    // 2. Monto (paquetes de $5, $10, $20, $50 y $100)
+    const monto = Math.round(Number(body?.monto_usd) * 100) / 100;
+    if (!Number.isFinite(monto) || monto < MIN_USD || monto > MAX_USD) {
+      return json({ error: `El monto mínimo de recarga es USD ${MIN_USD}` }, 400);
+    }
+    if (!NOWPAYMENTS_API_KEY) {
+      return json({ error: "Falta configurar NOWPAYMENTS_API_KEY" }, 500);
+    }
+
+    const puntos = monto * PUNTOS_POR_USD;
+
+    // 3. Orden pendiente en Supabase (service_role → bypass RLS)
+    const orderRes = await fetch(`${REST}/recargas_publicidad`, {
+      method: "POST",
+      headers: { ...serviceHeaders(), Prefer: "return=representation" },
+      body: JSON.stringify({
+        user_id: userId,
+        monto_usd: monto,
+        puntos_promocion: puntos,
+        estado: "pendiente",
+      }),
+    });
+    if (!orderRes.ok) {
+      return json({ error: "No se pudo crear la orden de recarga" }, 500);
+    }
+    const orderRows = await orderRes.json();
+    const order = Array.isArray(orderRows) ? orderRows[0] : null;
+    if (!order?.id) return json({ error: "No se pudo crear la orden de recarga" }, 500);
+
+    // 4. Factura en NOWPayments
+    const invoiceRes = await fetch("https://api.nowpayments.io/v1/invoice", {
+      method: "POST",
+      headers: {
+        "x-api-key": NOWPAYMENTS_API_KEY,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        price_amount: monto,
+        price_currency: "usd",
+        order_id: order.id,
+        order_description: "Paquete de Publicidad Digital - LatamBucks",
+        ipn_callback_url: `${SUPABASE_URL}/functions/v1/webhook-nowpayments`,
+        success_url: `${APP_URL}/anunciante?recarga=ok`,
+        cancel_url: `${APP_URL}/anunciante?recarga=cancel`,
+      }),
+    });
+
+    const invoice = await invoiceRes.json().catch(() => ({}));
+    if (!invoiceRes.ok || !invoice?.invoice_url) {
+      // La orden queda marcada como fallida para no dejarla pendiente
+      await fetch(`${REST}/recargas_publicidad?id=eq.${order.id}`, {
+        method: "PATCH",
+        headers: serviceHeaders(),
+        body: JSON.stringify({ estado: "fallido" }),
+      });
+      return json(
+        { error: invoice?.message || "NOWPayments rechazó la solicitud de pago" },
+        502,
+      );
+    }
+
+    return json({
+      invoice_url: invoice.invoice_url,
+      order_id: order.id,
+      puntos_promocion: puntos,
+    });
+  } catch (_e) {
+    return json({ error: "Error inesperado al crear el pago" }, 500);
+  }
+});
