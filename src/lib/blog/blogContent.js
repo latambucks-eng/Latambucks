@@ -10,8 +10,18 @@ import radiografiaImg from "@/assets/blog/radiografia.png";
 import ganarAlMesImg from "@/assets/blog/ganar-al-mes.png";
 import rutinaDiariaImg from "@/assets/blog/rutina-diaria.png";
 import retirosImg from "@/assets/blog/retiros.png";
-import { BLOG_ARTICLES_EN } from "@/lib/blog/blogContentEn.js";
-import { BLOG_ARTICLES_PT } from "@/lib/blog/blogContentPt.js";
+// Las traducciones viven en archivos aparte (blogContentEn / blogContentPt).
+// Se cargan con glob para que el build no dependa de un nombre exacto de
+// archivo: si uno falta, el blog sigue funcionando en español.
+const ARCHIVOS_IDIOMA = import.meta.glob("./blogContent[EP]*.js", { eager: true });
+const articulosDe = (clave) => {
+  for (const mod of Object.values(ARCHIVOS_IDIOMA)) {
+    if (Array.isArray(mod[clave])) return mod[clave];
+  }
+  return [];
+};
+const BLOG_ARTICLES_EN = articulosDe("BLOG_ARTICLES_EN");
+const BLOG_ARTICLES_PT = articulosDe("BLOG_ARTICLES_PT");
 
 export const BLOG_ARTICLES = [
   {
@@ -79,7 +89,7 @@ export const BLOG_ARTICLES = [
 <p class="lb-lead">La pregunta más repetida en los comentarios y en el canal de WhatsApp es también la más difícil de responder sin caer en promesas vacías: ¿cuánto se junta por mes? Acá no hay sueldos soñados. Hay tres ritmos de uso reales, con puntos estimados, su equivalente en dólares y el tiempo que tarda cada perfil en llegar a su primer retiro.</p>
 
 <h2>Las dos reglas que ordenan todo</h2>
-<p>Primera: en LatamBucks <strong>1.000 puntos equivalen a 1 dólar</strong>. Segunda: el retiro mínimo es de <strong>5.000 puntos</strong>, es decir 5 dólares. Todo lo demás sale de esas dos cifras y de cuántas tareas reales completes.</p>
+<p>Primera: en LatamBucks <strong>1.000 puntos equivalen a 1 dólar</strong>. Segunda: el retiro mínimo depende de tu país y del método: <strong>3.000 puntos</strong> (3 dólares) por Binance USDT en la mayoría de los países y <strong>5.000 puntos</strong> (5 dólares) por PayPal o si estás en Estados Unidos, Canadá o Europa. Todo lo demás sale de esas cifras y de cuántas tareas reales completes.</p>
 
 <h2>Perfil 1 — El curioso: 10 minutos al día</h2>
 <p>Entra tres o cuatro veces por semana, hace una encuesta corta, mira un video y cobra el bonus diario cuando se acuerda. Cierra el mes con algo así como <strong>600 a 1.200 puntos</strong>, o sea entre 0,60 y 1,20 dólares.</p>
