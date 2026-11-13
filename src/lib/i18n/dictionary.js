@@ -38,6 +38,7 @@ export const DICTIONARY = {
     "home.tareasHoy": "Tareas hoy",
     "home.retirosTotales": "Retiros totales",
 
+    // Pie de página
     // Blog
     "blog.sectionTitle": "Blog LatamBucks",
     "blog.sectionSub": "Guías y datos reales para ganar más puntos.",
@@ -61,8 +62,6 @@ export const DICTIONARY = {
     "blog.notFoundSub": "Puede que el enlace esté mal escrito o que la nota se haya movido.",
     "blog.notFoundBtn": "Ver todos los artículos",
     "blog.back": "Volver a LatamBucks",
-
-    // Pie de página
     "footer.acerca": "Acerca de",
     "footer.contacto": "Contacto",
     "footer.faq": "Preguntas Frecuentes",
@@ -877,7 +876,6 @@ export const DICTIONARY = {
     "blog.notFoundSub": "The link may be mistyped or the post may have moved.",
     "blog.notFoundBtn": "See all articles",
     "blog.back": "Back to LatamBucks",
-
     "footer.acerca": "About",
     "footer.contacto": "Contact",
     "footer.faq": "FAQ",
@@ -1675,7 +1673,6 @@ export const DICTIONARY = {
     "blog.notFoundSub": "Talvez o link esteja errado ou a matéria tenha mudado de lugar.",
     "blog.notFoundBtn": "Ver todos os artigos",
     "blog.back": "Voltar ao LatamBucks",
-
     "footer.acerca": "Sobre nós",
     "footer.contacto": "Contato",
     "footer.faq": "Perguntas frequentes",
