@@ -10,7 +10,7 @@ export default {
       {
         q: "¿Qué es LatamBucks?",
         paragraphs: [
-          "LatamBucks es una plataforma de microtareas que te permite ganar recompensas (puntos) completando actividades como responder encuestas y realizar tareas locales de anunciantes. Los puntos acumulados pueden canjearse por dinero real a través de Payoneer, Airtm o PayPal (USD para todos los países).",
+          "LatamBucks es una plataforma de microtareas que te permite ganar recompensas (puntos) completando actividades como responder encuestas y realizar tareas locales de anunciantes. Los puntos acumulados pueden canjearse por dinero real a través de PayPal (USD) o Binance (USDT).",
         ],
       },
       {
@@ -75,33 +75,32 @@ export default {
       {
         q: "¿Cuál es el mínimo de retiro?",
         paragraphs: [
-          "El monto mínimo es de **5000 puntos (5 USD)** para todos los países. Este mínimo está sujeto a cambios y modificaciones futuras sin previo aviso por parte de la administración de la plataforma.",
+          "El mínimo depende del método y de tu país detectado: **PayPal 5000 puntos (5 USD)** en todos los países y **Binance 3000 puntos (3 USD)** fuera de los países del Tier 1 (en Tier 1 el mínimo es de 5000 puntos para ambos métodos). Los canjes se piden en montos fijos de hasta 100 USD. Este mínimo está sujeto a cambios y modificaciones futuras sin previo aviso por parte de la administración de la plataforma.",
         ],
       },
       {
         q: "¿Qué métodos de pago puedo usar para retirar?",
         paragraphs: [
-          "Todos los retiros se procesan en dólares estadounidenses (USD). Los métodos de pago disponibles para todos los usuarios, sin distinción de país, son:",
+          "Los retiros se pagan en dólares estadounidenses: **USD por PayPal** y **USDT por Binance** (1 USDT = 1 USD). Los métodos disponibles para todos los usuarios, sin distinción de país, son:",
         ],
         bullets: [
-          "**Payoneer:** se abona al correo electrónico de tu cuenta Payoneer. Deberás registrar tu correo y el nombre del titular en la pestaña \"Retiros\".",
-          "**Airtm:** se abona al correo electrónico de tu cuenta Airtm. Deberás registrar tu correo y el nombre del titular.",
-          "**PayPal:** se abona al correo electrónico de tu cuenta PayPal. **PayPal cobra una comisión estándar por recibir pagos internacionales** (aprox. 4.49% + tarifa fija, variable según el país receptor). Consultá las comisiones vigentes en paypal.com/fees antes de elegir este método.",
+          "**PayPal:** se abona en USD al correo electrónico de tu cuenta PayPal, en montos fijos de 5 a 100 USD. **PayPal cobra una comisión estándar por recibir pagos internacionales** (aprox. 4.49% + tarifa fija, variable según el país receptor). Consultá las comisiones vigentes en paypal.com/fees antes de elegir este método.",
+          "**Binance:** se abona en USDT a tu cuenta Binance, en montos fijos de 3 a 100 USD, a la dirección de billetera que indiques en la solicitud. La red que elijas puede aplicar su propia comisión de envío, ajena a la plataforma.",
         ],
         closing: [
           "La plataforma podrá habilitar, modificar o deshabilitar medios de pago en el futuro. Los canales oficiales de distribución de pagos serán comunicados a través de la app y esta página de preguntas frecuentes.",
         ],
       },
       {
-        q: "¿Cuándo se realiza el corte y el pago?",
+        q: "¿Cuándo se paga mi retiro?",
         paragraphs: [
-          "El corte de facturación se realiza de forma **automática todos los jueves a las 16:00 hs de Argentina**. Si tu saldo disponible supera el mínimo exigido en ese momento, pasa automáticamente a estado \"Pago en Proceso\". Los pagos correspondientes se **procesan y envían todos los viernes** a través del método asignado a tu país.",
+          "No hay cortes ni envíos automáticos: el retiro lo pedís vos desde la pestaña \"Retiros\" en montos fijos, indicando tus datos de cobro. La solicitud queda en estado **Pendiente** y el equipo la revisa según el país detectado en tu registro y los controles antifraude. Si se aprueba pasa a **Procesado** y el pago se envía al medio elegido; si no cumple los requisitos queda **Rechazado** y los puntos vuelven a tu saldo disponible. Los pedidos se atienden en orden de solicitud.",
         ],
       },
       {
         q: "¿Qué pasa si hay demoras en la acreditación de mi pago?",
         paragraphs: [
-          "Pueden existir retrasos en la acreditación de los fondos, dado que dependemos enteramente de las normativas, revisiones y tiempos de procesamiento de plataformas de terceros (Payoneer, Airtm y PayPal). Ante cualquier demora, la plataforma notificará de inmediato a la comunidad especificando el método afectado. La plataforma deslinda toda responsabilidad legal por demoras externas originadas en los proveedores de pago o en sus procesos de auditoría.",
+          "Pueden existir retrasos en la acreditación de los fondos, dado que dependemos enteramente de las normativas, revisiones y tiempos de procesamiento de plataformas de terceros (PayPal y Binance). Ante cualquier demora, la plataforma notificará de inmediato a la comunidad especificando el método afectado. La plataforma deslinda toda responsabilidad legal por demoras externas originadas en los proveedores de pago o en sus procesos de auditoría.",
         ],
       },
       {
@@ -127,7 +126,7 @@ export default {
       {
         q: "¿Cómo retiro mis ganancias?",
         paragraphs: [
-          "Desde la pestaña \"Retiros\", guardá tus datos de cobro (Payoneer, Airtm o PayPal). El sistema procesa automáticamente tu saldo cada jueves a las 16:00 hs de Argentina si superás el mínimo exigido. El pago se envía el viernes siguiente. No necesitás solicitar el retiro manualmente.",
+          "Desde la pestaña \"Retiros\" elegí el método (PayPal o Binance), el monto fijo que querés canjear y cargá tus datos de cobro. Al confirmar, la solicitud queda **Pendiente** hasta que el equipo la revise y la marque como **Procesado** (o **Rechazado**, con devolución de los puntos al saldo). Podés guardar tus datos como predeterminados para el próximo canje.",
         ],
       },
       {
@@ -139,7 +138,7 @@ export default {
       {
         q: "¿Qué es el bono de bienvenida?",
         paragraphs: [
-          "Al registrarte recibís automáticamente **500 puntos ($0.50 USD)** de bono de bienvenida. Este bono se acredita una sola vez y podés usarlo para retirar o para crear campañas como anunciante. Si creás una campaña, el saldo bono se consume primero y está **exento de la comisión del 30%** de la plataforma. El bono es revocable si se detecta fraude o cuenta múltiple. **No se puede apostar en la ruleta Multiplicador:** ahí solo se juegan puntos ganados en encuestas.",
+          "Al registrarte recibís automáticamente **500 puntos ($0.50 USD)** de bono de bienvenida. Este bono se acredita una sola vez y podés usarlo para crear campañas como anunciante (**no es retirable**: los retiros se piden sobre puntos ganados en encuestas y tareas). Si creás una campaña, el saldo bono se consume primero y está **exento de la comisión del 30%** de la plataforma. El bono es revocable si se detecta fraude o cuenta múltiple. **No se puede apostar en la ruleta Multiplicador:** ahí solo se juegan puntos ganados en encuestas.",
         ],
       },
       {
@@ -163,7 +162,7 @@ export default {
       {
         q: "Soy anunciante, ¿cómo publico una campaña?",
         paragraphs: [
-          "Desde la sección \"Anunciar Aquí\", completá los datos de tu campaña (título, enlace, puntos por visita, cantidad de visitas). El sistema calcula el costo total incluyendo una comisión del 30% de la plataforma. Realizás el pago por Payoneer, Airtm o PayPal y, una vez aprobado el pago por el administrador, la campaña queda activa para que los usuarios la realicen.",
+          "Desde la sección \"Anunciar Aquí\", completá los datos de tu campaña (título, enlace, puntos por visita, cantidad de visitas). El sistema calcula el costo total incluyendo una comisión del 30% de la plataforma. Recargás tu saldo publicitario vía Cripto (NOWPayments) o PayPal y creás la campaña con ese saldo; queda activa al instante para que los usuarios la realicen.",
         ],
       },
       {
@@ -201,7 +200,7 @@ export default {
       {
         q: "What is LatamBucks?",
         paragraphs: [
-          "LatamBucks is a microtask platform that lets you earn rewards (points) by completing activities such as answering surveys and doing local advertiser tasks. Accumulated points can be redeemed for real money through Payoneer, Airtm or PayPal (USD for every country).",
+          "LatamBucks is a microtask platform that lets you earn rewards (points) by completing activities such as answering surveys and doing local advertiser tasks. Accumulated points can be redeemed for real money through PayPal (USD) or Binance (USDT).",
         ],
       },
       {
@@ -266,33 +265,32 @@ export default {
       {
         q: "What is the minimum withdrawal?",
         paragraphs: [
-          "The minimum is **5000 points (5 USD)** for every country. This minimum may change in the future without prior notice from the platform administration.",
+          "The minimum depends on the method and on your detected country: **PayPal 5000 points (5 USD)** in every country and **Binance 3000 points (3 USD)** outside Tier 1 countries (in Tier 1 the minimum is 5000 points for both methods). Redemptions are requested in fixed amounts up to 100 USD. This minimum may change in the future without prior notice from the platform administration.",
         ],
       },
       {
         q: "Which payment methods can I use to withdraw?",
         paragraphs: [
-          "All withdrawals are processed in US dollars (USD). The payment methods available to every user, regardless of country, are:",
+          "Withdrawals are paid in US dollars: **USD through PayPal** and **USDT through Binance** (1 USDT = 1 USD). The methods available to every user, regardless of country, are:",
         ],
         bullets: [
-          "**Payoneer:** paid to your Payoneer account email. You must register your email and the account holder's name in the \"Withdrawals\" tab.",
-          "**Airtm:** paid to your Airtm account email. You must register your email and the account holder's name.",
-          "**PayPal:** paid to your PayPal account email. **PayPal charges a standard fee for receiving international payments** (about 4.49% + a fixed fee, which varies by receiving country). Check the current fees at paypal.com/fees before choosing this method.",
+          "**PayPal:** paid in USD to your PayPal account email, in fixed amounts from 5 to 100 USD. **PayPal charges a standard fee for receiving international payments** (about 4.49% + a fixed fee, which varies by receiving country). Check the current fees at paypal.com/fees before choosing this method.",
+          "**Binance:** paid in USDT to your Binance account, in fixed amounts from 3 to 100 USD, to the wallet address you enter in the request. The network you choose may apply its own transfer fee, which is not charged by the platform.",
         ],
         closing: [
           "The platform may enable, change or disable payment methods in the future. Official payout channels will be announced in the app and on this FAQ page.",
         ],
       },
       {
-        q: "When is the cutoff and the payment made?",
+        q: "When is my withdrawal paid?",
         paragraphs: [
-          "The billing cutoff is **automatic every Thursday at 16:00 (Argentina time)**. If your available balance exceeds the minimum required at that moment, it automatically moves to \"Payment in Progress\". The corresponding payments are **processed and sent every Friday** through the method assigned to your country.",
+          "There are no cutoffs or automatic sends: you request the withdrawal yourself from the \"Withdrawals\" tab in fixed amounts, entering your payout details. The request stays in **Pending** status while the team reviews it against the country detected at signup and our anti-fraud checks. Once approved it moves to **Processed** and the payment is sent to the method you chose; if it does not meet the requirements it is **Rejected** and the points return to your available balance. Requests are handled in the order they are received.",
         ],
       },
       {
         q: "What if my payment takes longer to arrive?",
         paragraphs: [
-          "Delays can happen because we depend entirely on the rules, reviews and processing times of third-party platforms (Payoneer, Airtm and PayPal). If there is any delay, the platform will immediately notify the community, specifying the affected method. The platform disclaims all legal liability for external delays caused by payment providers or their audit processes.",
+          "Delays can happen because we depend entirely on the rules, reviews and processing times of third-party platforms (PayPal and Binance). If there is any delay, the platform will immediately notify the community, specifying the affected method. The platform disclaims all legal liability for external delays caused by payment providers or their audit processes.",
         ],
       },
       {
@@ -318,7 +316,7 @@ export default {
       {
         q: "How do I withdraw my earnings?",
         paragraphs: [
-          "In the \"Withdrawals\" tab, save your payout details (Payoneer, Airtm or PayPal). The system processes your balance automatically every Thursday at 16:00 (Argentina time) if you are above the minimum required. Payment is sent the following Friday. You don't need to request the withdrawal manually.",
+          "In the \"Withdrawals\" tab, choose the method (PayPal or Binance), the fixed amount you want to redeem and enter your payout details. When you confirm, the request stays **Pending** until the team reviews it and marks it **Processed** (or **Rejected**, with the points returned to your balance). You can save your details as the default for your next redemption.",
         ],
       },
       {
@@ -330,7 +328,7 @@ export default {
       {
         q: "What is the welcome bonus?",
         paragraphs: [
-          "When you sign up you automatically receive **500 points ($0.50 USD)** as a welcome bonus. It is credited once and you can use it to withdraw or to create campaigns as an advertiser. If you create a campaign, the bonus balance is consumed first and is **exempt from the platform's 30% commission**. The bonus is revocable if fraud or multiple accounts are detected. **It cannot be bet on the Multiplier wheel:** only points earned from surveys can be played there.",
+          "When you sign up you automatically receive **500 points ($0.50 USD)** as a welcome bonus. It is credited once and you can use it to create campaigns as an advertiser (**it cannot be withdrawn**: withdrawals are requested against points earned in surveys and tasks). If you create a campaign, the bonus balance is consumed first and is **exempt from the platform's 30% commission**. The bonus is revocable if fraud or multiple accounts are detected. **It cannot be bet on the Multiplier wheel:** only points earned from surveys can be played there.",
         ],
       },
       {
@@ -354,7 +352,7 @@ export default {
       {
         q: "I'm an advertiser, how do I publish a campaign?",
         paragraphs: [
-          "In the \"Advertise Here\" section, fill in your campaign details (title, link, points per visit, number of visits). The system calculates the total cost including a 30% platform commission. You pay through Payoneer, Airtm or PayPal and, once the administrator approves the payment, the campaign becomes active for users to complete.",
+          "In the \"Advertise Here\" section, fill in your campaign details (title, link, points per visit, number of visits). The system calculates the total cost including a 30% platform commission. You top up your advertising balance via Crypto (NOWPayments) or PayPal and create the campaign with that balance; it becomes active immediately for users to complete.",
         ],
       },
       {
@@ -392,7 +390,7 @@ export default {
       {
         q: "O que é o LatamBucks?",
         paragraphs: [
-          "O LatamBucks é uma plataforma de microtarefas que permite ganhar recompensas (pontos) completando atividades como responder pesquisas e realizar tarefas locais de anunciantes. Os pontos acumulados podem ser trocados por dinheiro real via Payoneer, Airtm ou PayPal (USD para todos os países).",
+          "O LatamBucks é uma plataforma de microtarefas que permite ganhar recompensas (pontos) completando atividades como responder pesquisas e realizar tarefas locais de anunciantes. Os pontos acumulados podem ser trocados por dinheiro real via PayPal (USD) ou Binance (USDT).",
         ],
       },
       {
@@ -457,33 +455,32 @@ export default {
       {
         q: "Qual é o mínimo de saque?",
         paragraphs: [
-          "O valor mínimo é de **5000 pontos (5 USD)** para todos os países. Esse mínimo está sujeito a alterações futuras sem aviso prévio por parte da administração da plataforma.",
+          "O mínimo depende do método e do seu país detectado: **PayPal 5000 pontos (5 USD)** em todos os países e **Binance 3000 pontos (3 USD)** fora dos países do Tier 1 (no Tier 1 o mínimo é de 5000 pontos para ambos os métodos). As trocas são solicitadas em valores fixos de até 100 USD. Esse mínimo está sujeito a alterações futuras sem aviso prévio por parte da administração da plataforma.",
         ],
       },
       {
         q: "Quais meios de pagamento posso usar para sacar?",
         paragraphs: [
-          "Todos os saques são processados em dólares americanos (USD). Os meios de pagamento disponíveis para todos os usuários, sem distinção de país, são:",
+          "Os saques são pagos em dólares americanos: **USD pelo PayPal** e **USDT pela Binance** (1 USDT = 1 USD). Os meios disponíveis para todos os usuários, sem distinção de país, são:",
         ],
         bullets: [
-          "**Payoneer:** pago no e-mail da sua conta Payoneer. Você deve cadastrar seu e-mail e o nome do titular na aba \"Saques\".",
-          "**Airtm:** pago no e-mail da sua conta Airtm. Você deve cadastrar seu e-mail e o nome do titular.",
-          "**PayPal:** pago no e-mail da sua conta PayPal. **O PayPal cobra uma comissão padrão por receber pagamentos internacionais** (aprox. 4,49% + tarifa fixa, variável conforme o país recebedor). Consulte as comissões vigentes em paypal.com/fees antes de escolher esse método.",
+          "**PayPal:** pago em USD no e-mail da sua conta PayPal, em valores fixos de 5 a 100 USD. **O PayPal cobra uma comissão padrão por receber pagamentos internacionais** (aprox. 4,49% + tarifa fixa, variável conforme o país recebedor). Consulte as comissões vigentes em paypal.com/fees antes de escolher esse método.",
+          "**Binance:** pago em USDT na sua conta Binance, em valores fixos de 3 a 100 USD, para o endereço de carteira que você informar na solicitação. A rede escolhida pode aplicar sua própria comissão de envio, que não é da plataforma.",
         ],
         closing: [
           "A plataforma poderá habilitar, alterar ou desabilitar meios de pagamento no futuro. Os canais oficiais de distribuição de pagamentos serão comunicados pelo app e nesta página de perguntas frequentes.",
         ],
       },
       {
-        q: "Quando acontecem o corte e o pagamento?",
+        q: "Quando meu saque é pago?",
         paragraphs: [
-          "O corte de faturamento é feito de forma **automática toda quinta-feira às 16h (horário da Argentina)**. Se seu saldo disponível superar o mínimo exigido naquele momento, ele passa automaticamente para o estado \"Pagamento em Processo\". Os pagamentos correspondentes são **processados e enviados todas as sextas-feiras** pelo método atribuído ao seu país.",
+          "Não há cortes nem envios automáticos: você solicita o saque na aba \"Saques\" em valores fixos, informando seus dados de recebimento. A solicitação fica em estado **Pendente** enquanto a equipe a revisa conforme o país detectado no seu cadastro e os controles antifraude. Se for aprovada, passa a **Processado** e o pagamento é enviado ao meio escolhido; se não cumprir os requisitos, fica **Recusado** e os pontos voltam ao seu saldo disponível. Os pedidos são atendidos na ordem de solicitação.",
         ],
       },
       {
         q: "E se houver atraso no crédito do meu pagamento?",
         paragraphs: [
-          "Pode haver atrasos no crédito dos fundos, pois dependemos inteiramente das normas, revisões e prazos de processamento de plataformas de terceiros (Payoneer, Airtm e PayPal). Em caso de atraso, a plataforma notificará imediatamente a comunidade, indicando o método afetado. A plataforma isenta-se de toda responsabilidade legal por atrasos externos originados nos provedores de pagamento ou em seus processos de auditoria.",
+          "Pode haver atrasos no crédito dos fundos, pois dependemos inteiramente das normas, revisões e prazos de processamento de plataformas de terceiros (PayPal e Binance). Em caso de atraso, a plataforma notificará imediatamente a comunidade, indicando o método afetado. A plataforma isenta-se de toda responsabilidade legal por atrasos externos originados nos provedores de pagamento ou em seus processos de auditoria.",
         ],
       },
       {
@@ -509,7 +506,7 @@ export default {
       {
         q: "Como saco meus ganhos?",
         paragraphs: [
-          "Na aba \"Saques\", salve seus dados de recebimento (Payoneer, Airtm ou PayPal). O sistema processa seu saldo automaticamente toda quinta-feira às 16h (horário da Argentina) se você superar o mínimo exigido. O pagamento é enviado na sexta-feira seguinte. Você não precisa solicitar o saque manualmente.",
+          "Na aba \"Saques\", escolha o método (PayPal ou Binance), o valor fixo que deseja trocar e informe seus dados de recebimento. Ao confirmar, a solicitação fica **Pendente** até que a equipe a revise e a marque como **Processado** (ou **Recusado**, devolvendo os pontos ao saldo). Você pode salvar seus dados como padrão para o próximo saque.",
         ],
       },
       {
@@ -521,7 +518,7 @@ export default {
       {
         q: "O que é o bônus de boas-vindas?",
         paragraphs: [
-          "Ao se cadastrar você recebe automaticamente **500 pontos ($0,50 USD)** de bônus de boas-vindas. Esse bônus é creditado uma única vez e você pode usá-lo para sacar ou para criar campanhas como anunciante. Se criar uma campanha, o saldo bônus é consumido primeiro e é **isento da comissão de 30%** da plataforma. O bônus é revogável se for detectada fraude ou conta múltipla. **Não pode ser apostado na roleta Multiplicador:** ali só se jogam pontos ganhos em pesquisas.",
+          "Ao se cadastrar você recebe automaticamente **500 pontos ($0,50 USD)** de bônus de boas-vindas. Esse bônus é creditado uma única vez e você pode usá-lo para criar campanhas como anunciante (**não é sacável**: os saques são solicitados sobre pontos ganhos em pesquisas e tarefas). Se criar uma campanha, o saldo bônus é consumido primeiro e é **isento da comissão de 30%** da plataforma. O bônus é revogável se for detectada fraude ou conta múltipla. **Não pode ser apostado na roleta Multiplicador:** ali só se jogam pontos ganhos em pesquisas.",
         ],
       },
       {
@@ -545,7 +542,7 @@ export default {
       {
         q: "Sou anunciante, como publico uma campanha?",
         paragraphs: [
-          "Na seção \"Anunciar Aqui\", preencha os dados da sua campanha (título, link, pontos por visita, quantidade de visitas). O sistema calcula o custo total incluindo uma comissão de 30% da plataforma. Você realiza o pagamento por Payoneer, Airtm ou PayPal e, depois que o administrador aprovar o pagamento, a campanha fica ativa para os usuários realizarem.",
+          "Na seção \"Anunciar Aqui\", preencha os dados da sua campanha (título, link, pontos por visita, quantidade de visitas). O sistema calcula o custo total incluindo uma comissão de 30% da plataforma. Você recarrega seu saldo publicitário via Cripto (NOWPayments) ou PayPal e cria a campanha com esse saldo; ela fica ativa imediatamente para os usuários realizarem.",
         ],
       },
       {
