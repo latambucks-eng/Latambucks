@@ -9,11 +9,12 @@ import {
   rechazarPrueba,
   administrarEstadoCampana,
 } from "@/lib/supabaseClient";
-import { Megaphone, Loader2, Check, X, Inbox, Link2, Wallet, Info, Pause } from "lucide-react";
+import { Megaphone, Loader2, Check, X, Inbox, BarChart3, Link2, Wallet, Info, Pause, Bitcoin } from "lucide-react";
 import Icon3D from "@/components/latambucks/Icon3D";
 import { Image } from "@/components/ui/image";
 import { PaymentLogoBadge } from "@/components/latambucks/PaymentLogos";
 import AnunciarAqui from "@/components/latambucks/AnunciarAqui";
+import RecargaSaldo from "@/components/latambucks/RecargaSaldo";
 import toast from "react-hot-toast";
 
 export default function AnunciantePanel() {
@@ -139,6 +140,9 @@ export default function AnunciantePanel() {
 
       {/* Saldo Promoción + Guía */}
       <SaldoPromocionCard perfil={perfil} />
+
+      {/* Recarga de saldo publicitario: cripto (NOWPayments) o PayPal */}
+      <RecargaSaldo />
 
       {/* Mis Campañas */}
       {!loading && campanas.length > 0 && (
@@ -432,12 +436,13 @@ function SaldoPromocionCard({ perfil }) {
           aria-label={t("promo.aria")}
           className="relative mt-3 flex box-border w-full items-center justify-center gap-2.5 rounded-xl border border-orange-500/30 bg-gradient-to-r from-orange-500/10 via-card to-violet-500/10 px-3 py-2.5 text-center"
         >
-          <PaymentLogoBadge metodo="payoneer" className="h-11 w-16 shrink-0" />
-          <PaymentLogoBadge metodo="airtm" className="h-11 w-16 shrink-0" />
+          <span className="flex h-11 w-16 shrink-0 items-center justify-center rounded-xl bg-[#F7931A]/15 ring-1 ring-[#F7931A]/30">
+            <Bitcoin className="h-6 w-6 text-[#F7931A]" />
+          </span>
           <PaymentLogoBadge metodo="paypal" className="h-11 w-16 shrink-0" />
           <div className="min-w-0">
             <p className="truncate text-xs font-semibold text-foreground">
-              Payoneer · Airtm · PayPal
+              Cripto (NOWPayments) · PayPal
             </p>
             <p className="truncate text-[10px] text-muted-foreground">
               {t("promo.metodos")}
