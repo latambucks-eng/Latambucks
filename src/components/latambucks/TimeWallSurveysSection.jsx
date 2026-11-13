@@ -4,7 +4,7 @@ import SurveyCard from "@/components/latambucks/SurveyCard";
 import ProviderHeader from "@/components/latambucks/ProviderHeader";
 import { useI18n } from "@/lib/i18n/LanguageContext";
 
-import TIMEWALL_LOGO_URL from "@/assets/external/timewall-icon.png";
+const TIMEWALL_LOGO_URL = "https://images.timebucks.com/TimewallImages/icon.png";
 
 // Sección dedicada de encuestas de TimeWall (Survey API oficial).
 // Renderiza las encuestas en el mismo grid de tarjetas que CPX/TheoremReach,
