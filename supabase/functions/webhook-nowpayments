@@ -1,0 +1,117 @@
+// ============================================================
+//  Edge Function: webhook-nowpayments
+//  IPN de NOWPayments. Verifica la firma HMAC-SHA512 con el IPN
+//  secret y, si el pago está 'finished' o 'confirmed', acredita el
+//  saldo promocional del anunciante con la RPC idempotente
+//  acreditar_recarga_publicidad.
+//
+//  NOWPayments no envía JWT: desplegar sin verificación de JWT.
+//  Deploy:  supabase functions deploy webhook-nowpayments --no-verify-jwt
+//  Secrets: NOWPAYMENTS_IPN_SECRET, SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY
+// ============================================================
+
+import { createHmac } from "node:crypto";
+
+const SUPABASE_URL = (Deno.env.get("SUPABASE_URL") || "").replace(/\/+$/, "");
+const SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "";
+const IPN_SECRET = Deno.env.get("NOWPAYMENTS_IPN_SECRET") || "";
+
+const REST = `${SUPABASE_URL}/rest/v1`;
+
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-nowpayments-sig",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+};
+
+function json(data: unknown, status = 200): Response {
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: { "Content-Type": "application/json", ...corsHeaders },
+  });
+}
+
+// NOWPayments firma el JSON con las claves ordenadas alfabéticamente
+// (recursivamente) y sin espacios.
+function sortKeysDeep(value: unknown): unknown {
+  if (Array.isArray(value)) return value.map(sortKeysDeep);
+  if (value && typeof value === "object") {
+    const obj = value as Record<string, unknown>;
+    return Object.keys(obj)
+      .sort()
+      .reduce((acc, key) => {
+        acc[key] = sortKeysDeep(obj[key]);
+        return acc;
+      }, {} as Record<string, unknown>);
+  }
+  return value;
+}
+
+function hmacSha512Hex(secret: string, payload: string): string {
+  return createHmac("sha512", secret).update(payload).digest("hex");
+}
+
+function safeEqual(a: string, b: string): boolean {
+  if (a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return diff === 0;
+}
+
+Deno.serve(async (req: Request) => {
+  if (req.method === "OPTIONS") {
+    return new Response("ok", { headers: corsHeaders });
+  }
+
+  try {
+    if (!IPN_SECRET || !SERVICE_ROLE_KEY) {
+      return json({ error: "Webhook sin configurar" }, 500);
+    }
+
+    const raw = await req.text();
+    let body: Record<string, unknown>;
+    try {
+      body = JSON.parse(raw);
+    } catch {
+      return json({ error: "JSON inválido" }, 400);
+    }
+
+    // 1. Firma HMAC-SHA512
+    const received = (req.headers.get("x-nowpayments-sig") || "").trim().toLowerCase();
+    const expected = hmacSha512Hex(IPN_SECRET, JSON.stringify(sortKeysDeep(body)));
+    if (!received || !safeEqual(received, expected)) {
+      return json({ error: "Firma inválida" }, 401);
+    }
+
+    // 2. Estado del pago
+    const status = String(body.payment_status || "").toLowerCase();
+    if (status !== "finished" && status !== "confirmed") {
+      return json({ ok: true, ignored: status || "sin estado" });
+    }
+
+    const orderId = String(body.order_id || "").trim();
+    const paymentId = body.payment_id != null ? String(body.payment_id) : "";
+    if (!orderId) return json({ error: "Falta order_id" }, 400);
+
+    // 3. Acreditar saldo (RPC idempotente, service_role)
+    const rpcRes = await fetch(`${REST}/rpc/acreditar_recarga_publicidad`, {
+      method: "POST",
+      headers: {
+        apikey: SERVICE_ROLE_KEY,
+        Authorization: `Bearer ${SERVICE_ROLE_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ p_order_id: orderId, p_payment_id: paymentId }),
+    });
+
+    if (!rpcRes.ok) {
+      const detail = await rpcRes.text().catch(() => "");
+      return json({ error: "No se pudo acreditar la recarga", detail }, 500);
+    }
+
+    const acreditado = await rpcRes.json().catch(() => null);
+    return json({ ok: true, acreditado: acreditado === true });
+  } catch (_e) {
+    return json({ error: "Error inesperado en el webhook" }, 500);
+  }
+});
