@@ -1,6 +1,7 @@
 import React from "react";
 import { Loader2 } from "lucide-react";
 import SurveyCard from "@/components/latambucks/SurveyCard";
+import ProviderHeader from "@/components/latambucks/ProviderHeader";
 import { useI18n } from "@/lib/i18n/LanguageContext";
 
 import TIMEWALL_LOGO_URL from "@/assets/external/timewall-icon.png";
@@ -30,24 +31,11 @@ export default function TimeWallSurveysSection({ surveys, loading, error }) {
   return (
     <section className="space-y-3">
       {/* Header con logo de TimeWall */}
-      <div className="flex items-center gap-2">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white/95 p-1.5 ring-1 ring-white/20 shadow-lg shadow-black/30">
-          <img
-            src={TIMEWALL_LOGO_URL}
-            alt="TimeWall"
-            className="h-full w-full object-contain"
-            loading="lazy"
-          />
-        </div>
-        <div>
-          <h3 className="font-display text-sm font-bold text-foreground">
-            {t("timewall.surveys.title")}
-          </h3>
-          <p className="text-[11px] leading-snug text-muted-foreground">
-            {t("timewall.surveys.sub")}
-          </p>
-        </div>
-      </div>
+      <ProviderHeader
+        logo={TIMEWALL_LOGO_URL}
+        title={t("timewall.surveys.title")}
+        subtitle={t("timewall.surveys.sub")}
+      />
 
       {/* Grid de tarjetas — mismo diseño que las de CPX/TheoremReach */}
       {loading ? (
