@@ -8,14 +8,20 @@ import { fetchTimeWallSurveys } from "@/lib/timeWallOfferWall";
 import TimeWallSurveysSection from "@/components/latambucks/TimeWallSurveysSection";
 import RapidoReachOfferWall from "@/components/latambucks/RapidoReachOfferWall";
 import SurveyCard from "@/components/latambucks/SurveyCard";
+import SurveyFilterBar from "@/components/latambucks/SurveyFilterBar";
+import ProviderHeader from "@/components/latambucks/ProviderHeader";
 import { Image } from "@/components/ui/image";
 import { callEdgeFunction } from "@/lib/supabaseClient";
-import { ChevronDown, Filter, Loader2, RefreshCw, AlertCircle, ExternalLink } from "lucide-react";
+import { ChevronDown, Loader2, RefreshCw, AlertCircle, ExternalLink } from "lucide-react";
 import Icon3D from "@/components/latambucks/Icon3D";
 
 // Logo de TheoremReach recortado a su contenido real (el original era un PNG
 // cuadrado con mucho margen en blanco, por eso se veía más chico y borroso).
 import THEOREMREACH_LOGO_URL from "@/assets/theoremreach-logo.png";
+// Versiones cuadradas de los logotipos horizontales: el isotipo original de
+// cada marca, para que entren nítidos en el recuadro cuadrado del encabezado.
+import CPX_ICON_URL from "@/assets/cpx-research-icon.svg";
+import THEOREMREACH_ICON_URL from "@/assets/theoremreach-icon.png";
 
 const TIMEWALL_LOGO_URL = "https://images.timebucks.com/TimewallImages/icon.png";
 
@@ -202,6 +208,9 @@ export default function EncuestasTab() {
         )}
       </header>
 
+      {/* Filtro por proveedor: debajo del encabezado, a todo el ancho */}
+      <SurveyFilterBar value={providerFilter} onChange={setProviderFilter} />
+
       {/* Dos columnas: muros de ofertas (izquierda) y encuestas (derecha) */}
       <div className="grid items-start gap-4 md:grid-cols-[minmax(0,1fr)_320px]">
         {/* ===== Columna izquierda: muros de ofertas ===== */}
@@ -242,47 +251,33 @@ export default function EncuestasTab() {
             </div>
           </section>
 
-          {/* Filter bar */}
-          <div className="rounded-2xl border border-border bg-card p-3">
-            <div className="mb-2 flex items-center justify-between">
-              <span className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
-                <Filter className="h-3.5 w-3.5" /> {t("ec.filter")}
-              </span>
-              <button
-                onClick={() => setProviderFilter("all")}
-                className={`rounded-lg px-2.5 py-1 text-xs font-semibold transition ${
-                  providerFilter === "all"
-                    ? "bg-rose-500/20 text-rose-400 ring-1 ring-rose-500/30"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {t("ec.seeAll")}
-              </button>
-            </div>
-            <div className="relative">
-              <select
-                value={providerFilter}
-                onChange={(e) => setProviderFilter(e.target.value)}
-                className="w-full appearance-none rounded-xl border border-border bg-background/60 px-3.5 py-3 pr-10 text-sm text-foreground outline-none transition focus:border-orange-500/50 focus:ring-2 focus:ring-orange-500/20"
-              >
-                <option value="all">{t("ec.allProviders")}</option>
-                <option value="cpx_research">CPX Research</option>
-                <option value="theoremreach">TheoremReach</option>
-                <option value="timewall">TimeWall</option>
-                <option value="rapidoreach">RapidoReach</option>
-              </select>
-              <ChevronDown className="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            </div>
-          </div>
-
-          {/* RapidoReach no tiene API de encuestas individuales: cuando el filtro
-              es RapidoReach se ofrece el acceso al muro. En la vista general no se
-              repite la tarjeta porque el botón del logo ya lo abre arriba. */}
-          {providerFilter === "rapidoreach" && <RapidoReachOfferWall />}
         </div>
 
         {/* ===== Columna derecha: encuestas individuales ===== */}
         <div className="space-y-3">
+          {/* RapidoReach no tiene API de encuestas individuales: cuando el filtro
+              es RapidoReach se ofrece el acceso al muro acá, en la columna de
+              resultados. En la vista general no se repite la tarjeta porque el
+              botón del logo ya lo abre arriba. */}
+          {providerFilter === "rapidoreach" && <RapidoReachOfferWall />}
+
+          {/* Encabezado del proveedor elegido en el filtro, mismo formato que
+              la sección de TimeWall. */}
+          {providerFilter === "cpx_research" && (
+            <ProviderHeader
+              logo={CPX_ICON_URL}
+              title={t("cpx.surveys.title")}
+              subtitle={t("cpx.surveys.sub")}
+            />
+          )}
+          {providerFilter === "theoremreach" && (
+            <ProviderHeader
+              logo={THEOREMREACH_ICON_URL}
+              title={t("tr.surveys.title")}
+              subtitle={t("tr.surveys.sub")}
+            />
+          )}
+
           {/* Encuestas TimeWall — se muestran en la columna lateral, apiladas
               con el resto de encuestas. Se respeta el filtro de proveedor. */}
           {(providerFilter === "all" || providerFilter === "timewall") && (
