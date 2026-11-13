@@ -4,6 +4,7 @@ import { Image } from "@/components/ui/image";
 import { PaymentLogoBadge } from "@/components/latambucks/PaymentLogos";
 import { useI18n } from "@/lib/i18n/LanguageContext";
 import { Wallet } from "lucide-react";
+import { brandLogo } from "@/lib/localAssets";
 
 const REDDIT_ICON = (
   <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden="true">
@@ -11,7 +12,7 @@ const REDDIT_ICON = (
   </svg>
 );
 
-const LOGO_URL = "https://media.base44.com/images/public/6aac56144f542d29eaac794b/2a9717c86_generated_image.png";
+const LOGO_URL = brandLogo;
 
 export default function SiteFooter() {
   const { t } = useI18n();
@@ -52,7 +53,7 @@ export default function SiteFooter() {
         to="/blog"
         className="mt-3 inline-flex items-center gap-1 rounded-full border border-orange-500/40 bg-orange-500/10 px-3 py-1.5 text-[11px] font-semibold text-orange-400 transition hover:bg-orange-500/20"
       >
-        {t("blog.sectionTitle")}
+        Blog LatamBucks
       </Link>
       <p className="mt-3 text-[10px] leading-relaxed text-muted-foreground/60">
         © {new Date().getFullYear()} LatamBucks. {t("footer.tagline")}
