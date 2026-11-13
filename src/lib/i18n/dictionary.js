@@ -38,7 +38,6 @@ export const DICTIONARY = {
     "home.tareasHoy": "Tareas hoy",
     "home.retirosTotales": "Retiros totales",
 
-    // Pie de página
     // Blog
     "blog.sectionTitle": "Blog LatamBucks",
     "blog.sectionSub": "Guías y datos reales para ganar más puntos.",
@@ -62,6 +61,8 @@ export const DICTIONARY = {
     "blog.notFoundSub": "Puede que el enlace esté mal escrito o que la nota se haya movido.",
     "blog.notFoundBtn": "Ver todos los artículos",
     "blog.back": "Volver a LatamBucks",
+
+    // Pie de página
     "footer.acerca": "Acerca de",
     "footer.contacto": "Contacto",
     "footer.faq": "Preguntas Frecuentes",
@@ -329,6 +330,10 @@ export const DICTIONARY = {
     "encuestas.err.conn": "Error de conexión",
     "timewall.surveys.title": "Encuestas TimeWall",
     "timewall.surveys.sub": "Encuestas exclusivas. Tus puntos se acreditan automáticamente.",
+    "cpx.surveys.title": "Encuestas CPX Research",
+    "cpx.surveys.sub": "Encuestas exclusivas. Tus puntos se acreditan automáticamente.",
+    "tr.surveys.title": "Encuestas TheoremReach",
+    "tr.surveys.sub": "Encuestas exclusivas. Tus puntos se acreditan automáticamente.",
     "cpagrip.guia.title": "Cómo ganar tus puntos",
     "cpagrip.guia.paso1": "Tocá «Descarga de apps» y se abre la ventana de ofertas.",
     "cpagrip.guia.paso2": "Completá una oferta (encuesta, app o acción) dentro del locker.",
@@ -872,6 +877,7 @@ export const DICTIONARY = {
     "blog.notFoundSub": "The link may be mistyped or the post may have moved.",
     "blog.notFoundBtn": "See all articles",
     "blog.back": "Back to LatamBucks",
+
     "footer.acerca": "About",
     "footer.contacto": "Contact",
     "footer.faq": "FAQ",
@@ -1128,6 +1134,10 @@ export const DICTIONARY = {
     "encuestas.err.conn": "Connection error",
     "timewall.surveys.title": "TimeWall surveys",
     "timewall.surveys.sub": "Exclusive surveys. Your points are credited automatically.",
+    "cpx.surveys.title": "CPX Research surveys",
+    "cpx.surveys.sub": "Exclusive surveys. Your points are credited automatically.",
+    "tr.surveys.title": "TheoremReach surveys",
+    "tr.surveys.sub": "Exclusive surveys. Your points are credited automatically.",
     "cpagrip.guia.title": "How to earn your points",
     "cpagrip.guia.paso1": "Tap \"App downloads\" and the offers window opens.",
     "cpagrip.guia.paso2": "Complete an offer (survey, app or action) inside the locker.",
@@ -1665,6 +1675,7 @@ export const DICTIONARY = {
     "blog.notFoundSub": "Talvez o link esteja errado ou a matéria tenha mudado de lugar.",
     "blog.notFoundBtn": "Ver todos os artigos",
     "blog.back": "Voltar ao LatamBucks",
+
     "footer.acerca": "Sobre nós",
     "footer.contacto": "Contato",
     "footer.faq": "Perguntas frequentes",
@@ -1921,6 +1932,10 @@ export const DICTIONARY = {
     "encuestas.err.conn": "Erro de conexão",
     "timewall.surveys.title": "Pesquisas TimeWall",
     "timewall.surveys.sub": "Pesquisas exclusivas. Seus pontos são creditados automaticamente.",
+    "cpx.surveys.title": "Pesquisas CPX Research",
+    "cpx.surveys.sub": "Pesquisas exclusivas. Seus pontos são creditados automaticamente.",
+    "tr.surveys.title": "Pesquisas TheoremReach",
+    "tr.surveys.sub": "Pesquisas exclusivas. Seus pontos são creditados automaticamente.",
     "cpagrip.guia.title": "Como ganhar seus pontos",
     "cpagrip.guia.paso1": "Toque em \"Download de apps\" e a janela de ofertas abre.",
     "cpagrip.guia.paso2": "Complete uma oferta (pesquisa, app ou ação) dentro do locker.",
