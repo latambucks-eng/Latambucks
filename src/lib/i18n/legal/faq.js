@@ -186,7 +186,7 @@ export default {
       {
         q: "¿Cómo contacto al soporte?",
         paragraphs: [
-          "Para consultas sobre tu cuenta, retiros o disputas, comunicate a [latambucks@gmail.com](mailto:latambucks@gmail.com). Nuestro equipo responde en horarios hábiles.",
+          "Para consultas sobre tu cuenta, retiros o disputas, comunicate a [team@latambucks.com](mailto:team@latambucks.com). Nuestro equipo responde en horarios hábiles.",
         ],
       },
     ],
@@ -376,7 +376,7 @@ export default {
       {
         q: "How do I contact support?",
         paragraphs: [
-          "For questions about your account, withdrawals or disputes, write to [latambucks@gmail.com](mailto:latambucks@gmail.com). Our team replies during business hours.",
+          "For questions about your account, withdrawals or disputes, write to [team@latambucks.com](mailto:team@latambucks.com). Our team replies during business hours.",
         ],
       },
     ],
@@ -566,7 +566,7 @@ export default {
       {
         q: "Como falo com o suporte?",
         paragraphs: [
-          "Para dúvidas sobre sua conta, saques ou disputas, escreva para [latambucks@gmail.com](mailto:latambucks@gmail.com). Nossa equipe responde em horário comercial.",
+          "Para dúvidas sobre sua conta, saques ou disputas, escreva para [team@latambucks.com](mailto:team@latambucks.com). Nossa equipe responde em horário comercial.",
         ],
       },
     ],
