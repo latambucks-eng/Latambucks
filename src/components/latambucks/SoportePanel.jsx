@@ -174,10 +174,10 @@ export default function SoportePanel() {
               {ui.contactoDesc}
             </p>
             <a
-              href="mailto:latambucks@gmail.com"
+              href="mailto:team@latambucks.com"
               className="flex items-center justify-center gap-2 rounded-xl bg-orange-500 py-2.5 text-sm font-medium text-orange-950 transition hover:bg-orange-400"
             >
-              <Mail className="h-4 w-4" /> latambucks@gmail.com
+              <Mail className="h-4 w-4" /> team@latambucks.com
             </a>
             <div className="mt-3 flex items-center justify-center gap-1.5 text-[11px] text-muted-foreground">
               <Clock className="h-3.5 w-3.5" />
