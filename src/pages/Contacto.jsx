@@ -20,18 +20,18 @@ export default function Contacto() {
 
       <Section title={t("legal.contacto.email.title")}>
         <a
-          href="mailto:latambucks@gmail.com"
+          href="mailto:team@latambucks.com"
           className="flex items-center gap-2 text-sm text-foreground transition hover:text-orange-400"
         >
           <Mail className="h-4 w-4 text-orange-400" />
-          latambucks@gmail.com
+          team@latambucks.com
         </a>
         <p>{t("legal.contacto.email.body")}</p>
       </Section>
 
       <Section title={t("legal.contacto.acceso.title")}>
         <a
-          href="mailto:latambucks@gmail.com?subject=Problemas%20para%20ingresar%20a%20mi%20cuenta"
+          href="mailto:team@latambucks.com?subject=Problemas%20para%20ingresar%20a%20mi%20cuenta"
           className="flex items-center gap-2 text-sm text-foreground transition hover:text-orange-400"
         >
           <LifeBuoy className="h-4 w-4 text-orange-400" />
