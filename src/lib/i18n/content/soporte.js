@@ -28,7 +28,7 @@ export const SOPORTE = {
           {
             q: "¿Qué es LatamBucks y cómo gano puntos?",
             a: [
-              "LatamBucks es una plataforma de microtareas. Ganás puntos completando **videos recompensados**, **encuestas** y **tareas locales** de anunciantes. Los puntos se canjean por dinero real vía Payoneer, Airtm o PayPal (USD para todos los países).",
+              "LatamBucks es una plataforma de microtareas. Ganás puntos completando **videos recompensados**, **encuestas** y **tareas locales** de anunciantes. Los puntos se canjean por dinero real vía PayPal (USD) o Binance (USDT).",
             ],
           },
           {
@@ -39,9 +39,9 @@ export const SOPORTE = {
             ],
           },
           {
-            q: "¿Cómo funciona el ciclo de pago semanal?",
+            q: "¿Cómo pido mi retiro y cuándo se paga?",
             a: [
-              "El corte es **automático todos los jueves a las 16:00 hs (Argentina)**. Si tu saldo disponible supera el mínimo, pasa a \"Pago en Proceso\". Los pagos se envían **los viernes** por Payoneer, Airtm o PayPal según el método elegido.",
+              "No hay cortes automáticos: pedís el canje en la pestaña \"Retiros\" eligiendo PayPal o Binance y un monto fijo. La solicitud queda **Pendiente** y el equipo la revisa según tu país detectado; al aprobarse pasa a **Procesado** y se paga al medio elegido. Si se rechaza, los puntos vuelven a tu saldo.",
             ],
           },
           {
@@ -147,7 +147,7 @@ export const SOPORTE = {
           {
             q: "Mi cuenta fue suspendida y creo que fue un error",
             a: [
-              "Las suspensiones se aplican por violaciones a las normas (VPN, cuentas múltiples, fraude). Si creés que fue un error, escribinos a latambucks@gmail.com desde tu correo registrado, explicando tu situación. Nuestro equipo revisa cada caso.",
+              "Las suspensiones se aplican por violaciones a las normas (VPN, cuentas múltiples, fraude). Si creés que fue un error, escribinos a team@latambucks.com desde tu correo registrado, explicando tu situación. Nuestro equipo revisa cada caso.",
               "No crees una cuenta nueva mientras dure la suspensión: eso agrava la situación.",
             ],
           },
@@ -172,14 +172,14 @@ export const SOPORTE = {
           {
             q: "¿Cuál es el mínimo de retiro?",
             a: [
-              "El mínimo es de **5000 puntos (5 USD)** para todos los países. Puede modificarse sin previo aviso por parte de la administración.",
+              "El mínimo depende del método: **5000 puntos (5 USD)** por PayPal en todos los países y **3000 puntos (3 USD)** por Binance fuera del Tier 1. Puede modificarse sin previo aviso por parte de la administración.",
             ],
           },
           {
             q: "Soy anunciante y mi pago de campaña aún no fue aprobado, ¿puedo reembolsar?",
             a: [
               "El reembolso de campañas **solo se acepta mientras el pago esté pendiente de aprobación**. Una vez que el administrador aprueba el pago y la campaña queda activa, **no proceden reembolsos**.",
-              "Si tu pago está pendiente y querés cancelar, escribinos a latambucks@gmail.com indicando el motivo.",
+              "Si tu pago está pendiente y querés cancelar, escribinos a team@latambucks.com indicando el motivo.",
             ],
           },
           {
@@ -191,7 +191,7 @@ export const SOPORTE = {
           {
             q: "Hay demora en la acreditación de mi pago",
             a: [
-              "Los pagos dependen de Payoneer, Airtm y PayPal (plataformas externas). Pueden existir demoras por normativas o auditorías de estos proveedores. LatamBucks notificará a la comunidad si hay un método afectado y deslinda responsabilidad por demoras externas.",
+              "Los pagos dependen de PayPal y Binance (plataformas externas). Pueden existir demoras por normativas o auditorías de estos proveedores. LatamBucks notificará a la comunidad si hay un método afectado y deslinda responsabilidad por demoras externas.",
             ],
           },
         ],
@@ -225,7 +225,7 @@ export const SOPORTE = {
           {
             q: "What is LatamBucks and how do I earn points?",
             a: [
-              "LatamBucks is a microtask platform. You earn points by completing **rewarded videos**, **surveys** and local **advertiser tasks**. Points can be redeemed for real money via Payoneer, Airtm or PayPal (USD for every country).",
+              "LatamBucks is a microtask platform. You earn points by completing **rewarded videos**, **surveys** and local **advertiser tasks**. Points can be redeemed for real money via PayPal (USD) or Binance (USDT).",
             ],
           },
           {
@@ -236,9 +236,9 @@ export const SOPORTE = {
             ],
           },
           {
-            q: "How does the weekly payment cycle work?",
+            q: "How do I request a withdrawal and when is it paid?",
             a: [
-              "The cutoff is **automatic every Thursday at 16:00 (Argentina time)**. If your available balance is above the minimum, it moves to \"Payment in Progress\". Payments are sent **on Fridays** via Payoneer, Airtm or PayPal depending on the method you chose.",
+              "There are no automatic cutoffs: you request the redemption in the \"Withdrawals\" tab by choosing PayPal or Binance and a fixed amount. The request stays **Pending** while the team reviews it against your detected country; once approved it moves to **Processed** and is paid to the method you chose. If it is rejected, the points return to your balance.",
             ],
           },
           {
@@ -344,7 +344,7 @@ export const SOPORTE = {
           {
             q: "My account was suspended and I think it was a mistake",
             a: [
-              "Suspensions are applied for rule violations (VPN, multiple accounts, fraud). If you believe it was a mistake, write to latambucks@gmail.com from your registered email explaining your situation. Our team reviews every case.",
+              "Suspensions are applied for rule violations (VPN, multiple accounts, fraud). If you believe it was a mistake, write to team@latambucks.com from your registered email explaining your situation. Our team reviews every case.",
               "Don't create a new account while the suspension lasts: that makes the situation worse.",
             ],
           },
@@ -369,14 +369,14 @@ export const SOPORTE = {
           {
             q: "What is the minimum withdrawal?",
             a: [
-              "The minimum is **5000 points (5 USD)** for every country. It may change without prior notice from the administration.",
+              "The minimum depends on the method: **5000 points (5 USD)** through PayPal in every country and **3000 points (3 USD)** through Binance outside Tier 1. It may change without prior notice from the administration.",
             ],
           },
           {
             q: "I'm an advertiser and my campaign payment wasn't approved yet, can I get a refund?",
             a: [
               "Campaign refunds **are only accepted while the payment is pending approval**. Once the administrator approves the payment and the campaign is active, **refunds don't apply**.",
-              "If your payment is pending and you want to cancel, write to latambucks@gmail.com stating the reason.",
+              "If your payment is pending and you want to cancel, write to team@latambucks.com stating the reason.",
             ],
           },
           {
@@ -388,7 +388,7 @@ export const SOPORTE = {
           {
             q: "My payment is taking longer to be credited",
             a: [
-              "Payments depend on Payoneer, Airtm and PayPal (external platforms). Delays can happen due to their rules or audits. LatamBucks will notify the community if a method is affected and disclaims responsibility for external delays.",
+              "Payments depend on PayPal and Binance (external platforms). Delays can happen due to their rules or audits. LatamBucks will notify the community if a method is affected and disclaims responsibility for external delays.",
             ],
           },
         ],
@@ -422,7 +422,7 @@ export const SOPORTE = {
           {
             q: "O que é o LatamBucks e como ganho pontos?",
             a: [
-              "O LatamBucks é uma plataforma de microtarefas. Você ganha pontos completando **vídeos recompensados**, **pesquisas** e **tarefas locais** de anunciantes. Os pontos são trocados por dinheiro real via Payoneer, Airtm ou PayPal (USD para todos os países).",
+              "O LatamBucks é uma plataforma de microtarefas. Você ganha pontos completando **vídeos recompensados**, **pesquisas** e **tarefas locais** de anunciantes. Os pontos são trocados por dinheiro real via PayPal (USD) ou Binance (USDT).",
             ],
           },
           {
@@ -433,9 +433,9 @@ export const SOPORTE = {
             ],
           },
           {
-            q: "Como funciona o ciclo de pagamento semanal?",
+            q: "Como solicito meu saque e quando ele é pago?",
             a: [
-              "O corte é **automático toda quinta-feira às 16:00 (horário da Argentina)**. Se seu saldo disponível superar o mínimo, ele passa para \"Pagamento em Processo\". Os pagamentos são enviados **nas sextas-feiras** por Payoneer, Airtm ou PayPal conforme o método escolhido.",
+              "Não há cortes automáticos: você pede a troca na aba \"Saques\" escolhendo PayPal ou Binance e um valor fixo. A solicitação fica **Pendente** e a equipe a revisa conforme o país detectado; ao ser aprovada, passa a **Processado** e é paga no meio escolhido. Se for recusada, os pontos voltam ao seu saldo.",
             ],
           },
           {
@@ -541,7 +541,7 @@ export const SOPORTE = {
           {
             q: "Minha conta foi suspensa e acredito que foi um erro",
             a: [
-              "As suspensões são aplicadas por violações das regras (VPN, contas múltiplas, fraude). Se você acredita que foi um erro, escreva para latambucks@gmail.com pelo seu e-mail cadastrado, explicando sua situação. Nossa equipe revisa cada caso.",
+              "As suspensões são aplicadas por violações das regras (VPN, contas múltiplas, fraude). Se você acredita que foi um erro, escreva para team@latambucks.com pelo seu e-mail cadastrado, explicando sua situação. Nossa equipe revisa cada caso.",
               "Não crie uma nova conta enquanto durar a suspensão: isso agrava a situação.",
             ],
           },
@@ -566,14 +566,14 @@ export const SOPORTE = {
           {
             q: "Qual é o mínimo de saque?",
             a: [
-              "O mínimo é de **5000 pontos (5 USD)** para todos os países. Pode ser alterado sem aviso prévio pela administração.",
+              "O mínimo depende do método: **5000 pontos (5 USD)** pelo PayPal em todos os países e **3000 pontos (3 USD)** pela Binance fora do Tier 1. Pode ser alterado sem aviso prévio pela administração.",
             ],
           },
           {
             q: "Sou anunciante e meu pagamento de campanha ainda não foi aprovado, posso reembolsar?",
             a: [
               "O reembolso de campanhas **só é aceito enquanto o pagamento estiver pendente de aprovação**. Depois que o administrador aprova o pagamento e a campanha fica ativa, **não há reembolsos**.",
-              "Se o seu pagamento está pendente e quer cancelar, escreva para latambucks@gmail.com indicando o motivo.",
+              "Se o seu pagamento está pendente e quer cancelar, escreva para team@latambucks.com indicando o motivo.",
             ],
           },
           {
@@ -585,7 +585,7 @@ export const SOPORTE = {
           {
             q: "Há atraso no crédito do meu pagamento",
             a: [
-              "Os pagamentos dependem da Payoneer, Airtm e PayPal (plataformas externas). Podem existir atrasos por normas ou auditorias desses provedores. O LatamBucks notificará a comunidade se houver um método afetado e isenta-se de responsabilidade por atrasos externos.",
+              "Os pagamentos dependem do PayPal e da Binance (plataformas externas). Podem existir atrasos por normas, auditorias ou tempos de rede. O LatamBucks notificará a comunidade se houver um método afetado e isenta-se de responsabilidade por atrasos externos.",
             ],
           },
         ],
