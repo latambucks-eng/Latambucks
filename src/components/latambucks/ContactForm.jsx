@@ -15,7 +15,7 @@ import { useI18n } from "@/lib/i18n/LanguageContext";
 // el cliente de correo del usuario. No hay backend ni integraciones: cero créditos.
 
 const MIN_SECONDS = 3;
-const SUPPORT_EMAIL = "latambucks@gmail.com";
+const SUPPORT_EMAIL = "team@latambucks.com";
 
 function makeChallenge() {
   const a = Math.floor(Math.random() * 8) + 2; // 2..9
