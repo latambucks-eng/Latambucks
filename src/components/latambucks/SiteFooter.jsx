@@ -61,7 +61,7 @@ export default function SiteFooter() {
       </p>
       <div className="mt-2 border-t border-border/50 pt-2">
         <a
-          href="mailto:latambucks@gmail.com?subject=Problemas%20para%20ingresar%20a%20mi%20cuenta"
+          href="mailto:team@latambucks.com?subject=Problemas%20para%20ingresar%20a%20mi%20cuenta"
           className="text-[10px] font-semibold text-orange-400 transition hover:text-orange-300"
         >
           {t("footer.problemasAcceso")}
