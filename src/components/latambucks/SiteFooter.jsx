@@ -6,12 +6,6 @@ import { useI18n } from "@/lib/i18n/LanguageContext";
 import { Wallet } from "lucide-react";
 import { brandLogo } from "@/lib/localAssets";
 
-const REDDIT_ICON = (
-  <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden="true">
-    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.01 13.42c.07.27.1.55.1.84 0 2.23-2.61 4.04-5.83 4.04s-5.83-1.81-5.83-4.04c0-.29.03-.57.1-.84-.51-.23-.86-.74-.86-1.33 0-.81.66-1.47 1.47-1.47.39 0 .74.15 1.01.4 1.01-.69 2.39-1.13 3.92-1.18l.83-3.9c.03-.14.17-.23.31-.2l2.74.58c.19-.4.59-.68 1.06-.68.65 0 1.17.52 1.17 1.17s-.52 1.17-1.17 1.17c-.62 0-1.13-.48-1.17-1.09l-2.46-.52-.74 3.49c1.5.07 2.85.51 3.84 1.18.27-.25.62-.4 1.01-.4.81 0 1.47.66 1.47 1.47 0 .59-.35 1.1-.86 1.33zm-7.67 1.1c0 .41.33.74.74.74.41 0 .74-.33.74-.74 0-.41-.33-.74-.74-.74-.41 0-.74.33-.74.74zm4.32.74c.41 0 .74-.33.74-.74 0-.41-.33-.74-.74-.74-.41 0-.74.33-.74.74 0 .41.33.74.74.74zm-.37 1.71c-.34.34-.94.36-1.29.01-.13-.12-.33-.12-.45.01-.12.13-.12.33.01.45.3.28.69.43 1.09.43.4 0 .79-.15 1.09-.43.13-.12.13-.32.01-.45-.12-.13-.33-.14-.46-.02z"/>
-  </svg>
-);
-
 const LOGO_URL = brandLogo;
 
 export default function SiteFooter() {
@@ -66,21 +60,6 @@ export default function SiteFooter() {
         >
           {t("footer.problemasAcceso")}
         </a>
-      </div>
-      <div className="mt-3 border-t border-border/50 pt-3">
-        <div className="mb-2 flex flex-col items-center gap-1.5">
-          <span className="text-[10px] font-bold text-foreground">{t("footer.seguinos")}</span>
-          <a
-            href="https://www.reddit.com/user/Latambucks/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={t("footer.seguinos")}
-            className="flex items-center gap-1.5 rounded-full border border-orange-500/40 bg-orange-500/10 px-3 py-1.5 text-[11px] font-semibold text-orange-400 transition hover:bg-orange-500/20 hover:text-orange-300"
-          >
-            {REDDIT_ICON}
-            <span>r/LatamBucks</span>
-          </a>
-        </div>
       </div>
       <div className="mt-3 border-t border-border/50 pt-3">
         <div className="mb-2 flex items-center justify-center gap-1.5">
